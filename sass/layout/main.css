@@ -1,0 +1,66 @@
+/*Couleurs et score WCAG PRIMAIRE : */
+/*Couleurs et score WCAG SECONDAIRE : */
+h1 {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 2em;
+  color: #901C1C;
+}
+
+.photographers {
+  text-align: center;
+}
+
+.photographers img {
+  width: 20em;
+  height: 20em;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.photographers h2 {
+  color: #D3573C;
+  font-weight: 400;
+  font-size: 2em;
+  margin-top: 10px;
+}
+
+.photographers span {
+  display: block;
+  font-size: 1em;
+  padding: 3px 0;
+}
+
+.photographers span.infos_photographer_city {
+  color: #D3573C;
+}
+
+.photographers span.infos_photographer_price {
+  color: #525252;
+  font-style: italic;
+}
+
+.photographers .infos_photographer_tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 5px 0;
+}
+
+.photographers .infos_photographer_tags li {
+  border: .5px solid;
+  border-radius: 30px;
+  margin: 3px 6px 3px 0;
+  color: #901c1c;
+  padding: 2px 7px;
+  font-weight: 500;
+  font-size: .9em;
+}
+/*# sourceMappingURL=main.css.map */
