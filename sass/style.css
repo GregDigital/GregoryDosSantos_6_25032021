@@ -70,10 +70,11 @@ a {
 /*Couleurs et score WCAG SECONDAIRE : */
 h1 {
   position: absolute;
-  top: 24px;
+  top: 30px;
   right: 30px;
   font-size: 2em;
   color: #901C1C;
+  /**/
 }
 
 .photographers {
