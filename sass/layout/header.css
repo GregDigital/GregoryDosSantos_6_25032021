@@ -1,1 +1,47 @@
-/* No CSS *//*# sourceMappingURL=header.css.map */
+/*Couleurs et score WCAG PRIMAIRE : */
+/*Couleurs et score WCAG SECONDAIRE : */
+.banner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+nav li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: .5px solid #c4c4c4;
+  border-radius: 30px;
+  margin: 3px 6px 3px 0;
+  color: #901C1C;
+  padding: 2px 7px;
+  font-weight: 500;
+  font-size: .8em;
+}
+
+nav li:hover {
+  background-color: #901C1C;
+  color: #FAFAFA;
+}
+
+nav a {
+  color: #901C1C;
+}
+
+nav a:hover {
+  color: #FAFAFA;
+}
+/*# sourceMappingURL=header.css.map */

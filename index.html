@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="sass/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet"> 
     <title>FishEye</title>
 </head>
 <body>
-    <header aria-hidden="false">
+    <header class="banner" aria-hidden="false">
         
         <a href="index.html"><img src="./Photos/logo/logo.png" alt="logo du site FishEye" width="350" height="80"></a>
         <nav class="navTagg" aria-label="catégories des photographes">
-         <a href="">Passer au contenu</a>
-         <ul>
+         <!--<a href="">Passer au contenu</a>-->
+         <ul class="tags" id="tags">
             <li class=""><a href="index.html" class="filter" title="portrait">#Portrait</a></li>
             <li class=""><a href="index.html" class="filter" title="art">#Art</a></li>
             <li class=""><a href="index.html" class="filter" title="fashion">#Fashion</a></li>
@@ -29,16 +31,16 @@
 
     <main>
         <h1>Nos photographes</h1>
-        <section>
-            <article class="photographers">
+        <section class="photographers">
+            <article class="photographers_card">
                 <a href="">
-                    <img src="./Photos/Photographers/MimiKeel.jpg" alt="Photo du photographe MimiKeel">
-                    <h2>Mimi Keel</h2> 
+                    <img class="portrait" src="./Photos/Photographers/MimiKeel.jpg" alt="Photo du photographe MimiKeel">
+                    <h2 class="name">Mimi Keel</h2> 
                 </a>
                 <p class="infos_photographer">
-                    <span class="infos_photographer_city">London, UK</span>
-                    <span class="infos_photographer_slogan">Voir le beau dans le quotidien</span>
-                    <span class="infos_photographer_price">400€/jour</span>
+                    <span class="city">London, UK</span>
+                    <span class="tagline">Voir le beau dans le quotidien</span>
+                    <span class="price">400€/jour</span>
                 </p>
                 <ul class="infos_photographer_tags">
                     <li class=""><a href="index.html" class="filter" title="portrait">#Portrait</a></li>
@@ -49,15 +51,15 @@
                 </ul>
             </article>
 
-            <article class="photographers">
+            <article class="photographers_card">
                 <a href="">
-                    <img src="./Photos/Photographers/EllieRoseWilkens.jpg" alt="Photo du photographe EllieRoseWilkens">
-                    <h2>Ellie-Rose Wilkens</h2> 
+                    <img class="portrait" src="./Photos/Photographers/EllieRoseWilkens.jpg" alt="Photo du photographe EllieRoseWilkens">
+                    <h2 class="name">Ellie-Rose Wilkens</h2> 
                 </a>
                 <p class="infos_photographer">
-                    <span class="infos_photographer_city">Paris, France</span>
-                    <span class="infos_photographer_slogan">Travaille sur des compositions complexes</span>
-                    <span class="infos_photographer_price">250€/jour</span>
+                    <span class="city">Paris, France</span>
+                    <span class="tagline">Travaille sur des compositions complexes</span>
+                    <span class="price">250€/jour</span>
                 </p>
                 <ul class="infos_photographer_tags">
                     <li class=""><a href="index.html" class="filter" title="sport">#Sport</a></li>
@@ -65,15 +67,15 @@
                 </ul>
             </article>
 
-            <article class="photographers">
+            <article class="photographers_card">
                 <a href="">
-                    <img src="./Photos/Photographers/TracyGalindo.jpg" alt="Photo du photographe TracyGalindo">
-                    <h2>Tracy Galindo</h2> 
+                    <img class="portrait" src="./Photos/Photographers/TracyGalindo.jpg" alt="Photo du photographe TracyGalindo">
+                    <h2 class="name">Tracy Galindo</h2> 
                 </a>
                 <p class="infos_photographer">
-                    <span class="infos_photographer_city">Montreal, Canada</span>
-                    <span class="infos_photographer_slogan">Photographe freelance</span>
-                    <span class="infos_photographer_price">500€/jour</span>
+                    <span class="city">Montreal, Canada</span>
+                    <span class="tagline">Photographe freelance</span>
+                    <span class="price">500€/jour</span>
                 </p>
                 <ul class="infos_photographer_tags">
                     <li class=""><a href="index.html" class="filter" title="art">#Art</a></li>
@@ -84,17 +86,17 @@
                 </ul>
             </article>
 
-            <article class="photographers">
+            <article class="photographers_card">
                 <a href="">
-                    <img src="./Photos/Photographers/NabeelBrandford.jpg" alt="Photo du photographe NabeelBrandford">
-                    <h2>Nabeel Bradford</h2> 
+                    <img class="portrait" src="./Photos/Photographers/NabeelBrandford.jpg" alt="Photo du photographe NabeelBrandford">
+                    <h2 class="name">Nabeel Bradford</h2> 
                 </a>
                 <p class="infos_photographer">
-                    <span class="infos_photographer_city">Mexico City, Mexico</span>
-                    <span class="infos_photographer_slogan">Je vais toujours de l'avant</span>
-                    <span class="infos_photographer_price">350€/jour</span>
+                    <span class="city">Mexico City, Mexico</span>
+                    <span class="tagline">Je vais toujours de l'avant</span>
+                    <span class="price">350€/jour</span>
                 </p>
-                <ul class="infos_photographer_tags">
+                <ul class="infos_photographer_tags" >
                     
                     <li class=""><a href="index.html" class="filter" title="travel">#Travel</a></li>
                     <li class=""><a href="index.html" class="filter" title="portrait">#Portrait</a></li>
@@ -103,15 +105,15 @@
                 </ul>
             </article>
 
-            <article class="photographers">
+            <article class="photographers_card">
                 <a href="">
-                    <img src="./Photos/Photographers/RhodeDubois.jpg" alt="Photo du photographe RhodeDubois">
-                    <h2>Rhobe Dubois</h2> 
+                    <img class="portrait" src="./Photos/Photographers/RhodeDubois.jpg" alt="Photo du photographe RhodeDubois">
+                    <h2 class="name">Rhobe Dubois</h2> 
                 </a>
                 <p class="infos_photographer">
-                    <span class="infos_photographer_city">Barcelone, Spain</span>
-                    <span class="infos_photographer_slogan">Créatrice de souvenirs</span>
-                    <span class="infos_photographer_price">375€/jour</span>
+                    <span class="city">Barcelone, Spain</span>
+                    <span class="tagline">Créatrice de souvenirs</span>
+                    <span class="price">375€/jour</span>
                 </p>
                 <ul class="infos_photographer_tags">
                     <li class=""><a href="index.html" class="filter" title="sport">#Sport</a></li>
@@ -122,15 +124,15 @@
                 </ul>
             </article>
 
-            <article class="photographers">
+            <article class="photographers_card">
                 <a href="">
-                    <img src="./Photos/Photographers/MarcelNikolic.jpg" alt="Photo du photographe MarcelNikolic">
-                    <h2>Marcel Nikolic</h2> 
+                    <img class="portrait" src="./Photos/Photographers/MarcelNikolic.jpg" alt="Photo du photographe MarcelNikolic">
+                    <h2 class="name">Marcel Nikolic</h2> 
                 </a>
                 <p class="infos_photographer">
-                    <span class="infos_photographer_city">Berlin, Germany</span>
-                    <span class="infos_photographer_slogan">Toujours à la recherche de LA photo</span>
-                    <span class="infos_photographer_price">300€/jour</span>
+                    <span class="city">Berlin, Germany</span>
+                    <span class="tagline">Toujours à la recherche de LA photo</span>
+                    <span class="price">300€/jour</span>
                 </p>
                 <ul class="infos_photographer_tags">
                     <li class=""><a href="index.html" class="filter" title="architecture">#Architecture</a></li>  

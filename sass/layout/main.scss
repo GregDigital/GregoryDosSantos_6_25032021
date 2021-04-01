@@ -1,3 +1,4 @@
+
 @import "../utils/variables";
 
 h1 {
@@ -9,13 +10,21 @@ color: $color-texteSecondaire;
 /**/
 }
 
-
-
 .photographers {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;}
    
+
+.photographers_card {
+   width: 30%;
+   padding-bottom: 30px;
+    min-width: 300px;
     text-align: center;
 
-    img {
+    .portrait {
         
             width: 20em;
             height: 20em;
@@ -24,7 +33,7 @@ color: $color-texteSecondaire;
         
     }
 
-    h2 {
+    .name {
     color: $color-texteprimaire;
     font-weight: 400;
     font-size: 2em;
@@ -36,10 +45,10 @@ color: $color-texteSecondaire;
     font-size: 1em;
     padding: 3px 0;
      
-    &.infos_photographer_city {
+    &.city {
         color: $color-texteprimaire;
     }
-    &.infos_photographer_price {
+    &.price {
         color: $color-texteGris;
         font-style: italic;
     }
