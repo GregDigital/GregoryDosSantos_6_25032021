@@ -1,8 +1,8 @@
 let container = document.querySelector("#photographers");
 
-
-function generatePhotographer (user) {
-    return  `
+function generatePhotographer(user) {
+  console.log(user)
+    return `
     <article class="photographers_card">
                 <a href="">
                     <img class="portrait" src="./Photos/Photographers/${user.portrait}" alt="Photo du photographe MimiKeel">
@@ -20,32 +20,22 @@ function generatePhotographer (user) {
                     <li class=""><a href="index.html" class="filter" title="animals">#Animals</a></li>
                     
                 </ul>
-            </article>`
-
+            </article>`;
 }
 
-function show(users) {
-    let acc = [];
-    
+function show(response) {
+  let acc = [];
   
-  for (let user of users) {
-    acc.push(generatePhotographer(user));
+  for (let photographer of response.photographers) {
+    acc.push(generatePhotographer(photographer));
+  }
+
+  
+
+  let html = acc.reduce((a, l) => a + l);
+  container.innerHTML = html;
 }
 
-console.log(acc)
-
-let html = acc.reduce((a, l) => a + l)
-container.innerHTML = html;
-}
-
-
-fetch ('json/profil.json')
-  .then(response => response.json())
-  .then(json => show(json))
-
-
-
-
-
-
-
+fetch("json/profil.json")
+  .then((response) => response.json())
+  .then((json) => show(json));
