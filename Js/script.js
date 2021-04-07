@@ -1,63 +1,65 @@
-{
-    "photographers": [
-      {
-        "name": "Mimi Keel",
-        "id": 243,
-        "city": "London",
-        "country": "UK",
-        "tags": ["portrait", "events", "travel", "animals"],
-        "tagline": "Voir le beau dans le quotidien",
-        "price": 400,
-        "portrait": "MimiKeel.jpg"
-      },
-      {
-        "name": "Ellie-Rose Wilkens",
-        "id": 930,
-        "city": "Paris",
-        "country": "France",
-        "tags": ["sports", "architecture"],
-        "tagline": "Capturer des compositions complexes",
-        "price": 250,
-        "portrait": "EllieRoseWilkens.jpg"
-      },
-      {
-        "name": "Tracy Galindo",
-        "id": 82,
-        "city": "Montreal",
-        "country": "Canada",
-        "tags": ["art", "fashion", "events"],
-        "tagline": "Photographe freelance",
-        "price": 500,
-        "portrait": "TracyGalindo.jpg"
-      },
-      {
-        "name": "Nabeel Bradford",
-        "id": 527,
-        "city": "Mexico City",
-        "country": "Mexico",
-        "tags": ["travel", "portrait"],
-        "tagline": "Toujours aller de l'avant",
-        "price": 350,
-        "portrait": "NabeelBradford.jpg"
-      },
-      {
-        "name": "Rhode Dubois",
-        "id": 925,
-        "city": "Barcelona",
-        "country": "Spain",
-        "tags": ["sport", "fashion", "events", "animals"],
-        "tagline": "Je crÃ©e des souvenirs",
-        "price": 275,
-        "portrait": "RhodeDubois.jpg"
-      },
-      {
-        "name": "Marcel Nikolic",
-        "id": 195,
-        "city": "Berlin",
-        "country": "Germany",
-        "tags": ["travel", "architecture"],
-        "tagline": "Toujours Ã  la recherche de LA photo",
-        "price": 300,
-        "portrait": "MarcelNikolic.jpg"
-      }
-    ],
+let container = document.querySelector("#photographers");
+
+
+function generatePhotographer (user) {
+    return  `
+    <article class="photographers_card">
+                <a href="">
+                    <img class="portrait" src="./Photos/Photographers/${user.portrait}" alt="Photo du photographe MimiKeel">
+                    <h2 class="name">${user.name}</h2> 
+                </a>
+                <p class="infos_photographer">
+                    <span class="city">${user.city}</span>
+                    <span class="tagline">${user.tagline}</span>
+                    <span class="price">${user.price}</span>
+                </p>
+                <ul class="infos_photographer_tags">
+                    <li class=""><a href="index.html" class="filter" title="portrait">#Portrait</a></li>
+                    <li class=""><a href="index.html" class="filter" title="events">#Events</a></li>
+                    <li class=""><a href="index.html" class="filter" title="travel">#Travel</a></li>
+                    <li class=""><a href="index.html" class="filter" title="animals">#Animals</a></li>
+                    
+                </ul>
+            </article>`
+
+}
+
+function show(users) {
+    let acc = [];
+    
+  
+  for (let user of users) {
+    acc.push(generatePhotographer(user));
+}
+
+console.log(acc)
+
+let html = acc.reduce((a, l) => a + l)
+container.innerHTML = html;
+}
+
+
+fetch ('json/profil.json')
+  .then(response => response.json())
+  .then(json => show(json))
+
+
+//==============================================================================================================
+
+
+
+
+/*
+<p class="infos_photographer">
+    <span class="city">London, UK</span>
+    <span class="tagline">Voir le beau dans le quotidien</span>
+    <span class="price">400€/jour</span>
+</p>
+<ul class="infos_photographer_tags">
+    <li class=""><a href="index.html" class="filter" title="portrait">#Portrait</a></li>
+    <li class=""><a href="index.html" class="filter" title="events">#Events</a></li>
+    <li class=""><a href="index.html" class="filter" title="travel">#Travel</a></li>
+    <li class=""><a href="index.html" class="filter" title="animals">#Animals</a></li>
+    
+</ul>
+*/
