@@ -44,22 +44,8 @@ fetch ('json/profil.json')
   .then(json => show(json))
 
 
-//==============================================================================================================
 
 
 
 
-/*
-<p class="infos_photographer">
-    <span class="city">London, UK</span>
-    <span class="tagline">Voir le beau dans le quotidien</span>
-    <span class="price">400€/jour</span>
-</p>
-<ul class="infos_photographer_tags">
-    <li class=""><a href="index.html" class="filter" title="portrait">#Portrait</a></li>
-    <li class=""><a href="index.html" class="filter" title="events">#Events</a></li>
-    <li class=""><a href="index.html" class="filter" title="travel">#Travel</a></li>
-    <li class=""><a href="index.html" class="filter" title="animals">#Animals</a></li>
-    
-</ul>
-*/
+
