@@ -1,7 +1,8 @@
 let container = document.querySelector("#photographers");
 
 function generatePhotographer(user) {
-  console.log(user);
+
+  console.log(user.tags)
   return `
     <article class="photographers_card">
                 <a href="">
@@ -15,11 +16,20 @@ function generatePhotographer(user) {
                 </p>
                 <ul class="infos_photographer_tags">
           
-                
+                ${user.tags}
                     
                 </ul>
             </article>`;
+
+
+
+           
 }
+
+
+
+
+
 
 function show(response) {
   let acc = [];
@@ -32,8 +42,6 @@ function show(response) {
 
   let html = acc.reduce((a, l) => a + l);
   container.innerHTML = html;
-
-
 
 
 }
