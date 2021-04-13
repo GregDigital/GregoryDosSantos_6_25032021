@@ -61,7 +61,7 @@ color: $color-texteSecondaire;
         flex-wrap: wrap;
         margin: 5px 0;
 
-        & li {
+        & .filter {
             
             border: .5px solid;
             border-radius: 30px;
@@ -70,6 +70,12 @@ color: $color-texteSecondaire;
             padding: 2px 7px;
             font-weight: 500;
             font-size: .9em;
+
+            &:hover {
+                background-color: $color-backgroundPrimaire ;
+                color: $color-bacgroundWhite ;
+             
+            }
         }
         }
     

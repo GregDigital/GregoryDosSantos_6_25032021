@@ -86,7 +86,7 @@ nav ul {
   display: flex;
 }
 
-nav li {
+nav .filter {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -96,10 +96,10 @@ nav li {
   color: #901C1C;
   padding: 2px 7px;
   font-weight: 500;
-  font-size: .8em;
+  font-size: .9em;
 }
 
-nav li:hover {
+nav .filter:hover {
   background-color: #901C1C;
   color: #FAFAFA;
 }
@@ -187,7 +187,7 @@ h1 {
   margin: 5px 0;
 }
 
-.photographers_card .infos_photographer_tags li {
+.photographers_card .infos_photographer_tags .filter {
   border: .5px solid;
   border-radius: 30px;
   margin: 3px 6px 3px 0;
@@ -195,5 +195,10 @@ h1 {
   padding: 2px 7px;
   font-weight: 500;
   font-size: .9em;
+}
+
+.photographers_card .infos_photographer_tags .filter:hover {
+  background-color: #901C1C;
+  color: #FAFAFA;
 }
 /*# sourceMappingURL=style.css.map */

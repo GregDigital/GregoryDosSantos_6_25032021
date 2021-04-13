@@ -15,7 +15,7 @@ nav {
         display: flex;
     }
 
-    li {
+    .filter{
         display: flex;
         border: .5px solid #c4c4c4;
         border-radius: 30px;
@@ -23,7 +23,7 @@ nav {
         color: $color-texteSecondaire;
         padding: 2px 7px;
         font-weight: 500;
-        font-size: .8em;
+        font-size: .9em;
 
         &:hover {
             background-color: $color-backgroundPrimaire ;
