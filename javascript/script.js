@@ -13,6 +13,7 @@ function generatePhotographer(user) {
                     <span class="price">${user.price} €</span>
                 </p>
                 <ul class="infos_photographer_tags">
+                ${user.tags}
                 </ul>
             </article>`;
 }
