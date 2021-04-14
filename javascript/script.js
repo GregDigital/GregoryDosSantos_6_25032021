@@ -1,6 +1,6 @@
 let container = document.querySelector("#photographers");
 function generatePhotographer(user) {
-  console.log(user);
+  console.log(user.tags);
   return `
     <article class="photographers_card">
                 <a href="photographer-page.html">
