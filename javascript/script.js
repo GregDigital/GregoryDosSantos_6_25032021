@@ -1,4 +1,15 @@
 let container = document.querySelector("#photographers");
+
+function generatePhotographerTags(tags) {
+  let acc = [];
+  for (let tag of tags) {
+      acc.push(`<li class="filter">${tag}</li>`)
+  }
+  let html = acc.reduce((a, l) => a + l);
+  return html
+
+}
+
 function generatePhotographer(user) {
   console.log(user.tags);
   return `
@@ -13,7 +24,7 @@ function generatePhotographer(user) {
                     <span class="price">${user.price} €</span>
                 </p>
                 <ul class="infos_photographer_tags">
-                ${user.tags}
+                ${generatePhotographerTags(user.tags)}
                 </ul>
             </article>`;
 }
