@@ -114,7 +114,7 @@ nav a:hover {
 
 /*Couleurs et score WCAG PRIMAIRE : */
 /*Couleurs et score WCAG SECONDAIRE : */
-h1 {
+.title_page {
   position: absolute;
   top: 30px;
   right: 30px;
@@ -200,5 +200,89 @@ h1 {
 .photographers_card .infos_photographer_tags .filter:hover {
   background-color: #901C1C;
   color: #FAFAFA;
+}
+
+/*Couleurs et score WCAG PRIMAIRE : */
+/*Couleurs et score WCAG SECONDAIRE : */
+.pp_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 100px;
+  padding: 63px 35px 48px 65px;
+  background: #fafafa;
+}
+
+.pp_header .pp_infos {
+  display: block;
+  font-size: 0.9em;
+  margin: 15px 0;
+}
+
+.pp_header .pp_infos .pp_name {
+  font-size: 2.8em;
+  font-weight: 400;
+  color: #d3573c;
+  margin: 15px 0;
+}
+
+.pp_header .pp_infos .pp_city {
+  font-size: 1.2em;
+  color: #901c1c;
+  display: block;
+  margin: 15px 0;
+}
+
+.pp_header .pp_infos .pp_tagline {
+  display: block;
+  color: #525252;
+  margin: 15px 0;
+}
+
+.pp_header .pp_infos .pp_tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 5px 0;
+}
+
+.pp_header .pp_infos .pp_tags .filter-tag {
+  border: 0.5px solid;
+  border-radius: 30px;
+  margin: 3px 6px 3px 0;
+  color: #901c1c;
+  padding: 2px 7px;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.pp_header .pp_infos .pp_tags:hover {
+  background-color: #901C1C;
+  color: #FAFAFA;
+}
+
+.pp_header .pp_contact {
+  background: #901c1c;
+  width: 10em;
+  height: 4em;
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.pp_header .pp_portrait {
+  width: 10em;
+  height: 10em;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
 }
 /*# sourceMappingURL=style.css.map */

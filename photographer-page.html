@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="sass/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>FishEye - Photographer</title>
+  </head>
+  <body>
+    <header class="banner" id="header-banner" aria-hidden="false">
+      <a href="index.html" title="Homepage"
+        ><img
+          src="./Photos/logo/logo.png"
+          alt="Fisheye Home page"
+          width="350"
+          height="80"
+      /></a>
+    </header>
+
+    <main>
+      <header class="pp_header">
+        <div class="pp_infos">
+          <h1 class="pp_name" id="pp_title">Mimi Keel</h1>
+          <span class="pp_city" id="pp_city">London, UK</span>
+          <span class="pp_tagline" id="pp_tagline"
+            >Voir le beau dans le quotidien</span
+          >
+          <ul class="pp_tags" id="pp_tags">
+            <li>
+              <a
+                class="filter-tag"
+                href="index.html?tag=portrait"
+                title="portrait"
+                >portrait</a
+              >
+            </li>
+            <li>
+              <a class="filter-tag" href="index.html?tag=events" title="events"
+                >events</a
+              >
+            </li>
+            <li>
+              <a class="filter-tag" href="index.html?tag=travel" title="travel"
+                >travel</a
+              >
+            </li>
+            <li>
+              <a
+                class="filter-tag"
+                href="index.html?tag=animals"
+                title="animals"
+                >animals</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <button class="pp_contact">Contactez-moi</button>
+        <img
+          src="Photos/Photographers/MimiKeel.jpg"
+          alt=""
+          class="pp_portrait"
+        />
+      </header>
+
+      <section class="pp_medias">
+        <div class="works-sort">
+          <span id="sort-label" class="sort-label">Trier par</span>
+          <div id="sort-wrapper">
+            <button
+              aria-haspopup="listbox"
+              aria-labelledby="sort-label sort-btn"
+              id="sort-btn"
+              class="sort-btn"
+            >
+              Popularité <span class="fas fa-chevron-down sort-arrow"></span>
+            </button>
+            <ul
+              id="sort-list"
+              tabindex="-1"
+              role="listbox"
+              aria-labelledby="sort-label"
+              class="sort-list hidden"
+            >
+              <li id="sort-1" role="option" tabindex="-1">
+                Popularité<span class="fas fa-chevron-up sort-arrow"></span>
+              </li>
+              <li id="sort-2" role="option" tabindex="-1">Date</li>
+              <li id="sort-3" role="option" tabindex="-1">Titre</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <aside class="pp_infos_data"></aside>
+    </main>
+
+    <script src="javascript/script.js"></script>
+  </body>
+</html>

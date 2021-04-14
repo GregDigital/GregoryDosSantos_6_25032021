@@ -1,6 +1,6 @@
 /*Couleurs et score WCAG PRIMAIRE : */
 /*Couleurs et score WCAG SECONDAIRE : */
-h1 {
+.title_page {
   position: absolute;
   top: 30px;
   right: 30px;

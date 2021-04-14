@@ -3,7 +3,7 @@ function generatePhotographer(user) {
   console.log(user);
   return `
     <article class="photographers_card">
-                <a href="">
+                <a href="photographer-page.html">
                     <img class="portrait" src="./Photos/Photographers/${user.portrait}" alt="Photo du photographe MimiKeel">
                     <h2 class="name">${user.name}</h2>
                 </a>

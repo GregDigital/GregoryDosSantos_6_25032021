@@ -1,0 +1,77 @@
+@import "../utils/variables";
+
+.pp_header {
+    display: flex;
+    justify-content: space-between;
+  margin: 0 100px;
+  padding: 63px 35px 48px 65px;
+  background: #fafafa;
+
+  .pp_infos {
+    display: block;
+    font-size: 0.9em;
+    margin: 15px 0;
+
+    .pp_name {
+      font-size: 2.8em;
+      font-weight: 400;
+      color: #d3573c;
+      margin: 15px 0;
+    }
+    .pp_city {
+      font-size: 1.2em;
+      color: #901c1c;
+      display: block;
+      margin: 15px 0;
+    }
+
+    .pp_tagline {
+        display: block;
+      color: #525252;
+      margin: 15px 0;
+    }
+
+    .pp_tags {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 5px 0;
+
+      & .filter-tag {
+        border: 0.5px solid;
+        border-radius: 30px;
+        margin: 3px 6px 3px 0;
+        color: #901c1c;
+        padding: 2px 7px;
+        font-weight: 500;
+        font-size: 0.9em;
+      }
+
+      &:hover {
+        background-color: $color-backgroundPrimaire;
+        color: $color-bacgroundWhite;
+      }
+    }
+  }
+
+.pp_contact {
+background: #901c1c;
+width: 10em;
+height: 4em;
+color: #fff;
+font-weight: 500;
+border: none;
+border-radius: 5px;
+font-size: 1em;
+cursor: pointer;
+}
+
+.pp_portrait {
+    width: 10em;
+    height: 10em;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+
+}
