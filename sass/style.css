@@ -252,18 +252,13 @@ nav a:hover {
 }
 
 .pp_header .pp_infos .pp_tags .filter-tag {
-  border: 0.5px solid;
+  border: 0.5px solid #c4c4c4;
   border-radius: 30px;
   margin: 3px 6px 3px 0;
   color: #901c1c;
   padding: 2px 7px;
   font-weight: 500;
   font-size: 0.9em;
-}
-
-.pp_header .pp_infos .pp_tags:hover {
-  background-color: #901C1C;
-  color: #FAFAFA;
 }
 
 .pp_header .pp_contact {
@@ -284,5 +279,186 @@ nav a:hover {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
+}
+
+.pp_galery_medias {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+.pp_galery_medias .pp_media {
+  color: #901c1c;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.pp_galery_medias .pp_media img {
+  width: 350px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
+
+.pp_galery_medias .pp_media video {
+  width: 350px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
+
+.pp_galery_medias .pp_media_infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.pp_galery_medias .pp_media_infos .media_infos-title {
+  width: 10em;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.pp_infos_data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+  background: #db8876;
+  width: 375px;
+  height: 70px;
+  border-radius: 5px;
+  padding: 0 35px;
+  font-weight: 500;
+  font-size: 1.2em;
+}
+
+.lightbox_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow-y: hidden;
+  /* Hide vertical scrollbar */
+  overflow-x: hidden;
+  /* Hide horizontal scrollbar */
+  display: none;
+}
+
+.lightbox_modal_content {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 100vw;
+  max-width: 1250px;
+  height: 100vh;
+}
+
+.lightbox_modal_content .lightbox_modal_content-media {
+  position: relative;
+  top: 50%;
+  bottom: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #901c1c;
+}
+
+.lightbox_modal_content .lightbox_modal_content-media img {
+  max-width: calc(100vw - 80px);
+  max-height: calc(100vh - 100px);
+  height: auto;
+  text-align: center;
+}
+
+.lightbox_modal_content button {
+  border: none;
+  color: #901c1c;
+  background: none;
+  font-size: 2em;
+}
+
+.lightbox_modal_content .lightbox-close {
+  position: absolute;
+  right: 30px;
+}
+
+.lightbox_modal_content .align {
+  position: absolute;
+  top: 50%;
+}
+
+.lightbox_modal_content .lightbox-right {
+  position: absolute;
+  right: 30px;
+}
+
+.lightbox_modal_content .lightbox-left {
+  position: absolute;
+  left: 30px;
+}
+
+.form_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  background: #e6e6e6;
+  opacity: 50%;
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+  overflow-y: hidden;
+  /* Hide vertical scrollbar */
+  overflow-x: hidden;
+  /* Hide horizontal scrollbar */
+}
+
+.form_modal_content {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  right: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 100vw;
+  max-width: 600px;
+  max-height: 900px;
+  height: 100vh;
+  background-color: #db8876;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=style.css.map */

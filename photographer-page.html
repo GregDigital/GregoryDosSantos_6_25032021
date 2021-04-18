@@ -1,105 +1,249 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="sass/style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <title>FishEye - Photographer</title>
-  </head>
-  <body>
-    <header class="banner" id="header-banner" aria-hidden="false">
-      <a href="index.html" title="Homepage"
-        ><img
-          src="./Photos/logo/logo.png"
-          alt="Fisheye Home page"
-          width="350"
-          height="80"
-      /></a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="sass/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a650986bb4.js" crossorigin="anonymous"></script>
+  <title>FishEye - Photographer</title>
+</head>
+
+<body>
+  <header class="banner" id="header-banner" aria-hidden="false">
+    <a href="index.html" title="Homepage"><img src="./Photos/logo/logo.png" alt="Fisheye Home page" width="350"
+        height="80" /></a>
+  </header>
+
+  <main>
+    <header class="pp_header">
+      <div class="pp_infos">
+        <h1 class="pp_name" id="pp_title">Mimi Keel</h1>
+        <span class="pp_city" id="pp_city">London, UK</span>
+        <span class="pp_tagline" id="pp_tagline">Voir le beau dans le quotidien</span>
+        <ul class="pp_tags" id="pp_tags">
+          <li>
+            <a class="filter-tag" href="index.html?tag=portrait" title="portrait">portrait</a>
+          </li>
+          <li>
+            <a class="filter-tag" href="index.html?tag=events" title="events">events</a>
+          </li>
+          <li>
+            <a class="filter-tag" href="index.html?tag=travel" title="travel">travel</a>
+          </li>
+          <li>
+            <a class="filter-tag" href="index.html?tag=animals" title="animals">animals</a>
+          </li>
+        </ul>
+      </div>
+
+      <button class="pp_contact">Contactez-moi</button>
+      <img src="Photos/Photographers/MimiKeel.jpg" alt="" class="pp_portrait" />
     </header>
 
-    <main>
-      <header class="pp_header">
-        <div class="pp_infos">
-          <h1 class="pp_name" id="pp_title">Mimi Keel</h1>
-          <span class="pp_city" id="pp_city">London, UK</span>
-          <span class="pp_tagline" id="pp_tagline"
-            >Voir le beau dans le quotidien</span
-          >
-          <ul class="pp_tags" id="pp_tags">
-            <li>
-              <a
-                class="filter-tag"
-                href="index.html?tag=portrait"
-                title="portrait"
-                >portrait</a
-              >
-            </li>
-            <li>
-              <a class="filter-tag" href="index.html?tag=events" title="events"
-                >events</a
-              >
-            </li>
-            <li>
-              <a class="filter-tag" href="index.html?tag=travel" title="travel"
-                >travel</a
-              >
-            </li>
-            <li>
-              <a
-                class="filter-tag"
-                href="index.html?tag=animals"
-                title="animals"
-                >animals</a
-              >
-            </li>
-          </ul>
-        </div>
+    <section class="pp_galery">
 
-        <button class="pp_contact">Contactez-moi</button>
-        <img
-          src="Photos/Photographers/MimiKeel.jpg"
-          alt=""
-          class="pp_portrait"
-        />
-      </header>
-
-      <section class="pp_medias">
-        <div class="works-sort">
-          <span id="sort-label" class="sort-label">Trier par</span>
-          <div id="sort-wrapper">
-            <button
-              aria-haspopup="listbox"
-              aria-labelledby="sort-label sort-btn"
-              id="sort-btn"
-              class="sort-btn"
-            >
-              Popularité <span class="fas fa-chevron-down sort-arrow"></span>
-            </button>
-            <ul
-              id="sort-list"
-              tabindex="-1"
-              role="listbox"
-              aria-labelledby="sort-label"
-              class="sort-list hidden"
-            >
-              <li id="sort-1" role="option" tabindex="-1">
-                Popularité<span class="fas fa-chevron-up sort-arrow"></span>
-              </li>
-              <li id="sort-2" role="option" tabindex="-1">Date</li>
-              <li id="sort-3" role="option" tabindex="-1">Titre</li>
-            </ul>
+      <article class="pp_galery_medias" id="pp_galery_medias">
+        <article class="pp_media">
+          <a href="#" title="">
+            <video class="pp_media_video" role="button">
+              ""
+              <source src="Photos/Ellie Rose/Sport_Tricks_in_the_air.mp4" />
+            </video>
+          </a>
+          <div class="pp_media_infos">
+            <h2 class="media_infos-title">blablalbalb</h2>
+            <span class="media_infos-price">32 $</span>
+            <span class="media_infos-like" id="">"like"<span class="fas fa-heart" role="button"></span></span>
           </div>
+        </article>
+
+        <article class="pp_media">
+          <a href="#" title="">
+            <img src="Photos/Ellie Rose/Architecture_Connected_Curves.jpg" alt="" role="button" />
+          </a>
+          <div class="pp_media_infos">
+            <h2 class="media_infos-title">blablalbalb</h2>
+            <span class="media_infos-price">32 $</span>
+            <span class="media_infos-like" id="">"like"<span class="fas fa-heart" role="button"></span></span>
+          </div>
+        </article>
+
+        <article class="pp_media">
+          <a href="#" title="">
+            <video class="pp_media_video" role="button">
+              ""
+              <source src="Photos/Ellie Rose/Sport_Tricks_in_the_air.mp4" />
+            </video>
+          </a>
+          <div class="pp_media_infos">
+            <h2 class="media_infos-title">blablalbalb</h2>
+            <span class="media_infos-price">32 $</span>
+            <span class="media_infos-like" id="">"like"<span class="fas fa-heart" role="button"></span></span>
+          </div>
+        </article>
+
+        <article class="pp_media">
+          <a href="#" title="">
+            <img src="Photos/Ellie Rose/Architecture_Connected_Curves.jpg" alt="" role="button" />
+          </a>
+          <div class="pp_media_infos">
+            <h2 class="media_infos-title">blablalbalb</h2>
+            <span class="media_infos-price">32 $</span>
+            <span class="media_infos-like" id="">"like"<span class="fas fa-heart" role="button"></span></span>
+          </div>
+        </article>
+
+        <article class="pp_media">
+          <a href="#" title="">
+            <video class="pp_media_video" role="button">
+              ""
+              <source src="Photos/Ellie Rose/Sport_Tricks_in_the_air.mp4" />
+            </video>
+          </a>
+          <div class="pp_media_infos">
+            <h2 class="media_infos-title">blablalbalb</h2>
+            <span class="media_infos-price">32 $</span>
+            <span class="media_infos-like" id="">"like"<span class="fas fa-heart" role="button"></span></span>
+          </div>
+        </article>
+
+        <article class="pp_media">
+          <a href="#" title="">
+            <img src="Photos/Ellie Rose/Architecture_Connected_Curves.jpg" alt="" role="button" />
+          </a>
+          <div class="pp_media_infos">
+            <h2 class="media_infos-title">blablalbalb</h2>
+            <span class="media_infos-price">32 $</span>
+            <span class="media_infos-like" id="">"like"<span class="fas fa-heart" role="button"></span></span>
+          </div>
+        </article>
+
+        <article class="pp_media">
+          <a href="#" title="">
+            <video class="pp_media_video" role="button">
+              ""
+              <source src="Photos/Ellie Rose/Sport_Tricks_in_the_air.mp4" />
+            </video>
+          </a>
+          <div class="pp_media_infos">
+            <h2 class="media_infos-title">blablalbalb</h2>
+            <span class="media_infos-price">32 $</span>
+            <span class="media_infos-like" id="">"like"<span class="fas fa-heart" role="button"></span></span>
+          </div>
+        </article>
+
+        <article class="pp_media">
+          <a href="#" title="">
+            <img src="Photos/Ellie Rose/Architecture_Connected_Curves.jpg" alt="" role="button" />
+          </a>
+          <div class="pp_media_infos">
+            <h2 class="media_infos-title">blablalbalb</h2>
+            <span class="media_infos-price">32 $</span>
+            <span class="media_infos-like" id="">"like"<span class="fas fa-heart" role="button"></span></span>
+          </div>
+        </article>
+
+        <article class="pp_media">
+          <a href="#" title="">
+            <video class="pp_media_video" role="button">
+              ""
+              <source src="Photos/Ellie Rose/Sport_Tricks_in_the_air.mp4" />
+            </video>
+          </a>
+          <div class="pp_media_infos">
+            <h2 class="media_infos-title">blablalbalb</h2>
+            <span class="media_infos-price">32 $</span>
+            <span class="media_infos-like" id="">"like"<span class="fas fa-heart" role="button"></span></span>
+          </div>
+        </article>
+
+        <article class="pp_media">
+          <a href="#" title="">
+            <img src="Photos/Ellie Rose/Architecture_Connected_Curves.jpg" alt="" role="button" />
+          </a>
+          <div class="pp_media_infos">
+            <h2 class="media_infos-title">blablalbalb</h2>
+            <span class="media_infos-price">32 $</span>
+            <span class="media_infos-like" id="">"like"<span class="fas fa-heart" role="button"></span></span>
+          </div>
+        </article>
+      </article>
+
+
+    </section>
+
+
+    <aside class="pp_infos_data" aria-label="information prix et likes du photographe">
+      <span id="total-likes">680<i class="fas fa-heart" aria-label="likes"></i></span>
+      <span>400€ / jour</span>
+    </aside>
+
+
+
+
+    <div class="lightbox_modal">
+
+
+      <div class="lightbox_modal_content">
+
+
+        <div class="lightbox_modal_content-media">
+
+          <div class="content_media_img">
+            <img src="Photos/Ellie Rose/Architecture_Connected_Curves.jpg" Art Triangle Man"
+              id="current-media-lightbox">
+
+            <h3 class="lightbox-media-title">Art Triangle Man</h3>
+          </div>
+
+          <button type="button" class="lightbox-close" id="lightbox-close" title="Close dialog"><span
+              class="fas fa-times" aria-hidden="true"></span>
+          </button>
+
+          <button type="button" class="align lightbox-left" id="lightbox-previous" title="Previous image"><span
+              class="fas fa-chevron-left" aria-hidden="true"></span>
+          </button>
+
+          <button type="button" class="align lightbox-right" id="lightbox-next" title="Next image"><span
+              class="fas fa-chevron-right" aria-hidden="true"></span>
+
+          </button>
+
         </div>
-      </section>
 
-      <aside class="pp_infos_data"></aside>
-    </main>
+      </div>
 
-    <script src="javascript/script.js"></script>
-  </body>
+    </div>
+
+
+   
+    <div class="form_modal">
+    </div>
+
+      <div class="form_modal_content">
+  <p>text</p>
+
+
+     
+
+
+
+
+
+    </div>
+
+
+
+  </main>
+
+
+
+  <script src="javascript/script.js"></script>
+</body>
+
 </html>

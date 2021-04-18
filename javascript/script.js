@@ -3,7 +3,7 @@ let container = document.querySelector("#photographers");
 function generatePhotographerTags(tags) {
   let acc = [];
   for (let tag of tags) {
-      acc.push(`<li class="filter">${tag}</li>`)
+      acc.push(`<li class="filter">#${tag}</li>`)
   }
   let html = acc.reduce((a, l) => a + l);
   return html
@@ -39,3 +39,4 @@ function show(response) {
 fetch("json/profil.json")
   .then((response) => response.json())
   .then((json) => show(json));
+
