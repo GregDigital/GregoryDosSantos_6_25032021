@@ -19,7 +19,7 @@
         height="80" /></a>
   </header>
 
-  <main>
+  <main id="photographer_page">
     <header class="pp_header">
       <div class="pp_infos">
         <h1 class="pp_name" id="pp_title">Mimi Keel</h1>
@@ -46,6 +46,8 @@
     </header>
 
     <section class="pp_galery">
+
+      <!--
 
       <article class="pp_galery_medias" id="pp_galery_medias">
         <article class="pp_media">
@@ -173,7 +175,7 @@
           </div>
         </article>
       </article>
-
+-->
 
     </section>
 
@@ -223,34 +225,43 @@
 
    
     <div class="form_modal">
-    </div>
+   
 
       <div class="form_modal_content">
-  
+   
 
-        <form action="" method="GET">
-          <div>
+
+        <form class="form_contact"  action="" method="GET">
+
+            <div class="form_title_photographer">
+             <h1 id="form_title" >
+               <span>Contactez-moi</span>
+               <span class="form_name" id="form_name">Mimi Keel</span>
+             </h1>
+             <button type="button" class="form_close" id="form_close" title="Close form"><span
+              class="fas fa-times" aria-hidden="true"></span>
+          </button>
+            </div>
+          
               <label for="firstname">Prénom :</label>
               <input type="text" id="firstname" name="user_firstname">
-          </div>
+          
 
-          <div>
+          
             <label for="lastname">Nom :</label>
             <input type="text" id="last" name="user_lastname">
-        </div>
+       
 
-          <div>
+         
               <label for="mail">e-mail :</label>
               <input type="email" id="mail" name="user_mail">
-          </div>
-          <div>
+          
+          
               <label for="subject">Message :</label>
-              <textarea id="subject" name="user_message"></textarea>
-          </div>
+              <textarea cols="20" rows="5" id="subject" name="user_message"></textarea>
+         
+              <input type="submit" value="Envoyer" class="form_submit_btn" title="Send" id="form_submit_btn">
 
-          <div class="button">
-            <button type="submit">Envoyer</button>
-        </div>
       </form>
 
 
@@ -262,12 +273,13 @@
 
     </div>
 
-
+  </div>
 
   </main>
 
 
 
+  
   <script src="javascript/script.js"></script>
 </body>
 
