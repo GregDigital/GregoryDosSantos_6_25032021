@@ -41,9 +41,7 @@ function show(response) {
   let html = acc.reduce((a, l) => a + l);
   container.innerHTML = html;
 }
-fetch("json/profil.json")
-  .then((response) => response.json())
-  .then((json) => show(json));
+
 
 
 
@@ -115,8 +113,8 @@ function generateMedia(usermedia) {
 
 
 
-fetch("json/profil.json")
-  .then((response) => response.json())
-  .then((json) => showMedia(json));
 
+  fetch("json/profil.json")
+  .then((response) => response.json())
+  .then((json) => show(json));
 
