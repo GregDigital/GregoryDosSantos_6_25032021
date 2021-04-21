@@ -2,7 +2,7 @@ let content = document.querySelector("#pp_galery_medias");
 let container = document.querySelector(".pp_header");
 let idUrl = window.location.search.substr(4);
 let idUrlNumb = parseInt(idUrl, 10);
-
+let btnLike = document.querySelectorAll('.fas.fa-heart');
 
 // ============ HEADER PHOTOGRAPHER INFOS =========================
 
@@ -54,6 +54,8 @@ function generatePhotographer(user) {
 
 
 // ============ MEDIAS PHOTOGRAPHERS =========================
+
+
 
 function showMedia(response) {
     let acc = [];
