@@ -4,7 +4,10 @@ let idUrl = window.location.search.substr(4);
 let idUrlNumb = parseInt(idUrl, 10);
 let btnLike = document.querySelectorAll('.fas.fa-heart');
 
-// ============ HEADER PHOTOGRAPHER INFOS =========================
+// ============ HEADER PHOTOGRAPHER INFOS ========================= document.querySelectorAll(".picture").forEach(p => p.style.order = xxx)
+// https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+// https://www.w3schools.com/js/js_htmldom_css.asp
+// https://codepen.io/raubaca/pen/VejpQP
 
 
 function show(response) {
@@ -69,6 +72,7 @@ function showMedia(response) {
 
 
 function generateMedia(usermedia) {
+  
     if (usermedia.photographerId === idUrlNumb) {
         if (usermedia.video) {
             return `
@@ -111,8 +115,12 @@ function generateMedia(usermedia) {
     }
 };
 
-
+btnLike.addEventListener('click',() => {
+  console.log(console.log('like'));
+})
 
 fetch("json/profil.json")
     .then((response) => response.json())
     .then((json) => showMedia(json));
+
+  
