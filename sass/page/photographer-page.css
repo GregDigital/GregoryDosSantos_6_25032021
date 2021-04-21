@@ -129,6 +129,10 @@
   font-weight: 400;
 }
 
+.pp_galery_medias .pp_media_infos .fas.fa-heart {
+  cursor: pointer;
+}
+
 .pp_infos_data {
   display: -webkit-box;
   display: -ms-flexbox;
