@@ -4,10 +4,11 @@ let idUrl = window.location.search.substr(4);
 let idUrlNumb = parseInt(idUrl, 10);
 let btnLike = document.querySelectorAll('.fas.fa-heart');
 
-// ============ HEADER PHOTOGRAPHER INFOS ========================= document.querySelectorAll(".picture").forEach(p => p.style.order = xxx)
-// https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/replace
-// https://www.w3schools.com/js/js_htmldom_css.asp
-// https://codepen.io/raubaca/pen/VejpQP
+
+
+// ============ HEADER PHOTOGRAPHER INFOS =========================
+
+
 
 
 function show(response) {
@@ -23,6 +24,67 @@ fetch("json/profil.json")
     .then((json) => show(json));
 
 
+
+    function generateTags(tags) {
+      let acc = [];
+      for (let tag of tags) {
+          acc.push(`<li>
+          <a class="filter-tag" href="index.html?tag=portrait" title="portrait">#${tag}</a>
+        </li>`)
+      }
+      let html = acc.reduce((a, l) => a + l);
+      return html
+  
+  }
+
+
+
+
+  //==============================================================
+
+function button(){
+    
+        return`<button class="pp_contact">contactez-moi</button>`
+      
+   
+}
+ 
+
+
+const colors = ["pink", "blue", "green"]
+
+const buttonContainer = document.querySelector("#button-container")
+
+buttonContainer.addEventListener("click", function(e){
+  
+  if(e.target.tagName === "BUTTON") {
+    let buttonText = e.target.innerText;
+    e.target.classList.toggle(buttonText)
+  }
+  
+})
+
+function createColorfulButtons(colors) {
+  colors.forEach(function(color) {
+    const colorLi = document.createElement("li")
+    colorLi.innerHTML = `<button id="${color}"> ${color} </button>`
+    buttonContainer.append(colorLi)
+    })
+}
+
+createColorfulButtons(colors)
+
+
+
+
+
+
+
+
+
+
+//=================================================================
+
 function generatePhotographer(user) {
 
     if (user.id === idUrlNumb) {
@@ -33,21 +95,10 @@ function generatePhotographer(user) {
         <span class="pp_city" id="pp_city">${user.city}, ${user.country}</span>
         <span class="pp_tagline" id="pp_tagline">${user.tagline}</span>
         <ul class="pp_tags" id="pp_tags">
-          <li>
-            <a class="filter-tag" href="index.html?tag=portrait" title="portrait">portrait</a>
-          </li>
-          <li>
-            <a class="filter-tag" href="index.html?tag=events" title="events">events</a>
-          </li>
-          <li>
-            <a class="filter-tag" href="index.html?tag=travel" title="travel">travel</a>
-          </li>
-          <li>
-            <a class="filter-tag" href="index.html?tag=animals" title="animals">animals</a>
-          </li>
+       ${generateTags(user.tags)} 
         </ul>
       </div>
-      <button class="pp_contact">Contactez-moi</button>
+      ${button()} 
       <img src="Photos/Photographers/${user.portrait}" alt="" class="pp_portrait" />`
     } else {
         return ` `
@@ -56,7 +107,7 @@ function generatePhotographer(user) {
 
 
 
-// ============ MEDIAS PHOTOGRAPHERS =========================
+// ============ MEDIAS PHOTOGRAPHERS =========================        <button class="pp_contact"></button>
 
 
 
@@ -71,10 +122,18 @@ function showMedia(response) {
 }
 
 
+
+
 function generateMedia(usermedia) {
-  
+
+
+
+
     if (usermedia.photographerId === idUrlNumb) {
         if (usermedia.video) {
+          mesImages = usermedia.video.replaceAll('_', ' ');
+      newNomImage = mesImages.substr(0, mesImages.length - 4);
+      console.log(mesImages);
             return `
               
                 
@@ -86,7 +145,7 @@ function generateMedia(usermedia) {
                       </video>
                     </a>
                     <div class="pp_media_infos">
-                      <h2 class="media_infos-title">${usermedia.tags}</h2>
+                    <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
                       <span class="media_infos-like" id="">${usermedia.likes} <span class="fas fa-heart" role="button"></span></span>
                     </div>
@@ -94,6 +153,9 @@ function generateMedia(usermedia) {
                 
               `
         } else if (usermedia.image) {
+            mesImages = usermedia.image.replaceAll('_', ' ');
+            newNomImage = mesImages.substr(0, mesImages.length - 4);
+            console.log(mesImages);
             return `
               
                 
@@ -102,7 +164,7 @@ function generateMedia(usermedia) {
                       <img src="Photos/images/${usermedia.image}" alt="" role="button" />
                     </a>
                     <div class="pp_media_infos">
-                      <h2 class="media_infos-title">${usermedia.tags}</h2>
+                    <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
                       <span class="media_infos-like" id="">${usermedia.likes} <span  class="fas fa-heart" role="button"></span></span>
                     </div>
@@ -113,14 +175,30 @@ function generateMedia(usermedia) {
     } else {
         return ` `
     }
+  
+
 };
 
-btnLike.addEventListener('click',() => {
-  console.log(console.log('like'));
-})
+// DOM Elements
+const modalbg = document.querySelector(".form_modal");
+const modalBtn = document.querySelectorAll(".pp_contact");
+
+
+// LANCER MODAL ========================================================================
+
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+function launchModal() {
+  modalbg.style.display = "block";
+}
+ 
 
 fetch("json/profil.json")
     .then((response) => response.json())
     .then((json) => showMedia(json));
 
-  
+
+
+ 
+

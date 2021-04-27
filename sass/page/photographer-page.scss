@@ -77,6 +77,63 @@ cursor: pointer;
 
 
 
+/* Reset Select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #901c1c;
+  background-image: none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+.select {
+  position: relative;
+  left: 225px;
+  display: flex;
+  width: 10em;
+  height: 3em;
+  line-height: 3;
+  background: #901c1c;
+  overflow: hidden;
+  border-radius: .25em;
+
+}
+select {
+  flex: 1;
+  padding: 0 .5em;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+}
+/* Arrow */
+.select::after {
+  content: "\f078";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background:#901c1c;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
+}
+
+
+
 .pp_galery_medias {
   display: flex;
   flex-wrap: wrap;
@@ -345,3 +402,4 @@ right: 30px;
      }
 
 }
+
