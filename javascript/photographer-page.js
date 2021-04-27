@@ -51,28 +51,8 @@ function button(){
  
 
 
-const colors = ["pink", "blue", "green"]
 
-const buttonContainer = document.querySelector("#button-container")
 
-buttonContainer.addEventListener("click", function(e){
-  
-  if(e.target.tagName === "BUTTON") {
-    let buttonText = e.target.innerText;
-    e.target.classList.toggle(buttonText)
-  }
-  
-})
-
-function createColorfulButtons(colors) {
-  colors.forEach(function(color) {
-    const colorLi = document.createElement("li")
-    colorLi.innerHTML = `<button id="${color}"> ${color} </button>`
-    buttonContainer.append(colorLi)
-    })
-}
-
-createColorfulButtons(colors)
 
 
 
