@@ -230,6 +230,97 @@
   left: 30px;
 }
 
+.form_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #e6e6e691;
+  display: none;
+  overflow-y: hidden;
+  /* Hide vertical scrollbar */
+  overflow-x: hidden;
+  /* Hide horizontal scrollbar */
+}
+
+.form_modal .form_modal_content {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  right: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 100vw;
+  max-width: 600px;
+  max-height: 700px;
+  height: 100vh;
+  background-color: #db8876;
+  border-radius: 5px;
+}
+
+.form_contact {
+  padding: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form_contact .form_close {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 0.8em;
+  position: absolute;
+  top: 60px;
+  right: 50px;
+}
+
+.form_contact .form_title_photographer {
+  font-size: 2.6em;
+  font-weight: 400;
+}
+
+.form_contact h1 {
+  font-weight: 400;
+}
+
+.form_contact .form_name {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.form_contact label {
+  font-size: 1.8em;
+  margin: 6px 0 6px 0;
+}
+
+.form_contact input {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1.7em;
+}
+
+.form_contact textarea {
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 6px;
+}
+
+.form_contact .form_submit_btn {
+  width: 10em;
+  font-size: 1em;
+  padding: 25px;
+  margin-top: 1em;
+  background: #901c1c;
+  color: #fff;
+}
+
 .works-sort {
   position: relative;
   margin: 20px 0 0 20px;
