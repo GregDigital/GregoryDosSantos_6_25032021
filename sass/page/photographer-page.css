@@ -77,69 +77,6 @@
   border-radius: 50%;
 }
 
-/* Reset Select */
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  outline: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border: 0 !important;
-  background: #901c1c;
-  background-image: none;
-}
-
-/* Remove IE arrow */
-select::-ms-expand {
-  display: none;
-}
-
-/* Custom Select */
-.select {
-  position: relative;
-  left: 225px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 10em;
-  height: 3em;
-  line-height: 3;
-  background: #901c1c;
-  overflow: hidden;
-  border-radius: .25em;
-}
-
-select {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  padding: 0 .5em;
-  color: #fff;
-  font-size: 1em;
-  cursor: pointer;
-}
-
-/* Arrow */
-.select::after {
-  content: "\f078";
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0 1em;
-  background: #901c1c;
-  cursor: pointer;
-  pointer-events: none;
-  -webkit-transition: .25s all ease;
-  transition: .25s all ease;
-}
-
-/* Transition */
-.select:hover::after {
-  color: #f39c12;
-}
-
 .pp_galery_medias {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -293,94 +230,97 @@ select {
   left: 30px;
 }
 
-.form_modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #e6e6e691;
-  display: none;
-  overflow-y: hidden;
-  /* Hide vertical scrollbar */
-  overflow-x: hidden;
-  /* Hide horizontal scrollbar */
+.works-sort {
+  position: relative;
+  margin: 20px 0 0 20px;
+  margin-left: 100px;
 }
 
-.form_modal .form_modal_content {
+.sort-label {
+  font-weight: 700;
+  margin-right: 25px;
+  font-size: 1.2rem;
+}
+
+.sort-btn {
   position: absolute;
-  top: 15%;
-  left: 50%;
-  right: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: 100vw;
-  max-width: 600px;
-  max-height: 700px;
-  height: 100vh;
-  background-color: #db8876;
+  top: -7px;
+  left: 120px;
+  width: 165px;
+  background: #901c1c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
   border-radius: 5px;
-}
-
-.form_contact {
-  padding: 50px;
+  font-weight: 500;
+  font-size: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.form_contact .form_close {
-  border: none;
-  background: none;
-  color: white;
-  font-size: 0.8em;
+.sort-btn:hover {
+  cursor: pointer;
+}
+
+.sort-list {
+  display: none;
   position: absolute;
-  top: 60px;
-  right: 50px;
-}
-
-.form_contact .form_title_photographer {
-  font-size: 2.6em;
-  font-weight: 400;
-}
-
-.form_contact h1 {
-  font-weight: 400;
-}
-
-.form_contact .form_name {
-  margin-bottom: 10px;
-  display: block;
-}
-
-.form_contact label {
-  font-size: 1.8em;
-  margin: 6px 0 6px 0;
-}
-
-.form_contact input {
-  border: none;
+  z-index: 10;
+  top: -15px;
+  left: 120px;
+  width: 170px;
   border-radius: 5px;
-  padding: 5px;
-  font-size: 1.7em;
-}
-
-.form_contact textarea {
-  border: none;
-  border-radius: 5px;
-  margin-bottom: 6px;
-}
-
-.form_contact .form_submit_btn {
-  width: 10em;
-  font-size: 1em;
-  padding: 25px;
-  margin-top: 1em;
-  background: #901c1c;
   color: #fff;
+  background: #901c1c;
+}
+
+ul {
+  list-style: none;
+}
+
+.sort-list li:nth-child(1) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px 5px 0 0;
+}
+
+.sort-list li:nth-child(2) {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.sort-list li {
+  padding: 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.sort-list li:hover {
+  background-color: #651414;
+  cursor: pointer;
+}
+
+.sort-list li:nth-child(3) {
+  border-radius: 0 0 5px 5px;
+}
+
+.sort-list li {
+  padding: 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 /*# sourceMappingURL=photographer-page.css.map */

@@ -2,44 +2,56 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="sass/style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/a650986bb4.js" crossorigin="anonymous"></script>
-    <title>FishEye - Photographer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="sass/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a650986bb4.js" crossorigin="anonymous"></script>
+  <title>FishEye - Photographer</title>
 </head>
 
 <body>
-    <header class="banner" id="header-banner" aria-hidden="false">
-        <a href="index.html" title="Homepage"><img src="./Photos/logo/logo.png" alt="Fisheye Home page" width="350" height="80" /></a>
+  <header class="banner" id="header-banner" aria-hidden="false">
+    <a href="index.html" title="Homepage"><img src="./Photos/logo/logo.png" alt="Fisheye Home page" width="350"
+        height="80" /></a>
+  </header>
+
+  <main>
+
+    <header class="pp_header">
+
+
+
     </header>
 
-    <main>
-        
-       <header class="pp_header">
-     
+    <div class="works-sort"><span id="sort-label" class="sort-label">Trier par</span>
+      <div id="sort-wrapper"><button aria-haspopup="listbox" aria-labelledby="sort-label sort-btn" id="sort-btn"
+          class="sort-btn">Popularité<span class="fas fa-chevron-down sort-arrow"></span></button>
+        <ul id="sort-list" tabindex="-1" role="listbox" aria-labelledby="sort-label" class="sort-list hidden">
+          <li id="sort-1" class="test" role="option" tabindex="-1">Popularité<span class="fas fa-chevron-up sort-arrow"></span></li>
+          <li id="sort-2" class="test" role="option" tabindex="-1">Date</li>
+          <li id="sort-3" class="test" role="option" tabindex="-1">Titre</li>
+        </ul>
+      </div>
+      <div></div>
+    </div>
+
+    </div>
+    <article class="pp_galery_medias" id="pp_galery_medias"></article>
+
+    <div id="photographer_page"></div>
 
 
-       </header>
+    <aside class="pp_infos_data" aria-label="information prix et likes du photographe">
+      <span id="total-likes">#<i class="fas fa-heart" aria-label="likes"></i></span>
+      <span>400€ / jour</span>
+    </aside>
 
 
-
-
-      
-        <article class="pp_galery_medias" id="pp_galery_medias"></article>
-      
-        <div id="photographer_page"></div>
-
-
-        <aside class="pp_infos_data" aria-label="information prix et likes du photographe">
-            <span id="total-likes">#<i class="fas fa-heart" aria-label="likes"></i></span>
-            <span>400€ / jour</span>
-          </aside>
-
-
- <div class="lightbox_modal">
+    <div class="lightbox_modal">
 
 
       <div class="lightbox_modal_content">
@@ -48,8 +60,7 @@
         <div class="lightbox_modal_content-media">
 
           <div class="content_media_img">
-            <img src="Photos/images/Architecture_Connected_Curves.jpg" Art Triangle Man
-              id="current-media-lightbox">
+            <img src="Photos/images/Architecture_Connected_Curves.jpg" Art Triangle Man id="current-media-lightbox">
 
             <h3 class="lightbox-media-title">Art Triangle Man</h3>
           </div>
@@ -74,64 +85,64 @@
     </div>
 
 
-          <div class="form_modal">
-   
+    <div class="form_modal">
 
-            <div class="form_modal_content">
-         
-      
-      
-              <form class="form_contact"  action="" method="GET">
-      
-                  <div class="form_title_photographer">
-                   <h1 id="form_title" >
-                     <span>Contactez-moi</span>
-                     <span class="form_name" id="form_name">Mimi Keel</span>
-                   </h1>
-                   <button type="button" class="form_close" id="form_close" title="Close form"><span
-                    class="fas fa-times" aria-hidden="true"></span>
-                </button>
-                  </div>
-                
-                    <label for="firstname">Prénom :</label>
-                    <input type="text" id="firstname" name="user_firstname">
-                
-      
-                
-                  <label for="lastname">Nom :</label>
-                  <input type="text" id="last" name="user_lastname">
-             
-      
-               
-                    <label for="mail">e-mail :</label>
-                    <input type="email" id="mail" name="user_mail">
-                
-                
-                    <label for="subject">Message :</label>
-                    <textarea cols="20" rows="5" id="subject" name="user_message"></textarea>
-               
-                    <input type="submit" value="Envoyer" class="form_submit_btn" title="Send" id="form_submit_btn">
-      
-            </form>
-      
-      
-           
-      
-      
-      
-      
-      
+
+      <div class="form_modal_content">
+
+
+
+        <form class="form_contact" action="" method="GET">
+
+          <div class="form_title_photographer">
+            <h1 id="form_title">
+              <span>Contactez-moi</span>
+              <span class="form_name" id="form_name">Mimi Keel</span>
+            </h1>
+            <button type="button" class="form_close" id="form_close" title="Close form"><span class="fas fa-times"
+                aria-hidden="true"></span>
+            </button>
           </div>
-      
-        </div>
-      
 
-    </main>
+          <label for="firstname">Prénom :</label>
+          <input type="text" id="firstname" name="user_firstname">
 
 
 
+          <label for="lastname">Nom :</label>
+          <input type="text" id="last" name="user_lastname">
 
-    <script src="javascript/photographer-page.js "></script>
+
+
+          <label for="mail">e-mail :</label>
+          <input type="email" id="mail" name="user_mail">
+
+
+          <label for="subject">Message :</label>
+          <textarea cols="20" rows="5" id="subject" name="user_message"></textarea>
+
+          <input type="submit" value="Envoyer" class="form_submit_btn" title="Send" id="form_submit_btn">
+
+        </form>
+
+
+
+
+
+
+
+
+      </div>
+
+    </div>
+
+
+  </main>
+
+
+
+
+  <script src="javascript/photographer-page.js "></script>
 </body>
 
 </html>

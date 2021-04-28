@@ -160,18 +160,42 @@ function generateMedia(usermedia) {
 };
 
 // DOM Elements
-const modalbg = document.querySelector(".form_modal");
-const modalBtn = document.querySelectorAll(".pp_contact");
+const btnSort = document.querySelectorAll(".sort-btn");
+const OpenSort = document.querySelector(".sort-list");
 
 
 // LANCER MODAL ========================================================================
 
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+btnSort.forEach((btn) => btn.addEventListener("click", launchModal));
 
 function launchModal() {
-  modalbg.style.display = "block";
+  OpenSort.style.display= "block";
+
 }
+
+
+const theme = document.querySelectorAll('.test')
+
+theme.forEach((item) =>
+  item.addEventListener("click", (e) => {
+    console.log('yes');
+    
+    switch (e.target.id) {
+      case "sort-1": OpenSort.style.display= "none";
+       
+        break;
+      case "sort-2":
+        OpenSort.style.display= "none";
+        break;
+      case "sort-3":
+        OpenSort.style.display= "none";
+        break;
+      default:
+        null;
+    }
+  })
+);
  
 
 fetch("json/profil.json")
@@ -179,6 +203,4 @@ fetch("json/profil.json")
     .then((json) => showMedia(json));
 
 
-
- 
 
