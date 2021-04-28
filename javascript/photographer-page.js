@@ -2,73 +2,44 @@ let content = document.querySelector("#pp_galery_medias");
 let container = document.querySelector(".pp_header");
 let idUrl = window.location.search.substr(4);
 let idUrlNumb = parseInt(idUrl, 10);
-let btnLike = document.querySelectorAll('.fas.fa-heart');
-
-
+let btnLike = document.querySelectorAll(".fas.fa-heart");
 
 // ============ HEADER PHOTOGRAPHER INFOS =========================
 
-
-
-
 function show(response) {
-    let acc = [];
-    for (let photographer of response.photographers) {
-        acc.push(generatePhotographer(photographer));
-    }
-    let html = acc.reduce((a, l) => a + l);
-    container.innerHTML = html;
+  let acc = [];
+  for (let photographer of response.photographers) {
+    acc.push(generatePhotographer(photographer));
+  }
+  let html = acc.reduce((a, l) => a + l);
+  container.innerHTML = html;
 }
 fetch("json/profil.json")
-    .then((response) => response.json())
-    .then((json) => show(json));
+  .then((response) => response.json())
+  .then((json) => show(json));
 
-
-
-    function generateTags(tags) {
-      let acc = [];
-      for (let tag of tags) {
-          acc.push(`<li>
+function generateTags(tags) {
+  let acc = [];
+  for (let tag of tags) {
+    acc.push(`<li>
           <a class="filter-tag" href="index.html?tag=portrait" title="portrait">#${tag}</a>
-        </li>`)
-      }
-      let html = acc.reduce((a, l) => a + l);
-      return html
-  
+        </li>`);
   }
-
-
-
-
-  //==============================================================
-
-function button(){
-    
-        return`<button class="pp_contact">contactez-moi</button>`
-      
-   
+  let html = acc.reduce((a, l) => a + l);
+  return html;
 }
- 
 
+//==============================================================
 
-
-
-
-
-
-
-
-
-
-
-
+function button() {
+  return `<button class="pp_contact">contactez-moi</button>`;
+}
 
 //=================================================================
 
 function generatePhotographer(user) {
-
-    if (user.id === idUrlNumb) {
-        return `
+  if (user.id === idUrlNumb) {
+    return `
   
       <div class="pp_infos">
         <h1 class="pp_name" id="pp_title">${user.name}</h1>
@@ -79,42 +50,32 @@ function generatePhotographer(user) {
         </ul>
       </div>
       ${button()} 
-      <img src="Photos/Photographers/${user.portrait}" alt="" class="pp_portrait" />`
-    } else {
-        return ` `
-    }
-};
-
-
+      <img src="Photos/Photographers/${
+        user.portrait
+      }" alt="" class="pp_portrait" />`;
+  } else {
+    return ` `;
+  }
+}
 
 // ============ MEDIAS PHOTOGRAPHERS =========================        <button class="pp_contact"></button> https://jsfiddle.net/xqhm8c56/2/
 
-
-
 function showMedia(response) {
-    let acc = [];
-    for (let medias of response.media) {
-        acc.push(generateMedia(medias));
-    }
-    let html = acc.reduce((a, l) => a + l);
-    content.innerHTML = html;
-
+  let acc = [];
+  for (let medias of response.media) {
+    acc.push(generateMedia(medias));
+  }
+  let html = acc.reduce((a, l) => a + l);
+  content.innerHTML = html;
 }
 
-
-
-
 function generateMedia(usermedia) {
-
-
-
-
-    if (usermedia.photographerId === idUrlNumb) {
-        if (usermedia.video) {
-          mesImages = usermedia.video.replaceAll('_', ' ');
+  if (usermedia.photographerId === idUrlNumb) {
+    if (usermedia.video) {
+      mesImages = usermedia.video.replaceAll("_", " ");
       newNomImage = mesImages.substr(0, mesImages.length - 4);
       console.log(mesImages);
-            return `
+      return `
               
                 
                   <article class="pp_media">
@@ -131,12 +92,12 @@ function generateMedia(usermedia) {
                     </div>
                   </article>
                 
-              `
-        } else if (usermedia.image) {
-            mesImages = usermedia.image.replaceAll('_', ' ');
-            newNomImage = mesImages.substr(0, mesImages.length - 4);
-            console.log(mesImages);
-            return `
+              `;
+    } else if (usermedia.image) {
+      mesImages = usermedia.image.replaceAll("_", " ");
+      newNomImage = mesImages.substr(0, mesImages.length - 4);
+      console.log(mesImages);
+      return `
               
                 
                   <article class="pp_media">
@@ -150,19 +111,16 @@ function generateMedia(usermedia) {
                     </div>
                   </article>
                
-              `
-        }
-    } else {
-        return ` `
+              `;
     }
-  
-
-};
+  } else {
+    return ` `;
+  }
+}
 
 // DOM Elements
 const btnSort = document.querySelectorAll(".sort-btn");
 const OpenSort = document.querySelector(".sort-list");
-
 
 // LANCER MODAL ========================================================================
 
@@ -170,37 +128,32 @@ const OpenSort = document.querySelector(".sort-list");
 btnSort.forEach((btn) => btn.addEventListener("click", launchModal));
 
 function launchModal() {
-  OpenSort.style.display= "block";
-
+  OpenSort.style.display = "block";
 }
 
-
-const theme = document.querySelectorAll('.test')
+const theme = document.querySelectorAll(".test");
 
 theme.forEach((item) =>
   item.addEventListener("click", (e) => {
-    console.log('yes');
-    
+    console.log("yes");
+
     switch (e.target.id) {
-      case "sort-1": OpenSort.style.display= "none";
-       
+      case "sort-1":
+        OpenSort.style.display = "none";
+
         break;
       case "sort-2":
-        OpenSort.style.display= "none";
+        OpenSort.style.display = "none";
         break;
       case "sort-3":
-        OpenSort.style.display= "none";
+        OpenSort.style.display = "none";
         break;
       default:
         null;
     }
   })
 );
- 
 
 fetch("json/profil.json")
-    .then((response) => response.json())
-    .then((json) => showMedia(json));
-
-
-
+  .then((response) => response.json())
+  .then((json) => showMedia(json));
