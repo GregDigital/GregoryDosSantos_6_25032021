@@ -6,6 +6,19 @@ let btnLike = document.querySelectorAll(".fas.fa-heart");
 
 // ============ HEADER PHOTOGRAPHER INFOS =========================
 
+function initEvents () {
+const testContact = document.querySelector('.pp_contact');
+const openContact = document.querySelector('.form_modal');
+
+testContact.addEventListener("click", contactModal);
+
+function contactModal() {
+  console.log("yes")
+ openContact.style.display = "block";
+}
+}
+
+
 function show(response) {
   let acc = [];
   for (let photographer of response.photographers) {
@@ -13,6 +26,7 @@ function show(response) {
   }
   let html = acc.reduce((a, l) => a + l);
   container.innerHTML = html;
+  initEvents();
 }
 fetch("json/profil.json")
   .then((response) => response.json())
@@ -50,6 +64,7 @@ function generatePhotographer(user) {
         </ul>
       </div>
       ${button()} 
+
       <img src="Photos/Photographers/${
         user.portrait
       }" alt="" class="pp_portrait" />`;
@@ -125,11 +140,7 @@ const OpenSort = document.querySelector(".sort-list");
 // LANCER MODAL ========================================================================
 
 // launch modal event
-btnSort.forEach((btn) => btn.addEventListener("click", launchModal));
 
-function launchModal() {
-  OpenSort.style.display = "block";
-}
 
 const theme = document.querySelectorAll(".test");
 
