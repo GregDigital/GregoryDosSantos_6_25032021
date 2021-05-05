@@ -6,18 +6,22 @@ let btnLike = document.querySelectorAll(".fas.fa-heart");
 
 // ============ HEADER PHOTOGRAPHER INFOS =========================
 
-function initEvents () {
-const testContact = document.querySelector('.pp_contact');
-const openContact = document.querySelector('.form_modal');
+function initEvents() {
+  const ppContact = document.querySelector(".pp_contact");
+  const formModal = document.querySelector(".form_modal");
+  const closeContact = document.querySelector(".form_close");
 
-testContact.addEventListener("click", contactModal);
+  ppContact.addEventListener("click", contactModal);
 
-function contactModal() {
-  console.log("yes")
- openContact.style.display = "block";
+  function contactModal() {
+    console.log("yes");
+    formModal.style.display = "block";
+  }
+  closeContact.addEventListener("click", closeContactModal);
+  function closeContactModal() {
+    formModal.style.display = "none";
+  }
 }
-}
-
 
 function show(response) {
   let acc = [];
@@ -45,10 +49,6 @@ function generateTags(tags) {
 
 //==============================================================
 
-function button() {
-  return `<button class="pp_contact">contactez-moi</button>`;
-}
-
 //=================================================================
 
 function generatePhotographer(user) {
@@ -63,7 +63,7 @@ function generatePhotographer(user) {
        ${generateTags(user.tags)} 
         </ul>
       </div>
-      ${button()} 
+      <button class="pp_contact">contactez-moi</button>
 
       <img src="Photos/Photographers/${
         user.portrait
@@ -73,7 +73,7 @@ function generatePhotographer(user) {
   }
 }
 
-// ============ MEDIAS PHOTOGRAPHERS =========================        <button class="pp_contact"></button> https://jsfiddle.net/xqhm8c56/2/
+// ============ MEDIAS PHOTOGRAPHERS =========================
 
 function showMedia(response) {
   let acc = [];
@@ -82,14 +82,14 @@ function showMedia(response) {
   }
   let html = acc.reduce((a, l) => a + l);
   content.innerHTML = html;
+  likeMe();
 }
-
 function generateMedia(usermedia) {
   if (usermedia.photographerId === idUrlNumb) {
     if (usermedia.video) {
       mesImages = usermedia.video.replaceAll("_", " ");
       newNomImage = mesImages.substr(0, mesImages.length - 4);
-      console.log(mesImages);
+
       return `
               
                 
@@ -103,7 +103,7 @@ function generateMedia(usermedia) {
                     <div class="pp_media_infos">
                     <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
-                      <span class="media_infos-like" id="">${usermedia.likes} <span class="fas fa-heart" role="button"></span></span>
+                      <span class="media_infos-like" id="">${usermedia.likes} <span class="fas fa-heart like" role="button"></span></span>
                     </div>
                   </article>
                 
@@ -111,7 +111,7 @@ function generateMedia(usermedia) {
     } else if (usermedia.image) {
       mesImages = usermedia.image.replaceAll("_", " ");
       newNomImage = mesImages.substr(0, mesImages.length - 4);
-      console.log(mesImages);
+
       return `
               
                 
@@ -122,7 +122,7 @@ function generateMedia(usermedia) {
                     <div class="pp_media_infos">
                     <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
-                      <span class="media_infos-like" id="">${usermedia.likes} <span  class="fas fa-heart" role="button"></span></span>
+                      <span class="media_infos-like" id="text">${usermedia.likes} <span  class="fas fa-heart like" role="button"></span></span>
                     </div>
                   </article>
                
@@ -133,31 +133,36 @@ function generateMedia(usermedia) {
   }
 }
 
-// DOM Elements
-const btnSort = document.querySelectorAll(".sort-btn");
-const OpenSort = document.querySelector(".sort-list");
+// ========================= LIKES ==========================================
+function likeMe() {
+  let selectHeart = document.querySelectorAll(".like");
 
-// LANCER MODAL ========================================================================
+  selectHeart.forEach((heart) => {
+    heart.addEventListener("click", () => {
+      console.log("+1")
+      //usermedia.likes = usermedia.likes + 1;
+    });
+  });
+}
 
-// launch modal event
+// ============================= TRIER =============================================
 
+let theme = document.querySelectorAll(".sort-btn");
+let openSort = document.querySelector("#sort-list")
 
-const theme = document.querySelectorAll(".test");
 
 theme.forEach((item) =>
   item.addEventListener("click", (e) => {
-    console.log("yes");
-
+    openSort.style.display ="block";
     switch (e.target.id) {
       case "sort-1":
-        OpenSort.style.display = "none";
-
+       openSort.style.display = "none";
         break;
       case "sort-2":
-        OpenSort.style.display = "none";
+        openSort.style.display = "none";
         break;
       case "sort-3":
-        OpenSort.style.display = "none";
+        openSort.style.display = "none";
         break;
       default:
         null;

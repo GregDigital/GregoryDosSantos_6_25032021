@@ -482,6 +482,7 @@ nav a:hover {
   position: absolute;
   top: 60px;
   right: 50px;
+  cursor: pointer;
 }
 
 .form_contact .form_title_photographer {
