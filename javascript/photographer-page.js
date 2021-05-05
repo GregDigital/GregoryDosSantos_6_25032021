@@ -82,7 +82,7 @@ function showMedia(response) {
   }
   let html = acc.reduce((a, l) => a + l);
   content.innerHTML = html;
-  likeMe();
+  bindLikeButton(response.media);
 }
 function generateMedia(usermedia) {
   if (usermedia.photographerId === idUrlNumb) {
@@ -93,7 +93,7 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article class="pp_media">
+                  <article data-id="${usermedia.id}" class="pp_media">
                     <a href="#" title="">
                       <video class="pp_media_video" role="button">
                         ""
@@ -115,14 +115,15 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article class="pp_media">
+                  <article data-id="${usermedia.id}" class="pp_media">
                     <a href="#" title="">
                       <img src="Photos/images/${usermedia.image}" alt="" role="button" />
                     </a>
                     <div class="pp_media_infos">
                     <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
-                      <span class="media_infos-like" id="text">${usermedia.likes} <span  class="fas fa-heart like" role="button"></span></span>
+                      <span class="media_infos-like media_like_count">${usermedia.likes}</span>
+                      <span  class="fas fa-heart like" role="button"></span>
                     </div>
                   </article>
                
@@ -134,13 +135,25 @@ function generateMedia(usermedia) {
 }
 
 // ========================= LIKES ==========================================
-function likeMe() {
+function bindLikeButton(medias) {
   let selectHeart = document.querySelectorAll(".like");
 
   selectHeart.forEach((heart) => {
-    heart.addEventListener("click", () => {
-      console.log("+1")
-      //usermedia.likes = usermedia.likes + 1;
+    let liked = false;
+    heart.addEventListener("click", (e) => {
+     let parent = e.srcElement.parentNode.parentNode;
+     console.log(parent.dataset)
+     let media = medias.filter(element => element.id == parent.dataset.id)[0]
+     console.log(media)
+     if (liked == true) {
+       media.likes-=1
+       liked = false
+     } 
+     else {
+       media.likes+=1
+       liked = true
+     }
+     parent.querySelector(".media_like_count").innerHTML = media.likes
     });
   });
 }
