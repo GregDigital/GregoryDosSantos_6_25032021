@@ -83,6 +83,8 @@ function showMedia(response) {
   let html = acc.reduce((a, l) => a + l);
   content.innerHTML = html;
   bindLikeButton(response.media);
+  totalLikes()
+
 }
 function generateMedia(usermedia) {
   if (usermedia.photographerId === idUrlNumb) {
@@ -103,7 +105,8 @@ function generateMedia(usermedia) {
                     <div class="pp_media_infos">
                     <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
-                      <span class="media_infos-like" id="">${usermedia.likes} <span class="fas fa-heart like" role="button"></span></span>
+                      <span class="media_infos-like media_like_count" id="">${usermedia.likes}</span>
+                      <span class="fas fa-heart like" role="button"></span>
                     </div>
                   </article>
                 
@@ -126,6 +129,8 @@ function generateMedia(usermedia) {
                       <span  class="fas fa-heart like" role="button"></span>
                     </div>
                   </article>
+
+                  
                
               `;
     }
@@ -137,12 +142,13 @@ function generateMedia(usermedia) {
 // ========================= LIKES ==========================================
 function bindLikeButton(medias) {
   let selectHeart = document.querySelectorAll(".like");
-
+ 
   selectHeart.forEach((heart) => {
     let liked = false;
     heart.addEventListener("click", (e) => {
      let parent = e.srcElement.parentNode.parentNode;
      console.log(parent.dataset)
+     
      let media = medias.filter(element => element.id == parent.dataset.id)[0]
      console.log(media)
      if (liked == true) {
@@ -154,9 +160,36 @@ function bindLikeButton(medias) {
        liked = true
      }
      parent.querySelector(".media_like_count").innerHTML = media.likes
+    
     });
+   
   });
+  
 }
+
+function totalLikes() {
+
+  let v = document.querySelectorAll(".media_like_count");
+  let array = [];
+  for (i = 0; i < v.length; i++) {
+   let test = v[i].innerHTML;
+   array.push(test)
+ }
+ let total = array.reduce((acc, cur) => acc + cur);
+ console.log(total)
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ============================= TRIER =============================================
 
