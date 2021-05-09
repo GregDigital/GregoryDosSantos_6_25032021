@@ -83,7 +83,7 @@ function showMedia(response) {
   let html = acc.reduce((a, l) => a + l);
   content.innerHTML = html;
   bindLikeButton(response.media);
-  totalLikes()
+  totalLikes(response.media.likes)
 
 }
 function generateMedia(usermedia) {
@@ -164,19 +164,22 @@ function bindLikeButton(medias) {
     });
    
   });
-  
+ 
 }
 
 function totalLikes() {
 
-  let v = document.querySelectorAll(".media_like_count");
-  let array = [];
-  for (i = 0; i < v.length; i++) {
-   let test = v[i].innerHTML;
-   array.push(test)
+  let spanLikes = document.querySelectorAll(".media_like_count");
+  let arrayCountLikes = [];
+  for (i = 0; i < spanLikes.length; i++) {
+   let totalLike = spanLikes[i].innerHTML;
+   let convertString = parseInt(totalLike);
+   arrayCountLikes.push(convertString)
+
  }
- let total = array.reduce((acc, cur) => acc + cur);
- console.log(total)
+ let total = arrayCountLikes.reduce((acc, cur) => acc + cur);
+  console.log(total)
+
 }
 
 
