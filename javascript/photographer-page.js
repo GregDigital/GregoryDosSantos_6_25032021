@@ -83,8 +83,7 @@ function showMedia(response) {
   let html = acc.reduce((a, l) => a + l);
   content.innerHTML = html;
   bindLikeButton(response.media);
-  totalLikes(response.media.likes)
-
+  //totalLikes(response.media);
 }
 function generateMedia(usermedia) {
   if (usermedia.photographerId === idUrlNumb) {
@@ -142,70 +141,72 @@ function generateMedia(usermedia) {
 // ========================= LIKES ==========================================
 function bindLikeButton(medias) {
   let selectHeart = document.querySelectorAll(".like");
- 
+
   selectHeart.forEach((heart) => {
     let liked = false;
     heart.addEventListener("click", (e) => {
-     let parent = e.srcElement.parentNode.parentNode;
-     console.log(parent.dataset)
-     
-     let media = medias.filter(element => element.id == parent.dataset.id)[0]
-     console.log(media)
-     if (liked == true) {
-       media.likes-=1
-       liked = false
-     } 
-     else {
-       media.likes+=1
-       liked = true
-     }
-     parent.querySelector(".media_like_count").innerHTML = media.likes
-    
+      let parent = e.srcElement.parentNode.parentNode;
+      //console.log(parent.dataset);
+
+      let media = medias.filter(
+        (element) => element.id == parent.dataset.id
+      )[0];
+
+      console.log(media);
+      if (liked == true) {
+        media.likes -= 1;
+        liked = false;
+      } else {
+        media.likes += 1;
+        liked = true;
+      }
+
+      parent.querySelector(".media_like_count").innerHTML = media.likes;
     });
-   
-  });
+    
+    let spanLikes = document.querySelectorAll(".media_like_count");
+    let arrayCountLikes = [];
+    for (i = 0; i < spanLikes.length; i++) {
+      let totalLike = spanLikes[i].innerHTML;
+      let convertString = parseInt(totalLike);
+      arrayCountLikes.push(convertString);
+    }
+    
+    let total = arrayCountLikes.reduce((acc, cur) => acc + cur);
+    console.log(total);
+
+    if ()
  
+  
+  });
 }
 
+/*
 function totalLikes() {
-
+  
   let spanLikes = document.querySelectorAll(".media_like_count");
   let arrayCountLikes = [];
   for (i = 0; i < spanLikes.length; i++) {
-   let totalLike = spanLikes[i].innerHTML;
-   let convertString = parseInt(totalLike);
-   arrayCountLikes.push(convertString)
+    let totalLike = spanLikes[i].innerHTML;
+    let convertString = parseInt(totalLike);
+    arrayCountLikes.push(convertString);
+  }
 
- }
- let total = arrayCountLikes.reduce((acc, cur) => acc + cur);
-  console.log(total)
-
+  let total = arrayCountLikes.reduce((acc, cur) => acc + cur);
+  console.log(total);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 // ============================= TRIER =============================================
 
 let theme = document.querySelectorAll(".sort-btn");
-let openSort = document.querySelector("#sort-list")
-
+let openSort = document.querySelector("#sort-list");
 
 theme.forEach((item) =>
   item.addEventListener("click", (e) => {
-    openSort.style.display ="block";
+    openSort.style.display = "block";
     switch (e.target.id) {
       case "sort-1":
-       openSort.style.display = "none";
+        openSort.style.display = "none";
         break;
       case "sort-2":
         openSort.style.display = "none";
