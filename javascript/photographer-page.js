@@ -175,7 +175,7 @@ function bindLikeButton(medias) {
     let total = arrayCountLikes.reduce((acc, cur) => acc + cur);
     console.log(total);
 
-    if ()
+
  
   
   });
