@@ -14,14 +14,20 @@ function initEvents() {
   ppContact.addEventListener("click", contactModal);
 
   function contactModal() {
-    console.log("yes");
     formModal.style.display = "block";
   }
   closeContact.addEventListener("click", closeContactModal);
   function closeContactModal() {
     formModal.style.display = "none";
   }
-}
+
+  
+} 
+
+
+
+
+
 
 function show(response) {
   let acc = [];
@@ -31,6 +37,7 @@ function show(response) {
   let html = acc.reduce((a, l) => a + l);
   container.innerHTML = html;
   initEvents();
+ 
 }
 fetch("json/profil.json")
   .then((response) => response.json())
@@ -65,9 +72,9 @@ function generatePhotographer(user) {
       </div>
       <button class="pp_contact">contactez-moi</button>
 
-      <img src="Photos/Photographers/${
-        user.portrait
-      }" alt="" class="pp_portrait" />`;
+      <img src="Photos/Photographers/${user.portrait
+      }" alt="" class="pp_portrait" />
+      `;
   } else {
     return ` `;
   }
@@ -83,7 +90,7 @@ function showMedia(response) {
   let html = acc.reduce((a, l) => a + l);
   content.innerHTML = html;
   bindLikeButton(response.media);
-  //totalLikes(response.media);
+  generateTotalLikes();
 }
 function generateMedia(usermedia) {
   if (usermedia.photographerId === idUrlNumb) {
@@ -139,6 +146,7 @@ function generateMedia(usermedia) {
 }
 
 // ========================= LIKES ==========================================
+
 function bindLikeButton(medias) {
   let selectHeart = document.querySelectorAll(".like");
 
@@ -152,7 +160,7 @@ function bindLikeButton(medias) {
         (element) => element.id == parent.dataset.id
       )[0];
 
-      console.log(media);
+      // console.log(media);
       if (liked == true) {
         media.likes -= 1;
         liked = false;
@@ -162,28 +170,13 @@ function bindLikeButton(medias) {
       }
 
       parent.querySelector(".media_like_count").innerHTML = media.likes;
+      generateTotalLikes()
+     
     });
-    
-    let spanLikes = document.querySelectorAll(".media_like_count");
-    let arrayCountLikes = [];
-    for (i = 0; i < spanLikes.length; i++) {
-      let totalLike = spanLikes[i].innerHTML;
-      let convertString = parseInt(totalLike);
-      arrayCountLikes.push(convertString);
-    }
-    
-    let total = arrayCountLikes.reduce((acc, cur) => acc + cur);
-    console.log(total);
-
-
- 
-  
   });
 }
 
-/*
-function totalLikes() {
-  
+function generateTotalLikes() {
   let spanLikes = document.querySelectorAll(".media_like_count");
   let arrayCountLikes = [];
   for (i = 0; i < spanLikes.length; i++) {
@@ -193,9 +186,13 @@ function totalLikes() {
   }
 
   let total = arrayCountLikes.reduce((acc, cur) => acc + cur);
-  console.log(total);
+  document.querySelector(
+    ".pp_infos_data"
+  ).innerHTML = `<span id="total-likes">${total}  <i class="fas fa-heart" aria-label="likes"></i></span>
+  <span> € / jour</span>`;
+
 }
-*/
+
 // ============================= TRIER =============================================
 
 let theme = document.querySelectorAll(".sort-btn");

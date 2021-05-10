@@ -507,15 +507,6 @@
             "price": 70
         },
         {
-            "id": 235234343,
-            "photographerId": 930,
-            "image": "Sport_Next_Hold.jpg",
-            "tags": ["sport"],
-            "likes": 101,
-            "date": "2018-03-05",
-            "price": 65
-        },
-        {
             "id": 235343222,
             "photographerId": 930,
             "image": "sport_water_tunnel.jpg",
@@ -523,6 +514,15 @@
             "likes": 103,
             "date": "2018-03-10",
             "price": 70
+        },
+        {
+            "id": 235234343,
+            "photographerId": 930,
+            "image": "Sport_Next_Hold.jpg",
+            "tags": ["sport"],
+            "likes": 101,
+            "date": "2018-03-05",
+            "price": 65
         },
         {
             "id": 7775342343,
