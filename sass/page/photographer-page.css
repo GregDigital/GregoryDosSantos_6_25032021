@@ -166,7 +166,17 @@
   /* Hide vertical scrollbar */
   overflow-x: hidden;
   /* Hide horizontal scrollbar */
+  -webkit-transform: scall(0.9);
+          transform: scall(0.9);
   display: none;
+}
+
+.lightbox_modal.show {
+  display: block;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .lightbox_modal_content {

@@ -128,7 +128,9 @@ function showMedia(response) {
   content.innerHTML = html;
   bindLikeButton(response.media);
   generateTotalLikes();
-  sortMedias ()
+  generateLightbox();
+  //sortMedias (response.media)
+  
 }
 function generateMedia(usermedia) {
   if (usermedia.photographerId === idUrlNumb) {
@@ -143,7 +145,7 @@ function generateMedia(usermedia) {
                     <a href="#" title="">
                       <video class="pp_media_video" role="button">
                         ""
-                        <source src="Photos/videos/${usermedia.video}" />
+                        <source class="video" src="Photos/videos/${usermedia.video}" />
                       </video>
                     </a>
                     <div class="pp_media_infos">
@@ -164,7 +166,7 @@ function generateMedia(usermedia) {
                 
                   <article data-id="${usermedia.id}" class="pp_media">
                     <a href="#" title="">
-                      <img src="Photos/images/${usermedia.image}" alt="" role="button" />
+                      <img class="img" src="Photos/images/${usermedia.image}" alt="" role="button" />
                     </a>
                     <div class="pp_media_infos">
                     <h2 class="media_infos-title">${newNomImage}</h2>
@@ -209,9 +211,10 @@ function bindLikeButton(medias) {
 
       parent.querySelector(".media_like_count").innerHTML = media.likes;
       generateTotalLikes();
+      sortPopularite();
     });
   });
-}
+};
 
 function generateTotalLikes() {
   let spanLikes = document.querySelectorAll(".media_like_count");
@@ -220,34 +223,136 @@ function generateTotalLikes() {
     let totalLike = spanLikes[i].innerHTML;
     let convertString = parseInt(totalLike);
     arrayCountLikes.push(convertString);
-  }
+  };
 
   let total = arrayCountLikes.reduce((acc, cur) => acc + cur);
   document.querySelector(
     ".pp_infos_data"
   ).innerHTML = `<span id="total-likes">${total}  <i class="fas fa-heart" aria-label="likes"></i></span>
   <span> € / jour</span>`;
-}
+};
+
+
+
 
 // ============================= TRIER =============================================
-
+/*
 function sortMedias () {
 let theme = document.querySelectorAll(".sort-btn");
 let openSort = document.querySelector("#sort-list");
-let popularite = document.querySelector("#sort-1");
+let popularite = document.getElementById("sort-1");
+let media = document.querySelectorAll(".pp_media")
+let date = document.getElementById("sort-2");
+let titre = document.getElementById("sort-3");
+
+
 theme.forEach((item) =>
-  item.addEventListener("click", (e) => {
+  item.addEventListener("click", () => {
     openSort.style.display = "block";
-    popularite == false;
-   if (popularite == true) {
-     console.log("coucou")
-   }
-   else{
-    console.log("hello")
-   }
-  })
-);
-}
+
+    popularite.addEventListener('onclick', sortPopularite);
+
+    function sortPopularite() {
+      let spanLikes = document.querySelectorAll(".media_like_count");
+      let arrayCountLikes = [];
+      for (i = 0; i < spanLikes.length; i++) {
+        let totalLike = spanLikes[i].innerHTML;
+        let convertString = parseInt(totalLike);
+        arrayCountLikes.push(convertString);
+        let arraySort = arrayCountLikes.sort(function(b , a) {
+          return b - a;
+          
+        });
+       for (i = 0; i < media.length; i++){
+        let sortA =  i.innerHTML = arraySort;
+         console.log(sortA)
+       }
+      }
+    }
+
+  }));
+};
+*/
+
+function generateLightbox() {
+
+const galleryMedia = document.querySelectorAll(".video, .img");
+      previewModal = document.querySelector(".lightbox_modal");
+      previewImg = document.querySelector("#current-media-lightbox")
+      closeLightbox = document.querySelector('.lightbox-close')
+
+
+
+  for (let i = 0; i < galleryMedia.length; i++) {
+    let newIndex = i;
+    galleryMedia[i].onclick = () =>{
+      console.log( galleryMedia[i])
+      function preview() {
+        let selectedImg = galleryMedia[newIndex].src
+        console.log(selectedImg)
+        previewImg.setAttribute('src',selectedImg);
+
+       
+       
+      }
+
+       const prevBtn = document.querySelector(".lightbox-left");
+       const nextBtn = document.querySelector(".lightbox-right");
+
+       if (newIndex == 0) {
+        prevBtn.style.display = "none" 
+       }
+       if (newIndex >= galleryMedia.length - 1) {
+        nextBtn.style.display = "none"
+       }
+
+       prevBtn.onclick = () => {
+         newIndex--;
+         if (newIndex == 0) {
+          preview();
+           prevBtn.style.display = "none"
+         }
+          else {
+            preview();
+            nextBtn.style.display = "block"
+          }
+       }
+
+       nextBtn.onclick = () => {
+        newIndex++;
+        if (newIndex >= galleryMedia.length - 1) {
+         preview();
+          nextBtn.style.display = "none"
+        }
+         else {
+           preview();
+           prevBtn.style.display = "block"
+         }
+      }
+
+     
+      preview()
+      previewModal.classList.add("show")
+
+      closeLightbox.onclick =() => {
+        prevBtn.style.display = "block"
+        nextBtn.style.display = "block"
+        previewModal.classList.remove("show")
+
+      }
+     }
+
+
+    }
+    
+  }
+
+
+
+
+
+
+  
 
 
 

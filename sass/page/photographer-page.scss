@@ -179,10 +179,16 @@ margin-left: 100px;
     background: #fff;
     overflow-y: hidden; /* Hide vertical scrollbar */
     overflow-x: hidden; /* Hide horizontal scrollbar */
+    transform: scall(0.9);
     display: none;
 
   }
 
+  .lightbox_modal.show {
+    display: block;
+    transform: scale(1);
+    transition: all 0.3s ease;
+  }
 
 
 
