@@ -129,7 +129,8 @@ function showMedia(response) {
   bindLikeButton(response.media);
   generateTotalLikes();
   generateLightbox();
-  //sortMedias (response.media)
+  sortMedias (response.media)
+
   
 }
 function generateMedia(usermedia) {
@@ -165,7 +166,7 @@ function generateMedia(usermedia) {
               
                 
                   <article data-id="${usermedia.id}" class="pp_media">
-                    <a href="#" title="">
+                    <a href="${usermedia.image}" title="">
                       <img class="img" src="Photos/images/${usermedia.image}" alt="" role="button" />
                     </a>
                     <div class="pp_media_infos">
@@ -236,7 +237,7 @@ function generateTotalLikes() {
 
 
 // ============================= TRIER =============================================
-/*
+
 function sortMedias () {
 let theme = document.querySelectorAll(".sort-btn");
 let openSort = document.querySelector("#sort-list");
@@ -272,8 +273,8 @@ theme.forEach((item) =>
 
   }));
 };
-*/
 
+/*
 function generateLightbox() {
 
 const galleryMedia = document.querySelectorAll(".video, .img");
@@ -292,8 +293,7 @@ const galleryMedia = document.querySelectorAll(".video, .img");
         console.log(selectedImg)
         previewImg.setAttribute('src',selectedImg);
 
-       
-       
+
       }
 
        const prevBtn = document.querySelector(".lightbox-left");
@@ -347,11 +347,131 @@ const galleryMedia = document.querySelectorAll(".video, .img");
     
   }
 
+*/
 
 
 
 
 
+function generateLightbox() {
+
+class Lightbox {
+
+
+  static init () {
+    const galleryMedia = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
+    galleryMedia.forEach(link => link.addEventListener('click', e => {
+      e.preventDefault(e)
+      new Lightbox(e.target.getAttribute('src'))
+    }))
+
+  }
+
+   constructor (url) {
+      const element = this.buildDOM(url)
+      document.body.appendChild(element)
+      const previewModal = document.querySelector(".lightbox_modal")
+      previewModal.classList.add("show")
+     
+      
+   }
+
+   
+
+  
+
+   buildDOM (url) {
+     const dom = document.createElement('div')
+     dom.classList.add('lightbox_modal')
+     dom.innerHTML = `
+     <div class="lightbox_modal_content">
+     <div class="lightbox_modal_content-media">
+       <div class="content_media_img">
+         <img src="Photos/images/${url}"  id="current-media-lightbox">
+         <h3 class="lightbox-media-title">Art Triangle Man</h3>
+       </div>
+       <button type="button" class="lightbox-close" id="lightbox-close" title="Close dialog"><span
+           class="fas fa-times" aria-hidden="true"></span>
+       </button>
+       <button type="button" class="align lightbox-left" id="lightbox-previous" title="Previous image"><span
+           class="fas fa-chevron-left" aria-hidden="true"></span>
+       </button>
+       <button type="button" class="align lightbox-right" id="lightbox-next" title="Next image"><span
+           class="fas fa-chevron-right" aria-hidden="true"></span>
+       </button>
+     </div>
+   </div>`
+   return dom
+   }
+
+}
+
+
+Lightbox.init()
+
+}
+
+
+
+
+
+
+
+
+/*
+const galleryMedia = document.querySelectorAll(".video, .img");
+      previewModal = document.querySelector(".lightbox_modal");
+      previewImg = document.querySelector("#current-media-lightbox")
+      closeLightbox = document.querySelector('.lightbox-close')
+
+  function generateLightbox() {
+
+    class Lightbox {
+      constructor(slides, querySelector) {
+        this.slideIndex = 0;
+        this.slides = slides;
+        this.galleryMedia = document.querySelectorAll(".video, .img");
+        this.selector = document.querySelector(querySelector)
+      }
+      
+      goNext() {
+        this.slideIndex += 1;
+        if (this.slideIndex >= this.size())
+            this.slideIndex = 0;
+    
+        // Verif l'index n'est pas trop grand
+        this.refresh();
+      }
+      
+      goPrevious() {
+          this.slideIndex -= 1;
+          if (this.slideIndex < 0)
+            this.slideIndex = this.size() - 1;
+          this.refresh();
+      }
+      
+      refresh() {
+        this.selector.innerHTML = this.galleryMedia[this.slideIndex];
+        // Affiche la bonne slide
+      }
+      
+      size() {
+        return this.slides.length;
+      }
+    }
+    
+    let lightbox = new Lightbox(["Slide 1", "Slide 2", "Slide 3"], "#current-media-lightbox");
+    
+    lightbox.refresh();
+    
+    document.querySelector(".lightbox-left").onclick = () => lightbox.goPrevious();
+    document.querySelector(".lightbox-right").onclick = () => lightbox.goNext();
+    
+    //setInterval(() => lightbox.goNext(), 1000)
+    
+    }
+
+*/
   
 
 

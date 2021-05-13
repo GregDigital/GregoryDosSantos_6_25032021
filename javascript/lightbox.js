@@ -1,41 +1,53 @@
-class Lightbox {
-	constructor(slides, querySelector) {
-  	this.slideIndex = 0;
-    this.slides = slides;
-    this.selector = document.querySelector(querySelector)
+function generateLightbox() {
+
+  class Lightbox {
+  
+  
+    static init () {
+      const galleryMedia = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
+      galleryMedia.forEach(link => link.addEventListener('click', e => {
+        e.preventDefault(e)
+        console.log(e.target.getAttribute('href'))
+      }))
+  
+    }
+  
+     constructor (url) {
+        const element = this.buildDOM(url)
+        document.body.appendChild(element)
+        const show = this.buildDOM(url)
+        document
+       
+     }
+  
+     buildDOM (url) {
+       const dom = document.createElement('div')
+       dom.classList.add('lightbox_modal')
+       dom.innerHTML = `
+       <div class="lightbox_modal_content">
+       <div class="lightbox_modal_content-media">
+         <div class="content_media_img">
+           <img src="Photos/images/${url}"  id="current-media-lightbox">
+           <h3 class="lightbox-media-title">Art Triangle Man</h3>
+         </div>
+         <button type="button" class="lightbox-close" id="lightbox-close" title="Close dialog"><span
+             class="fas fa-times" aria-hidden="true"></span>
+         </button>
+         <button type="button" class="align lightbox-left" id="lightbox-previous" title="Previous image"><span
+             class="fas fa-chevron-left" aria-hidden="true"></span>
+         </button>
+         <button type="button" class="align lightbox-right" id="lightbox-next" title="Next image"><span
+             class="fas fa-chevron-right" aria-hidden="true"></span>
+         </button>
+       </div>
+     </div>`
+     return dom
+     }
+  
   }
   
-  goNext() {
-    this.slideIndex += 1;
-    if (this.slideIndex >= this.size())
-      	this.slideIndex = 0;
-
-    // Verif l'index n'est pas trop grand
-    this.refresh();
+  
+  Lightbox.init()
+  
   }
   
-  goPrevious() {
-    	this.slideIndex -= 1;
-      if (this.slideIndex < 0)
-      	this.slideIndex = this.size() - 1;
-      this.refresh();
-  }
-  
-  refresh() {
-  	this.selector.innerHTML = this.slides[this.slideIndex];
-  	// Affiche la bonne slide
-  }
-  
-  size() {
-  	return this.slides.length;
-  }
-}
-
-let lightbox = new Lightbox(["Slide 1", "Slide 2", "Slide 3"], "#lightbox");
-
-lightbox.refresh();
-
-document.querySelector(".previous").onclick = () => lightbox.goPrevious();
-document.querySelector(".next").onclick = () => lightbox.goNext();
-
-//setInterval(() => lightbox.goNext(), 1000)
