@@ -12,16 +12,16 @@ function initEvents() {
   const closeContact = document.querySelector(".form_close");
 
   ppContact.addEventListener("click", contactModal);
-  
+
   function contactModal() {
     formModal.style.display = "block";
   }
   closeContact.addEventListener("click", closeContactModal);
   function closeContactModal() {
     formModal.style.display = "none";
-    
+
   }
- 
+
 }
 
 function show(response) {
@@ -66,8 +66,7 @@ function generatePhotographer(user) {
       </div>
       <button class="pp_contact">contactez-moi</button>
       
-      <img src="Photos/Photographers/${
-        user.portrait
+      <img src="Photos/Photographers/${user.portrait
       }" alt="" class="pp_portrait" />
 
       <div class="form_modal">
@@ -129,9 +128,9 @@ function showMedia(response) {
   bindLikeButton(response.media);
   generateTotalLikes();
   generateLightbox();
-  sortMedias (response.media)
+  sortMedias(response.media)
 
-  
+
 }
 function generateMedia(usermedia) {
   if (usermedia.photographerId === idUrlNumb) {
@@ -143,7 +142,7 @@ function generateMedia(usermedia) {
               
                 
                   <article data-id="${usermedia.id}" class="pp_media">
-                    <a href="#" title="">
+                    <a href="${usermedia.video}" title="">
                       <video class="pp_media_video" role="button">
                         ""
                         <source class="video" src="Photos/videos/${usermedia.video}" />
@@ -238,40 +237,40 @@ function generateTotalLikes() {
 
 // ============================= TRIER =============================================
 
-function sortMedias () {
-let theme = document.querySelectorAll(".sort-btn");
-let openSort = document.querySelector("#sort-list");
-let popularite = document.getElementById("sort-1");
-let media = document.querySelectorAll(".pp_media")
-let date = document.getElementById("sort-2");
-let titre = document.getElementById("sort-3");
+function sortMedias() {
+  let theme = document.querySelectorAll(".sort-btn");
+  let openSort = document.querySelector("#sort-list");
+  let popularite = document.getElementById("sort-1");
+  let media = document.querySelectorAll(".pp_media")
+  let date = document.getElementById("sort-2");
+  let titre = document.getElementById("sort-3");
 
 
-theme.forEach((item) =>
-  item.addEventListener("click", () => {
-    openSort.style.display = "block";
+  theme.forEach((item) =>
+    item.addEventListener("click", () => {
+      openSort.style.display = "block";
 
-    popularite.addEventListener('onclick', sortPopularite);
+      popularite.addEventListener('onclick', sortPopularite);
 
-    function sortPopularite() {
-      let spanLikes = document.querySelectorAll(".media_like_count");
-      let arrayCountLikes = [];
-      for (i = 0; i < spanLikes.length; i++) {
-        let totalLike = spanLikes[i].innerHTML;
-        let convertString = parseInt(totalLike);
-        arrayCountLikes.push(convertString);
-        let arraySort = arrayCountLikes.sort(function(b , a) {
-          return b - a;
-          
-        });
-       for (i = 0; i < media.length; i++){
-        let sortA =  i.innerHTML = arraySort;
-         console.log(sortA)
-       }
+      function sortPopularite() {
+        let spanLikes = document.querySelectorAll(".media_like_count");
+        let arrayCountLikes = [];
+        for (i = 0; i < spanLikes.length; i++) {
+          let totalLike = spanLikes[i].innerHTML;
+          let convertString = parseInt(totalLike);
+          arrayCountLikes.push(convertString);
+          let arraySort = arrayCountLikes.sort(function (b, a) {
+            return b - a;
+
+          });
+          for (i = 0; i < media.length; i++) {
+            let sortA = i.innerHTML = arraySort;
+            console.log(sortA)
+          }
+        }
       }
-    }
 
-  }));
+    }));
 };
 
 /*
@@ -355,39 +354,37 @@ const galleryMedia = document.querySelectorAll(".video, .img");
 
 function generateLightbox() {
 
-class Lightbox {
+  class Lightbox {
 
 
-  static init () {
-    const galleryMedia = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
-    galleryMedia.forEach(link => link.addEventListener('click', e => {
-      e.preventDefault(e)
-      new Lightbox(e.target.getAttribute('src'))
-    }))
+    static init() {
+      const galleryMedia = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
+      galleryMedia.forEach(link => link.addEventListener('click', e => {
+        e.preventDefault(e)
+        new Lightbox(e.target.getAttribute('src'))
+      }))
 
-  }
+    }
 
-   constructor (url) {
+    constructor(url) {
       const element = this.buildDOM(url)
       document.body.appendChild(element)
       const previewModal = document.querySelector(".lightbox_modal")
       previewModal.classList.add("show")
-     
-      
-   }
 
-   
 
-  
+    }
 
-   buildDOM (url) {
-     const dom = document.createElement('div')
-     dom.classList.add('lightbox_modal')
-     dom.innerHTML = `
+
+
+    buildDOM(url) {
+      const dom = document.createElement('div')
+      dom.classList.add('lightbox_modal')
+      dom.innerHTML = `
      <div class="lightbox_modal_content">
      <div class="lightbox_modal_content-media">
        <div class="content_media_img">
-         <img src="Photos/images/${url}"  id="current-media-lightbox">
+         <img src="${url}"  id="current-media-lightbox">
          <h3 class="lightbox-media-title">Art Triangle Man</h3>
        </div>
        <button type="button" class="lightbox-close" id="lightbox-close" title="Close dialog"><span
@@ -402,12 +399,12 @@ class Lightbox {
      </div>
    </div>`
    return dom
-   }
+  }
 
 }
 
 
-Lightbox.init()
+  Lightbox.init()
 
 }
 
@@ -472,7 +469,7 @@ const galleryMedia = document.querySelectorAll(".video, .img");
     }
 
 */
-  
+
 
 
 
