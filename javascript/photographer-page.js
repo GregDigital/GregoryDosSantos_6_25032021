@@ -396,20 +396,18 @@ function generateLightbox() {
       dom.innerHTML = `
                 
       <div class="lightbox_modal_container">
-  <div class="lightbox_modal_container_media">
-  
-          </div>
-    
+  <div class="lightbox_modal_container_media"></div>
+  <button type="button" class="lightbox-close" id="lightbox-close" title="Close dialog"><span class="fas fa-times" aria-hidden="true"></span>
+  </button>
+      <button type="button" class="align lightbox-left" id="lightbox-previous" title="Previous image"><span class="fas fa-chevron-left" aria-hidden="true"></span>
+</button>
+<button type="button" class="align lightbox-right" id="lightbox-next" title="Next image"><span class="fas fa-chevron-right" aria-hidden="true"></span>
+</button>
+
+<h3 class="lightbox-media-title">Art Triangle Man</h3>
         
       </div>
-      <button type="button" class="lightbox-close" id="lightbox-close" title="Close dialog"><span class="fas fa-times" aria-hidden="true"></span>
-      </button>
-          <button type="button" class="align lightbox-left" id="lightbox-previous" title="Previous image"><span class="fas fa-chevron-left" aria-hidden="true"></span>
-    </button>
-    <button type="button" class="align lightbox-right" id="lightbox-next" title="Next image"><span class="fas fa-chevron-right" aria-hidden="true"></span>
-    </button>
-   
-  <h3 class="lightbox-media-title">Art Triangle Man</h3>
+ 
 `
    return dom
   }
