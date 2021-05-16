@@ -367,44 +367,59 @@ function generateLightbox() {
     }
 
     constructor(url) {
-      const element = this.buildDOM(url)
-      document.body.appendChild(element)
-      const previewModal = document.querySelector(".lightbox_modal")
-      previewModal.classList.add("show")
-
+      this.element = this.buildDOM(url)
+      this.loadImage(url)
+      document.body.appendChild(this.element)
 
     }
 
-
+    loadImage (url) {
+     
+      const image = new Image()
+      const container = this.element.querySelector('.lightbox_modal_container_media')
+      const loader = document.createElement('div')
+      loader.classList.add('content_media_loader')
+      container.innerHTML = ''
+      container.appendChild(loader)
+      image.onload = () => {
+        container.removeChild(loader)
+        container.appendChild(image)
+       
+      }
+      image.src = url
+    }
+  
 
     buildDOM(url) {
       const dom = document.createElement('div')
       dom.classList.add('lightbox_modal')
       dom.innerHTML = `
-     <div class="lightbox_modal_content">
-     <div class="lightbox_modal_content-media">
-       <div class="content_media_img">
-         <img src="${url}"  id="current-media-lightbox">
-         <h3 class="lightbox-media-title">Art Triangle Man</h3>
-       </div>
-       <button type="button" class="lightbox-close" id="lightbox-close" title="Close dialog"><span
-           class="fas fa-times" aria-hidden="true"></span>
-       </button>
-       <button type="button" class="align lightbox-left" id="lightbox-previous" title="Previous image"><span
-           class="fas fa-chevron-left" aria-hidden="true"></span>
-       </button>
-       <button type="button" class="align lightbox-right" id="lightbox-next" title="Next image"><span
-           class="fas fa-chevron-right" aria-hidden="true"></span>
-       </button>
-     </div>
-   </div>`
+                
+      <div class="lightbox_modal_container">
+  <div class="lightbox_modal_container_media">
+  
+          </div>
+    
+        
+      </div>
+      <button type="button" class="lightbox-close" id="lightbox-close" title="Close dialog"><span class="fas fa-times" aria-hidden="true"></span>
+      </button>
+          <button type="button" class="align lightbox-left" id="lightbox-previous" title="Previous image"><span class="fas fa-chevron-left" aria-hidden="true"></span>
+    </button>
+    <button type="button" class="align lightbox-right" id="lightbox-next" title="Next image"><span class="fas fa-chevron-right" aria-hidden="true"></span>
+    </button>
+   
+  <h3 class="lightbox-media-title">Art Triangle Man</h3>
+`
    return dom
   }
+  //<img src="${url}" id="current-media-lightbox">
 
 }
 
 
   Lightbox.init()
+  
 
 }
 

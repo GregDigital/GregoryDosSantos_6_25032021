@@ -166,9 +166,9 @@
   /* Hide vertical scrollbar */
   overflow-x: hidden;
   /* Hide horizontal scrollbar */
-  -webkit-transform: scall(0.9);
-          transform: scall(0.9);
-  display: none;
+  overflow: auto;
+  -webkit-animation: lightbox .5s;
+          animation: lightbox .5s;
 }
 
 .lightbox_modal.show {
@@ -179,65 +179,88 @@
   transition: all 0.3s ease;
 }
 
-.lightbox_modal_content {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  right: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: 100vw;
-  max-width: 1250px;
-  height: 100vh;
-}
-
-.lightbox_modal_content .lightbox_modal_content-media {
-  position: relative;
-  top: 50%;
-  bottom: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  color: #901c1c;
-}
-
-.lightbox_modal_content .lightbox_modal_content-media img {
-  max-width: calc(100vw - 80px);
-  max-height: calc(100vh - 100px);
-  height: auto;
-  text-align: center;
-}
-
-.lightbox_modal_content button {
+button {
+  cursor: pointer;
   border: none;
   color: #901c1c;
   background: none;
   font-size: 2em;
 }
 
-.lightbox_modal_content .lightbox-close {
+.lightbox-close {
+  cursor: pointer;
   position: absolute;
-  right: 30px;
+  right: -35px;
+  top: 0;
 }
 
-.lightbox_modal_content .align {
+.align {
   position: absolute;
   top: 50%;
 }
 
-.lightbox_modal_content .lightbox-right {
+.lightbox-right {
+  cursor: pointer;
   position: absolute;
-  right: 30px;
+  right: -35px;
 }
 
-.lightbox_modal_content .lightbox-left {
+.lightbox-left {
+  cursor: pointer;
   position: absolute;
-  left: 30px;
+  left: -35px;
+}
+
+.lightbox_modal_container {
+  margin-left: 50px;
+  margin-right: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 100vh;
+}
+
+.lightbox_modal_container_media {
+  position: relative;
+}
+
+.lightbox_modal_container_media img {
+  -webkit-animation: lightbox .5s;
+          animation: lightbox .5s;
+  max-width: 100%;
+  max-height: 1200px;
+  height: auto;
+}
+
+@-webkit-keyframes lightbox {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightbox {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.content_media_loader {
+  width: 40px;
+  height: 40px;
+  opacity: 1;
+  background: url(/Photos/loader.svg) center center no-repeat;
 }
 
 .form_modal {

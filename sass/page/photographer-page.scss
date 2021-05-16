@@ -179,8 +179,11 @@ margin-left: 100px;
     background: #fff;
     overflow-y: hidden; /* Hide vertical scrollbar */
     overflow-x: hidden; /* Hide horizontal scrollbar */
-    transform: scall(0.9);
-    display: none;
+    overflow: auto;
+    animation: lightbox .5s;
+
+
+   
 
   }
 
@@ -190,74 +193,84 @@ margin-left: 100px;
     transition: all 0.3s ease;
   }
 
+  button {
+    cursor: pointer;
+    border: none;
+    color: #901c1c;
+    background: none;
+    font-size: 2em;
 
-
-
-
-    .lightbox_modal_content {
-    
-      position: absolute;
-      top: 0;
-      left: 50%;
-      right: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
-      max-width: 1250px;
-      height: 100vh;
-      
-    
-
-
-    .lightbox_modal_content-media {
-      position: relative;
-      top: 50%;
-      bottom: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      justify-content: center;
-      color: #901c1c;
-
-
-      & img {
-        max-width: calc(100vw - 80px);
-    max-height: calc(100vh - 100px);
-    height: auto;
-    text-align: center;
-      }
-    }
-
-
-  
-
-
-    button {
-      border: none;
-      color: #901c1c;
-      background: none;
-      font-size: 2em;
-
-    }
-    .lightbox-close{
-      position: absolute;
-right: 30px;
-    }
-
-    .align {
-      position: absolute;
-      top: 50%;
-    }
-
-    .lightbox-right{
-      position: absolute;
-      right: 30px;
-    }
-
-    .lightbox-left{
-      position: absolute;
-      left: 30px;
-    }
-  
   }
+  .lightbox-close{
+    cursor: pointer;
+    position: absolute;
+right: -35px;
+top:0;
+
+  }
+
+  .align {
+    position: absolute;
+    top: 50%;
+  }
+
+  .lightbox-right{
+    cursor: pointer;
+    position: absolute;
+    right: -35px;
+  }
+
+  .lightbox-left{
+    cursor: pointer;
+    position: absolute;
+    left: -35px;
+  }
+
+  .lightbox_modal_container {
+
+margin-left: 50px;
+margin-right: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+
+  }
+
+  .lightbox_modal_container_media {
+    position: relative;
+
+    & img {
+      animation: lightbox .5s;
+      max-width: 100%;
+      max-height: 1200px;
+      height: auto;
+    }
+
+  }
+
+  @keyframes lightbox{
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+
+
+
+   
+
+    .content_media_loader{
+
+      width: 40px;
+      height: 40px;
+      opacity: 1;
+      background: url(/Photos/loader.svg) center center no-repeat;
+    }
+
+
+  
+  
+  
 
 
 
