@@ -181,16 +181,13 @@ margin-left: 100px;
     overflow-x: hidden; /* Hide horizontal scrollbar */
     overflow: auto;
     animation: lightbox .5s;
+    transition: opacity .3s
 
-
-   
 
   }
 
-  .lightbox_modal.show {
-    display: block;
-    transform: scale(1);
-    transition: all 0.3s ease;
+  .lightbox_modal.close {
+  opacity: 0;
   }
 
   button {

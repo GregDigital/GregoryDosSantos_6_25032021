@@ -169,14 +169,12 @@
   overflow: auto;
   -webkit-animation: lightbox .5s;
           animation: lightbox .5s;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
 }
 
-.lightbox_modal.show {
-  display: block;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+.lightbox_modal.close {
+  opacity: 0;
 }
 
 button {
