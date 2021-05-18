@@ -127,7 +127,7 @@ function showMedia(response) {
   bindLikeButton(response.media);
   generateTotalLikes();
   generateLightbox();
-  sortMedias(response.media);
+  //sortMedias(response.media);
 }
 function generateMedia(usermedia) {
   if (usermedia.photographerId === idUrlNumb) {
@@ -138,7 +138,7 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article data-id="${usermedia.id}" class="pp_media">
+                  <article data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
                     <a href="Photos/videos/${usermedia.video}" title="">
                       <video class="pp_media_video" role="button">
                         ""
@@ -161,7 +161,7 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article data-id="${usermedia.id}" class="pp_media">
+                  <article data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
                     <a href="Photos/images/${usermedia.image}" title="">
                       <img class="img" src="Photos/images/${usermedia.image}" alt="" role="button" />
                     </a>
@@ -208,7 +208,7 @@ function bindLikeButton(medias) {
 
       parent.querySelector(".media_like_count").innerHTML = media.likes;
       generateTotalLikes();
-      sortPopularite();
+      //sortPopularite();
     });
   });
 }
@@ -231,6 +231,7 @@ function generateTotalLikes() {
 
 // ============================= TRIER =============================================
 
+/*
 function sortMedias() {
   let theme = document.querySelectorAll(".sort-btn");
   let openSort = document.querySelector("#sort-list");
@@ -264,81 +265,14 @@ function sortMedias() {
     })
   );
 }
-
-/*
-function generateLightbox() {
-
-const galleryMedia = document.querySelectorAll(".video, .img");
-      previewModal = document.querySelector(".lightbox_modal");
-      previewImg = document.querySelector("#current-media-lightbox")
-      closeLightbox = document.querySelector('.lightbox-close')
-
-
-
-  for (let i = 0; i < galleryMedia.length; i++) {
-    let newIndex = i;
-    galleryMedia[i].onclick = () =>{
-      console.log( galleryMedia[i])
-      function preview() {
-        let selectedImg = galleryMedia[newIndex].src
-        console.log(selectedImg)
-        previewImg.setAttribute('src',selectedImg);
-
-
-      }
-
-       const prevBtn = document.querySelector(".lightbox-left");
-       const nextBtn = document.querySelector(".lightbox-right");
-
-       if (newIndex == 0) {
-        prevBtn.style.display = "none" 
-       }
-       if (newIndex >= galleryMedia.length - 1) {
-        nextBtn.style.display = "none"
-       }
-
-       prevBtn.onclick = () => {
-         newIndex--;
-         if (newIndex == 0) {
-          preview();
-           prevBtn.style.display = "none"
-         }
-          else {
-            preview();
-            nextBtn.style.display = "block"
-          }
-       }
-
-       nextBtn.onclick = () => {
-        newIndex++;
-        if (newIndex >= galleryMedia.length - 1) {
-         preview();
-          nextBtn.style.display = "none"
-        }
-         else {
-           preview();
-           prevBtn.style.display = "block"
-         }
-      }
-
-     
-      preview()
-      previewModal.classList.add("show")
-
-      closeLightbox.onclick =() => {
-        prevBtn.style.display = "block"
-        nextBtn.style.display = "block"
-        previewModal.classList.remove("show")
-
-      }
-     }
-
-
-    }
-    
-  }
-
 */
+
+
+function sortGallery() {
+
+}
+
+//========================= LIGHTBOX ================================================
 
 function generateLightbox() {
   class Lightbox {
@@ -365,23 +299,18 @@ function generateLightbox() {
     loadImage(url) {
       this.url = null
       const image = new Image();
-      image.src = url;
-      
       const container = this.element.querySelector(
         ".lightbox_modal_container_media_img"
       );
-    container.innerHTML = '' 
-  image.onload = () => { 
+    container.innerHTML = ""
+    image.onload = () => { 
+
     container.appendChild(image)
+    
     this.url = url}
   
-
+    image.src = url;
     }
-
-
-
-
-
 
     close(e) {
       e.preventDefault();
@@ -421,12 +350,12 @@ if (i === this.images.lenght - 1) {
                 
       <div class="lightbox_modal_container">
   <div class="lightbox_modal_container_media">
-  <div class="lightbox_modal_container_media_img">   </div>
+  <div class="lightbox_modal_container_media_img">  </div>
   <button type="button" class="lightbox-close" id="lightbox-close" title="Close dialog"><span class="fas fa-times" aria-hidden="true"></span>
   </button>
       <button type="button" class="align lightbox-left" id="lightbox-previous" title="Previous image"><span class="fas fa-chevron-left" aria-hidden="true"></span></button>
       <button type="button" class="align lightbox-right" id="lightbox-next" title="Next image"><span class="fas fa-chevron-right" aria-hidden="true"></span></button>
-
+      <h3 class="lightbox-media-title">${newNomImage}</h3>
       </div>
  
 `;
@@ -440,6 +369,15 @@ dom.querySelector(".lightbox-right").addEventListener("click", this.next.bind(th
 
   Lightbox.init();
 }
+
+
+
+
+
+
+
+
+
 
 
 

@@ -561,6 +561,7 @@ button {
   position: relative;
   margin: 20px 0 0 20px;
   margin-left: 100px;
+  margin-bottom: 30px;
 }
 
 .sort-label {
