@@ -127,13 +127,15 @@ function showMedia(response) {
   bindLikeButton(response.media);
   generateTotalLikes();
   generateLightbox();
-  //sortMedias(response.media);
+  sortMedias(response.media);
 }
 function generateMedia(usermedia) {
+ 
   if (usermedia.photographerId === idUrlNumb) {
     if (usermedia.video) {
       mesImages = usermedia.video.replaceAll("_", " ");
       newNomImage = mesImages.substr(0, mesImages.length - 4);
+    
 
       return `
               
@@ -155,6 +157,7 @@ function generateMedia(usermedia) {
                 
               `;
     } else if (usermedia.image) {
+      
       mesImages = usermedia.image.replaceAll("_", " ");
       newNomImage = mesImages.substr(0, mesImages.length - 4);
 
@@ -179,6 +182,7 @@ function generateMedia(usermedia) {
     }
   } else {
     return ` `;
+    
   }
 }
 
@@ -231,46 +235,25 @@ function generateTotalLikes() {
 
 // ============================= TRIER =============================================
 
-/*
+
 function sortMedias() {
   let theme = document.querySelectorAll(".sort-btn");
   let openSort = document.querySelector("#sort-list");
   let popularite = document.getElementById("sort-1");
-  let media = document.querySelectorAll(".pp_media");
-  let date = document.getElementById("sort-2");
-  let titre = document.getElementById("sort-3");
+
 
   theme.forEach((item) =>
     item.addEventListener("click", () => {
       openSort.style.display = "block";
 
-      popularite.addEventListener("onclick", sortPopularite);
 
-      function sortPopularite() {
-        let spanLikes = document.querySelectorAll(".media_like_count");
-        let arrayCountLikes = [];
-        for (i = 0; i < spanLikes.length; i++) {
-          let totalLike = spanLikes[i].innerHTML;
-          let convertString = parseInt(totalLike);
-          arrayCountLikes.push(convertString);
-          let arraySort = arrayCountLikes.sort(function (b, a) {
-            return b - a;
-          });
-          for (i = 0; i < media.length; i++) {
-            let sortA = (i.innerHTML = arraySort);
-            console.log(sortA);
-          }
-        }
-      }
     })
   );
 }
-*/
 
 
-function sortGallery() {
 
-}
+
 
 //========================= LIGHTBOX ================================================
 
