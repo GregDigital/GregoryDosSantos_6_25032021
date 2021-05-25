@@ -360,6 +360,7 @@ nav a:hover {
 }
 
 .lightbox_modal {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
