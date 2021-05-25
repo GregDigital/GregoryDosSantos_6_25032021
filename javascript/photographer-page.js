@@ -130,12 +130,10 @@ function showMedia(response) {
   sortMedias(response.media);
 }
 function generateMedia(usermedia) {
- 
   if (usermedia.photographerId === idUrlNumb) {
     if (usermedia.video) {
       mesImages = usermedia.video.replaceAll("_", " ");
       newNomImage = mesImages.substr(0, mesImages.length - 4);
-    
 
       return `
               
@@ -157,7 +155,6 @@ function generateMedia(usermedia) {
                 
               `;
     } else if (usermedia.image) {
-      
       mesImages = usermedia.image.replaceAll("_", " ");
       newNomImage = mesImages.substr(0, mesImages.length - 4);
 
@@ -182,7 +179,6 @@ function generateMedia(usermedia) {
     }
   } else {
     return ` `;
-    
   }
 }
 
@@ -235,13 +231,13 @@ function generateTotalLikes() {
 
 // ============================= TRIER =============================================
 
-
 function sortMedias() {
   let theme = document.querySelectorAll(".sort-btn");
   let openSort = document.querySelector("#sort-list");
-
   let popularite = document.getElementById("sort-1");
-console.log()
+  let date = document.getElementById("sort-2")
+  let titre = document.getElementById("sort-3")
+ 
 
   theme.forEach((item) =>
     item.addEventListener("click", () => {
@@ -249,173 +245,171 @@ console.log()
     })
   );
 
-popularite.addEventListener('click', () => {
-  media.sort(function compare(a,b){
-    if (a.likes < b.likes)
-    return -1;
-    if (a.likes > b.likes)
-    return 1;
-    return 0;
+date.addEventListener("click", () => {
+  let nodeList = document.querySelectorAll(".pp_media")
+  let nodeListAsJsArray = Array.from(nodeList)
+
+  let i = 0;
+  nodeListAsJsArray.sort((a, b) => a.dataset.date > b.dataset.date ? 1 : -1).forEach(e => {
+    console.log(e.dataset.date)
+    e.style.order = i;
+    i++;
   })
-  console.log(media)
-  bindLikeButton()
-})
+   
+  });
 
-}
+  titre.addEventListener("click", () =>{
+    let texte = document.querySelectorAll('.media_infos-title')
+ 
+ texte.forEach(element => {
+   
+      let test = new Set ([element.textContent])
+      let test1 = Array.from(test)
+      
+      
+ 
+
+    });
 
 
+  })
 
+
+    
+  };
 
 
 //========================= LIGHTBOX ================================================
 
 function generateLightbox() {
- 
-
   class Media {
     getHTML() {
-      throw "Not implemented"
+      throw "Not implemented";
     }
   }
-  
-  
+
   class Text extends Media {
     constructor(text) {
       super();
       this.text = text;
     }
-    
+
     getHTML() {
-      return `<p>${this.text}</p>`
-      }
+      return `<p>${this.text}</p>`;
+    }
   }
-  
+
   class Image extends Media {
     constructor(url, text) {
       super();
       this.url = url;
       this.text = text;
     }
-    
+
     getHTML() {
-      return this.url = `<img src="${this.url}">`
-      
-    } 
-     
+      return (this.url = `<img src="${this.url}">`);
+    }
   }
-  
+
   class Video extends Media {
     constructor(url) {
       super();
       this.url = url;
     }
-    
+
     getHTML() {
       return `<video controls width="250" autoplay>
       <source src="${this.url}"
               type="video/mp4">
       Sorry, your browser doesn't support embedded videos.
   </video>
-  `
+  `;
     }
   }
-  
+
   function factory(raw_media) {
     switch (raw_media.type) {
-    case "img":
-      return new Image(raw_media.url);
-    case "text":
-      return new Text(raw_media.text);
-    case "video":
-      return new Video(raw_media.url);
+      case "img":
+        return new Image(raw_media.url);
+      case "text":
+        return new Text(raw_media.text);
+      case "video":
+        return new Video(raw_media.url);
     }
   }
-  
-  
-  
-  
-  
-  class Lightbox {
 
+  class Lightbox {
     static init() {
-      const galleryMedia = Array.from(document.querySelectorAll(
-        'a[href$=".jpg"], a[href$=".mp4"]'
-      ));
-      const gallery = galleryMedia.map(link => link.getAttribute('href'))
-     
+      const galleryMedia = Array.from(
+        document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
+      );
+      const gallery = galleryMedia.map((link) => link.getAttribute("href"));
+
       galleryMedia.forEach((link) =>
         link.addEventListener("click", (e) => {
           e.preventDefault(e);
           new Lightbox(e.target.getAttribute("src"), gallery);
-        }))
+        })
+      );
     }
 
     constructor(slides, querySelector) {
       this.slideIndex = 0;
       this.slides = slides;
-      this.selector = document.querySelector(querySelector)
-      
+      this.selector = document.querySelector(querySelector);
     }
-    
+
     goNext() {
       this.slideIndex += 1;
-      if (this.slideIndex >= this.size())
-          this.slideIndex = 0;
-  
+      if (this.slideIndex >= this.size()) this.slideIndex = 0;
+
       // Verif l'index n'est pas trop grand
       this.refresh();
     }
-    
+
     goPrevious() {
-        this.slideIndex -= 1;
-        if (this.slideIndex < 0)
-          this.slideIndex = this.size() - 1;
-        this.refresh();
-    }
-    
-    close() {
-     
+      this.slideIndex -= 1;
+      if (this.slideIndex < 0) this.slideIndex = this.size() - 1;
+      this.refresh();
     }
 
+    close() {}
 
     refresh() {
       this.selector.innerHTML = factory(this.slides[this.slideIndex]).getHTML();
       // Affiche la bonne slide
     }
-    
+
     size() {
       return this.slides.length;
     }
   }
-  
 
+  let raw_medias = [
+    { type: "img", src: "http://127.0.0.1:5503/Photos/images/" },
+    { type: "text", text: "Hello" },
+    { type: "text", text: "World" },
+    {
+      type: "video",
+      url:
+        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm",
+    },
+  ];
 
-  let raw_medias = [{type: "img", src: "http://127.0.0.1:5503/Photos/images/"}, {type: "text", text: "Hello"}, {type: "text", text: "World"}, {type: "video", url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"}];
-  
-  let medias = raw_medias.map(m => factory(m));
-  
-  let lightbox = new Lightbox(raw_medias, ".lightbox_modal_container_media_img");
-  
+  let medias = raw_medias.map((m) => factory(m));
+
+  let lightbox = new Lightbox(
+    raw_medias,
+    ".lightbox_modal_container_media_img"
+  );
+
   lightbox.refresh();
-  
+
   document.querySelector(".lightbox-close").onclick = () => lightbox.close();
-  document.querySelector(".lightbox-left").onclick = () => lightbox.goPrevious();
+  document.querySelector(".lightbox-left").onclick = () =>
+    lightbox.goPrevious();
   document.querySelector(".lightbox-right").onclick = () => lightbox.goNext();
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
 
 fetch("json/profil.json")
   .then((response) => response.json())
