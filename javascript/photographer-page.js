@@ -64,8 +64,7 @@ function generatePhotographer(user) {
       </div>
       <button class="pp_contact">contactez-moi</button>
       
-      <img src="Photos/Photographers/${
-        user.portrait
+      <img src="Photos/Photographers/${user.portrait
       }" alt="" class="pp_portrait" />
 
       <div class="form_modal">
@@ -138,7 +137,7 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
+                  <article data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
                     <a href="#" title="${newNomImage}">
                       <video class="pp_media_video" role="button">
                         ""
@@ -161,7 +160,7 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
+                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
                     <a href="#" title="${newNomImage}">
                       <img class="img" src="Photos/images/${usermedia.image}" alt="${newNomImage}" role="button" />
                     </a>
@@ -235,62 +234,74 @@ function sortMedias() {
   let theme = document.querySelectorAll(".sort-btn");
   let openSort = document.querySelector("#sort-list");
   let popularite = document.getElementById("sort-1");
-  let date = document.getElementById("sort-2")
-  let titre = document.getElementById("sort-3")
- 
+  let date = document.getElementById("sort-2");
+  let titre = document.getElementById("sort-3");
 
   theme.forEach((item) =>
-    item.addEventListener("click", () => {
+    item.addEventListener("click", (e) => {
       openSort.style.display = "block";
-    })
-  );
-
-
-popularite.addEventListener("click", () =>{
-let likesSort = document.querySelectorAll('.media_like_count')
-
- let likeSort = Array.from(likesSort)
- let i = 0;
-likeSort.sort((a, b) => a.textContent > b.textContent ? 1 : -1).forEach(e => {
-  console.log(e.textContent)
-  e.style.order = i;
-  i++;
-})
-
-
-  })
-
-date.addEventListener("click", () => {
-  let sortdate = document.querySelectorAll(".pp_media")
-  let dateList = Array.from(sortdate)
-  let i = 0;
-  dateList.sort((a, b) => a.dataset.date > b.dataset.date ? 1 : -1).forEach(e => {
-    e.style.order = i;
-    i++;
-  })
-   
-  });
-
-  titre.addEventListener("click", () =>{
-    let texte = document.querySelectorAll('.media_infos-title')
- 
- texte.forEach(element => {
-   
-      let test = new Set ([element.textContent])
-      //let test1 = Array.from(test)
-      
-      
- 
-
-    });
-
-
-  })
-
 
     
-  };
 
+    }));
+
+
+
+  
+
+  
+
+  popularite.addEventListener("click", () => {
+    let likesSort = document.querySelectorAll(".pp_media");
+
+    let likeSort = Array.from(likesSort);
+    let i = 0;
+    likeSort
+      .sort((a, b) => (a.dataset.likes > b.dataset.likes ? 1 : -1))
+      .forEach((e) => {
+        e.style.order = i;
+        i++;
+      });
+      if (popularite){
+        document.querySelector('.sort-texte').innerText = "Popularité"
+        openSort.style.display = "none";
+
+       }
+  });
+
+  date.addEventListener("click", () => {
+    let sortdate = document.querySelectorAll(".pp_media");
+    let dateList = Array.from(sortdate);
+    let i = 0;
+    dateList
+      .sort((a, b) => (a.dataset.date > b.dataset.date ? 1 : -1))
+      .forEach((e) => {
+        e.style.order = i;
+        i++;
+      });
+      if (date){
+        document.querySelector('.sort-texte').innerText = "Date"
+        openSort.style.display = "none";
+       
+       }
+  });
+
+  titre.addEventListener("click", () => {
+    let sortTitre = document.querySelectorAll(".pp_media");
+    let titreList = Array.from(sortTitre);
+    let i = 0;
+    titreList
+      .sort((a, b) => (a.dataset.title > b.dataset.title ? 1 : -1))
+      .forEach((e) => {
+        e.style.order = i;
+        i++;
+      });
+      if (titre){
+        document.querySelector('.sort-texte').innerText = "Titre"
+        openSort.style.display = "none";
+       }
+  });
+}
 
 //========================= LIGHTBOX ================================================
 
@@ -386,7 +397,7 @@ function generateLightbox() {
       this.refresh();
     }
 
-    close() {}
+    close() { }
 
     refresh() {
       this.selector.innerHTML = factory(this.slides[this.slideIndex]).getHTML();
