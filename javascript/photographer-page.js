@@ -245,13 +245,26 @@ function sortMedias() {
     })
   );
 
-date.addEventListener("click", () => {
-  let nodeList = document.querySelectorAll(".pp_media")
-  let nodeListAsJsArray = Array.from(nodeList)
 
+popularite.addEventListener("click", () =>{
+let likesSort = document.querySelectorAll('.media_like_count')
+
+ let likeSort = Array.from(likesSort)
+ let i = 0;
+likeSort.sort((a, b) => a.textContent > b.textContent ? 1 : -1).forEach(e => {
+  console.log(e.textContent)
+  e.style.order = i;
+  i++;
+})
+
+
+  })
+
+date.addEventListener("click", () => {
+  let sortdate = document.querySelectorAll(".pp_media")
+  let dateList = Array.from(sortdate)
   let i = 0;
-  nodeListAsJsArray.sort((a, b) => a.dataset.date > b.dataset.date ? 1 : -1).forEach(e => {
-    console.log(e.dataset.date)
+  dateList.sort((a, b) => a.dataset.date > b.dataset.date ? 1 : -1).forEach(e => {
     e.style.order = i;
     i++;
   })
@@ -264,7 +277,7 @@ date.addEventListener("click", () => {
  texte.forEach(element => {
    
       let test = new Set ([element.textContent])
-      let test1 = Array.from(test)
+      //let test1 = Array.from(test)
       
       
  
