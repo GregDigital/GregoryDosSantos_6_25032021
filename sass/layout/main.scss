@@ -70,7 +70,7 @@ color: $color-texteSecondaire;
             padding: 2px 7px;
             font-weight: 500;
             font-size: .9em;
-
+            &:active
             &:hover {
                 background-color: $color-backgroundPrimaire ;
                 color: $color-bacgroundWhite ;
