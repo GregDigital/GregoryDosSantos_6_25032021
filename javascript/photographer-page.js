@@ -327,14 +327,17 @@ function showLightbox() {
 
   a.addEventListener("click", () => {
     a.style.display = "block";
+    
   });
 
-  console.log("Ligthbox", generateMedias());
+
 
   document.querySelectorAll(".pp_media").forEach((btn) => {
     btn.onclick = (e) => showLightbox(e);
   });
 }
+
+/*
 
 function generateLightbox() {
   class Media {
@@ -448,7 +451,7 @@ function generateLightbox() {
     lightbox.goPrevious();
   document.querySelector(".lightbox-right").onclick = () => lightbox.goNext();
 }
-
+*/
 fetch("json/profil.json")
   .then((response) => response.json())
   .then((json) => showMedia(json));
