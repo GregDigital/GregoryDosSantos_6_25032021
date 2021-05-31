@@ -129,7 +129,6 @@ function showMedia(response) {
   sortMedias(response.media);
   generateMedias()
   showLightbox()
-  //init()
 }
 function generateMedia(usermedia) {
   if (usermedia.photographerId === idUrlNumb) {
@@ -325,16 +324,23 @@ function generateMedias() {
 
 function showLightbox() {
 
- 
-  let a = document.querySelector('.lightbox_modal')
-  a.style.display =("block", generateMedias())
+  let a = document.querySelector(".lightbox_modal")
+
+  a.addEventListener('click', () => {
+    a.style.display = "block";
+  })
   
+  console.log("Ligthbox", generateMedias())
+
+  document.querySelectorAll(".pp_media").forEach(btn => {
+    btn.onclick = (e => showLightbox(e))
+  })
+  
+
 }
 
-document.querySelectorAll(".pp_media").forEach(btn => {
-btn.onclick = (e => showLightbox(e))
 
-})
+
 
 
 
