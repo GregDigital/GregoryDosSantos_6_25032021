@@ -339,7 +339,6 @@ function factory(raw_media) {
   switch (raw_media.type) {
     case "img":
       return new Image(raw_media.url);
-
     case "video":
       return new Video(raw_media.url);
   }
