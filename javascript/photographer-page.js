@@ -126,10 +126,10 @@ function showMedia(response) {
   content.innerHTML = html;
   bindLikeButton(response.media);
   generateTotalLikes();
-  //generateLightbox();
+
   sortMedias(response.media);
-  generateMedias();
-  showLightbox();
+  //generateMedias();
+  //showLightbox();
 }
 function generateMedia(usermedia) {
   if (usermedia.photographerId === idUrlNumb) {
@@ -140,7 +140,7 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
+                  <article onclick="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
                     <a  href="#" title="${newNomImage}">
                       <video class="pp_media_video" role="button">
                         ""
@@ -163,7 +163,7 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
+                  <article onclick="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
                     <a href="#" title="${newNomImage}">
                       <img class="img" src="Photos/images/${usermedia.image}" alt="${newNomImage}" role="button" />
                     </a>
@@ -297,9 +297,9 @@ function sortMedias() {
 }
 
 //========================= LIGHTBOX ================================================
-
+/*
 function generateMedias() {
-  return Array.from(document.querySelectorAll(".pp_media"))
+  let a = Array.from(document.querySelectorAll(".pp_media"))
     .map((article) => {
       let img = article.querySelector(".img[src$='.jpg']");
       let video = article.querySelector(".video[src$='.mp4']");
@@ -319,130 +319,82 @@ function generateMedias() {
         };
       }
     })
-    .sort((a, b) => (a.order > b.order ? 1 : -1));
+    
 }
 
 function showLightbox() {
-  let a = document.querySelector(".lightbox_modal");
+  console.log("Lightbox", generateMedias())
 
-  a.addEventListener("click", () => {
-    a.style.display = "block";
-    
-  });
+  document.querySelectorAll(".pp_media").forEach(btn => {
+    btn.onclick = (e => showLightbox(e))
+  })
+  
 
 
-
-  document.querySelectorAll(".pp_media").forEach((btn) => {
-    btn.onclick = (e) => showLightbox(e);
-  });
 }
 
-/*
+*/
 
-function generateLightbox() {
-  class Media {
-    getHTML() {
-      throw "Not implemented";
-    }
+function factory(raw_media) {
+  switch (raw_media.type) {
+    case "img":
+      return new Image(raw_media.url);
+
+    case "video":
+      return new Video(raw_media.url);
   }
+}
 
-  class Text extends Media {
-    constructor(text) {
-      super();
-      this.text = text;
+
+
+
+function generateLightbox(id) {
+
+  console.log("generateLightbox", id);
+
+  let galleryMedia = Array.from(document.querySelectorAll(".pp_media"))
+    .map((article) => {
+
+      
+
+      let img = article.querySelector(".img[src$='.jpg']");
+      let video = article.querySelector(".video[src$='.mp4']");
+     
+     
+     
+
+
+      if (img !== null) {
+        return {
+          url: img.src,
+          type: "img",
+          data: `${newNomImage}`,
+          order: parseInt(article.style.order),
+        };
+      }
+      if (video !== null) {
+        return {
+          url: video.src,
+          type: "video",
+          order: parseInt(article.style.order),
+        };
+      }
+      
+    
+     
+      
     }
+    
+    ).map(factory)
+ 
+    
+  
 
-    getHTML() {
-      return `<p>${this.text}</p>`;
-    }
-  }
+    
+  
+    
 
-  class Image extends Media {
-    constructor(url) {
-      super();
-      this.url = url;
-    }
-
-    getHTML() {
-      return `<img src="${this.url}">`;
-    }
-  }
-
-  class Video extends Media {
-    constructor(url) {
-      super();
-      this.url = url;
-    }
-
-    getHTML() {
-      return `<video controls width="250" autoplay>
-      <source src="${this.url}"
-              type="video/mp4">
-      Sorry, your browser doesn't support embedded videos.
-  </video>
-  `;
-    }
-  }
-
-  function factory(raw_media) {
-    switch (raw_media.type) {
-      case "img":
-        return new Image(raw_media.url);
-      case "text":
-        return new Text(raw_media.text);
-      case "video":
-        return new Video(raw_media.url);
-    }
-  }
-
-  class Lightbox {
-    constructor(slides, querySelector) {
-      this.slideIndex = 0;
-      this.slides = slides;
-      this.selector = document.querySelector(querySelector);
-    }
-
-    goNext() {
-      this.slideIndex += 1;
-      if (this.slideIndex >= this.size()) this.slideIndex = 0;
-
-      // Verif l'index n'est pas trop grand
-      this.refresh();
-    }
-
-    goPrevious() {
-      this.slideIndex -= 1;
-      if (this.slideIndex < 0) this.slideIndex = this.size() - 1;
-      this.refresh();
-    }
-
-    refresh() {
-      this.selector.innerHTML = factory(this.slides[this.slideIndex]).getHTML();
-      // Affiche la bonne slide
-    }
-
-    size() {
-      return this.slides.length;
-    }
-  }
-
-  let raw_medias = [
-    {
-      type: "img",
-      url: "https://p1.storage.canalblog.com/10/86/1127999/129168623.jpg",
-    },
-    { type: "text", text: "Hello" },
-    { type: "text", text: "World" },
-    {
-      type: "video",
-      url:
-        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm",
-    },
-  ];
-
-  let medias = raw_medias.map((m) => factory(m));
-
-  let lightbox = new Lightbox(raw_medias, "#lightbox");
+  let lightbox = new Lightbox(galleryMedia, ".lightbox_modal_container_media_img");
 
   lightbox.refresh();
 
@@ -451,7 +403,102 @@ function generateLightbox() {
     lightbox.goPrevious();
   document.querySelector(".lightbox-right").onclick = () => lightbox.goNext();
 }
-*/
+
+class Media {
+  getHTML() {
+    throw "Not implemented";
+  }
+}
+
+class Text extends Media {
+  constructor(text) {
+    super();
+    this.text = text;
+  }
+
+  getHTML() {
+    return `<h3 class="lightbox-media-title">${this.text}</h3>`;
+  }
+}
+
+class Image extends Media {
+  constructor(url, order) {
+    super();
+    this.url = url;
+    this.order = order;
+   
+  }
+
+  getHTML() {
+    return `<img style="order : ${this.order}" src="${this.url}">`;
+  }
+}
+
+class Video extends Media {
+  constructor(url) {
+    super();
+    this.url = url;
+  }
+
+  getHTML() {
+    return `<video controls width="250" autoplay>
+      <source src="${this.url}"
+              type="video/mp4">
+      Sorry, your browser doesn't support embedded videos.
+  </video>
+  `;
+  }
+}
+
+
+
+class Lightbox {
+  constructor(slides, querySelector) {
+    this.element = document.querySelector('.lightbox_modal')
+    this.slideIndex = 0;
+    this.slides = slides;
+    this.selector = document.querySelector(querySelector);
+  }
+
+  close() {
+    this.element.style.display = "none"
+    window.setTimeout(() => {
+      this.element.parentElement.removeChild(this.element);
+    }, 500);
+  }
+
+  goNext() {
+    this.slideIndex += 1;
+    if (this.slideIndex >= this.size()) this.slideIndex = 0;
+
+    // Verif l'index n'est pas trop grand
+    this.refresh();
+  }
+
+  goPrevious() {
+    this.slideIndex -= 1;
+    if (this.slideIndex < 0) this.slideIndex = this.size() - 1;
+    this.refresh();
+  }
+
+  goToId(id) {
+    
+    this.element.style.display = "block"
+  }
+
+  refresh() {
+    console.log(this.slides)
+    this.selector.innerHTML = (this.slides[this.slideIndex]).getHTML();
+    
+    // Affiche la bonne slide
+  }
+
+  size() {
+    return this.slides.length;
+  }
+}
+
+
 fetch("json/profil.json")
   .then((response) => response.json())
   .then((json) => showMedia(json));
