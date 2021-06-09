@@ -297,17 +297,37 @@ function sortMedias() {
 }
 
 //========================= LIGHTBOX ================================================
-/*
-function generateMedias() {
-  let a = Array.from(document.querySelectorAll(".pp_media"))
+
+function factory(raw_media) {
+  switch (raw_media.type) {
+    case "img":
+      return new Image(raw_media.url);
+    case "video":
+      return new Video(raw_media.url);
+    case "text":
+      return new Text(raw_media.text);
+  }
+}
+
+function generateLightbox(id) {
+  console.log("generateLightbox", id);
+
+  let galleryMedia = Array.from(document.querySelectorAll(".pp_media"))
     .map((article) => {
       let img = article.querySelector(".img[src$='.jpg']");
       let video = article.querySelector(".video[src$='.mp4']");
 
+      article.addEventListener("click", () => {
+        document.querySelector(".lightbox_modal").style.display = "block";
+      });
+
       if (img !== null) {
         return {
           url: img.src,
+          data: `${newNomImage}`,
           type: "img",
+          text: img.alt,
+
           order: parseInt(article.style.order),
         };
       }
@@ -319,81 +339,13 @@ function generateMedias() {
         };
       }
     })
-    
-}
+    .sort((a, b) => (a.order > b.order ? 1 : -1))
+    .map(factory);
 
-function showLightbox() {
-  console.log("Lightbox", generateMedias())
-
-  document.querySelectorAll(".pp_media").forEach(btn => {
-    btn.onclick = (e => showLightbox(e))
-  })
-  
-
-
-}
-
-*/
-
-function factory(raw_media) {
-  switch (raw_media.type) {
-    case "img":
-      return new Image(raw_media.url);
-    case "video":
-      return new Video(raw_media.url);
-  }
-}
-
-
-
-
-function generateLightbox(id) {
-
-  console.log("generateLightbox", id);
-
-  let galleryMedia = Array.from(document.querySelectorAll(".pp_media"))
-    .map((article) => {
-
-      
-
-      let img = article.querySelector(".img[src$='.jpg']");
-      let video = article.querySelector(".video[src$='.mp4']");
-     
-     
-     
-
-
-      if (img !== null) {
-        return {
-          url: img.src,
-          type: "img",
-          data: `${newNomImage}`,
-          order: parseInt(article.style.order),
-        };
-      }
-      if (video !== null) {
-        return {
-          url: video.src,
-          type: "video",
-          order: parseInt(article.style.order),
-        };
-      }
-      
-    
-     
-      
-    }
-    
-    ).map(factory)
- 
-    
-  
-
-    
-  
-    
-
-  let lightbox = new Lightbox(galleryMedia, ".lightbox_modal_container_media_img");
+  let lightbox = new Lightbox(
+    galleryMedia,
+    ".lightbox_modal_container_media_img"
+  );
 
   lightbox.refresh();
 
@@ -408,7 +360,6 @@ class Media {
     throw "Not implemented";
   }
 }
-
 class Text extends Media {
   constructor(text) {
     super();
@@ -421,15 +372,16 @@ class Text extends Media {
 }
 
 class Image extends Media {
-  constructor(url, order) {
+  constructor(url, order, data) {
     super();
     this.url = url;
     this.order = order;
-   
+    this.data = data;
   }
 
   getHTML() {
-    return `<img style="order : ${this.order}" src="${this.url}">`;
+    return `<img style="order : ${this.order}" src="${this.url}"> 
+    <h3 class="lightbox-media-title">${this.data}</h3>`;
   }
 }
 
@@ -443,27 +395,23 @@ class Video extends Media {
     return `<video controls width="250" autoplay>
       <source src="${this.url}"
               type="video/mp4">
-      Sorry, your browser doesn't support embedded videos.
+     
   </video>
   `;
   }
 }
 
-
-
 class Lightbox {
   constructor(slides, querySelector) {
-    this.element = document.querySelector('.lightbox_modal')
+    this.element = document.querySelector(".lightbox_modal");
     this.slideIndex = 0;
     this.slides = slides;
     this.selector = document.querySelector(querySelector);
   }
 
   close() {
-    this.element.style.display = "none"
-    window.setTimeout(() => {
-      this.element.parentElement.removeChild(this.element);
-    }, 500);
+    this.element.style.display = "none";
+    b;
   }
 
   goNext() {
@@ -480,15 +428,10 @@ class Lightbox {
     this.refresh();
   }
 
-  goToId(id) {
-    
-    this.element.style.display = "block"
-  }
-
   refresh() {
-    console.log(this.slides)
-    this.selector.innerHTML = (this.slides[this.slideIndex]).getHTML();
-    
+    console.log(this.slides);
+    this.selector.innerHTML = this.slides[this.slideIndex].getHTML();
+
     // Affiche la bonne slide
   }
 
@@ -496,7 +439,6 @@ class Lightbox {
     return this.slides.length;
   }
 }
-
 
 fetch("json/profil.json")
   .then((response) => response.json())
