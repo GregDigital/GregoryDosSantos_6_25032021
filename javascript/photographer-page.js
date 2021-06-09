@@ -301,11 +301,9 @@ function sortMedias() {
 function factory(raw_media) {
   switch (raw_media.type) {
     case "img":
-      return new Image(raw_media.url);
+      return new Image(raw_media.url, raw_media.id);
     case "video":
-      return new Video(raw_media.url);
-    case "text":
-      return new Text(raw_media.text);
+      return new Video(raw_media.url, raw_media.id);
   }
 }
 
@@ -327,7 +325,7 @@ function generateLightbox(id) {
           data: `${newNomImage}`,
           type: "img",
           text: img.alt,
-
+          id: article.dataset.id,
           order: parseInt(article.style.order),
         };
       }
@@ -335,6 +333,7 @@ function generateLightbox(id) {
         return {
           url: video.src,
           type: "video",
+          id: article.dataset.id,
           order: parseInt(article.style.order),
         };
       }
@@ -346,7 +345,7 @@ function generateLightbox(id) {
     galleryMedia,
     ".lightbox_modal_container_media_img"
   );
-
+  lightbox.goToId(id);
   lightbox.refresh();
 
   document.querySelector(".lightbox-close").onclick = () => lightbox.close();
@@ -372,11 +371,10 @@ class Text extends Media {
 }
 
 class Image extends Media {
-  constructor(url, order, data) {
+  constructor(url, id) {
     super();
     this.url = url;
-    this.order = order;
-    this.data = data;
+    this.id = id;
   }
 
   getHTML() {
@@ -386,9 +384,10 @@ class Image extends Media {
 }
 
 class Video extends Media {
-  constructor(url) {
+  constructor(url, id) {
     super();
     this.url = url;
+    this.id = id;
   }
 
   getHTML() {
@@ -411,7 +410,7 @@ class Lightbox {
 
   close() {
     this.element.style.display = "none";
-    b;
+    
   }
 
   goNext() {
@@ -420,6 +419,15 @@ class Lightbox {
 
     // Verif l'index n'est pas trop grand
     this.refresh();
+  }
+
+  goToId(id) {
+    for (let i = 0; i < this.slides.length; i++) {
+      if (this.slides[i].id == id) {
+       this.slideIndex = i
+       return
+      }
+    }
   }
 
   goPrevious() {
