@@ -80,13 +80,13 @@ a {
           align-items: center;
 }
 
-nav ul {
+nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-nav .filter {
+nav .tags {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -97,9 +97,10 @@ nav .filter {
   padding: 2px 7px;
   font-weight: 500;
   font-size: .9em;
+  cursor: pointer;
 }
 
-nav .filter:hover {
+nav .tags.active {
   background-color: #901C1C;
   color: #FAFAFA;
 }
@@ -195,11 +196,20 @@ nav a:hover {
   padding: 2px 7px;
   font-weight: 500;
   font-size: .9em;
+  cursor: pointer;
 }
 
 .photographers_card .infos_photographer_tags .filter:active .photographers_card .infos_photographer_tags .filter:hover {
   background-color: #901C1C;
   color: #FAFAFA;
+}
+
+.photographers_card.show {
+  display: block;
+}
+
+.photographers_card.hide {
+  display: none;
 }
 
 /*Couleurs et score WCAG PRIMAIRE : */
