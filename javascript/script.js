@@ -4,17 +4,29 @@ let container = document.querySelector("#photographers");
 
 function initFilters() {
   const containerTaggs = document.querySelector(".navTagg");
-  const containerCards = document.querySelectorAll(".photographers_card");
 
   containerTaggs.addEventListener("click", (e) => {
-    console.log(e.target);
-    //if (e.target.classList.add("tags")){
-    //containerTaggs.querySelector(".active").classList.to("active")
-    e.target.classList.toggle("active");
-    const filterDataNav = e.target.getAttribute("data-filter");
-    
-  
-    //}
+    let tagData = e.target.dataset.target;
+    console.log(tagData);
+
+    if (e.target.classList.toggle("active")) {
+      const containerCards = document.querySelectorAll(".photographers_card");
+      containerCards.forEach(function (item) {
+        let dataFilters = item.dataset.filters;
+        let arrayDataFilters = dataFilters.split(",");
+        
+        for (let index = 0; index < arrayDataFilters.length; index++) {
+         
+          let element = arrayDataFilters[index];
+         console.log(element)
+          if (tagData === element) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        }
+      });
+    }
   });
 }
 
