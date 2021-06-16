@@ -237,6 +237,21 @@ button {
   height: auto;
 }
 
+.lightbox_modal_container_media video {
+  -webkit-animation: lightbox .5s;
+          animation: lightbox .5s;
+  max-width: 100%;
+  max-height: 1200px;
+  height: auto;
+}
+
+.lightbox_modal_container_media .lightbox-media-title {
+  color: #901c1c;
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-top: 0.2em;
+}
+
 @-webkit-keyframes lightbox {
   from {
     opacity: 0;

@@ -301,9 +301,9 @@ function sortMedias() {
 function factory(raw_media) {
   switch (raw_media.type) {
     case "img":
-      return new Image(raw_media.url, raw_media.id);
+      return new Image(raw_media.url, raw_media.id, raw_media.text);
     case "video":
-      return new Video(raw_media.url, raw_media.id);
+      return new Video(raw_media.url, raw_media.id, raw_media.text);
   }
 }
 
@@ -322,9 +322,8 @@ function generateLightbox(id) {
       if (img !== null) {
         return {
           url: img.src,
-          data: `${newNomImage}`,
           type: "img",
-          text: img.alt,
+          text: article.dataset.title,
           id: article.dataset.id,
           order: parseInt(article.style.order),
         };
@@ -334,6 +333,7 @@ function generateLightbox(id) {
           url: video.src,
           type: "video",
           id: article.dataset.id,
+          text: article.dataset.title,
           order: parseInt(article.style.order),
         };
       }
@@ -347,11 +347,14 @@ function generateLightbox(id) {
   );
   lightbox.goToId(id);
   lightbox.refresh();
+  lightbox.text(id)
 
   document.querySelector(".lightbox-close").onclick = () => lightbox.close();
   document.querySelector(".lightbox-left").onclick = () =>
     lightbox.goPrevious();
   document.querySelector(".lightbox-right").onclick = () => lightbox.goNext();
+
+
 }
 
 class Media {
@@ -359,43 +362,37 @@ class Media {
     throw "Not implemented";
   }
 }
-class Text extends Media {
-  constructor(text) {
+
+
+class Image extends Media {
+  constructor(url, id, text) {
     super();
+    this.url = url;
+    this.id = id;
     this.text = text;
   }
 
   getHTML() {
-    return `<h3 class="lightbox-media-title">${this.text}</h3>`;
-  }
-}
-
-class Image extends Media {
-  constructor(url, id) {
-    super();
-    this.url = url;
-    this.id = id;
-  }
-
-  getHTML() {
-    return `<img style="order : ${this.order}" src="${this.url}"> 
-    <h3 class="lightbox-media-title">${this.data}</h3>`;
+    return `<img src="${this.url}"> 
+    <h3 class="lightbox-media-title">${this.text}</h3>`;
   }
 }
 
 class Video extends Media {
-  constructor(url, id) {
+  constructor(url, id, text) {
     super();
     this.url = url;
     this.id = id;
+    this.text = text;
   }
 
   getHTML() {
-    return `<video controls width="250" autoplay>
+    return `<video controls autoplay>
       <source src="${this.url}"
               type="video/mp4">
      
   </video>
+  <h3 class="lightbox-media-title">${this.text}</h3>
   `;
   }
 }
@@ -405,13 +402,36 @@ class Lightbox {
     this.element = document.querySelector(".lightbox_modal");
     this.slideIndex = 0;
     this.slides = slides;
+    this.onKeyUp = this.onKeyUp.bind(this)
+    document.addEventListener('keyup', this.onKeyUp)
     this.selector = document.querySelector(querySelector);
+    
   }
 
-  close() {
+  close(e) {
+    e.preventDefault()
     this.element.style.display = "none";
     
   }
+
+  onKeyUp(event) {
+    
+    if (event.key === 'Escape') {
+      //if esc key was not pressed in combination with ctrl or alt or shift
+         const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
+         if (isNotCombinedKey) {
+          this.close(event)
+             console.log('Escape')
+           
+         }
+     } else if (event.key === 'ArrowLeft') {
+       this.goPrevious(event)
+     }
+     else if (event.key === 'ArrowRight') {
+      this.goNext(event)
+    }
+   }
+  
 
   goNext() {
     this.slideIndex += 1;
@@ -428,6 +448,16 @@ class Lightbox {
        return
       }
     }
+  }
+
+  text(id) {
+    for (let i = 0; i < this.slides.length; i++) {
+      if (this.slides[i].id == id) {
+       this.slideIndex = i
+       return
+      }
+    }
+
   }
 
   goPrevious() {
