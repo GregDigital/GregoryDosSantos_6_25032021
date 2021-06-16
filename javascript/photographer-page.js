@@ -10,6 +10,7 @@ function initEvents() {
   const ppContact = document.querySelector(".pp_contact");
   const formModal = document.querySelector(".form_modal");
   const closeContact = document.querySelector(".form_close");
+  const send = document.querySelector("#form_submit_btn")
 
   ppContact.addEventListener("click", contactModal);
 
@@ -20,6 +21,25 @@ function initEvents() {
   function closeContactModal() {
     formModal.style.display = "none";
   }
+
+  send.addEventListener('click', (e) => {
+    e.preventDefault()
+    formModal.style.display = "none";
+
+  })
+
+  document.addEventListener('keydown', (event) => {
+        
+    if (event.key === 'Escape') {
+     //if esc key was not pressed in combination with ctrl or alt or shift
+        const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
+        if (isNotCombinedKey) {
+          closeContactModal(event)
+            console.log('Escape')
+          
+        }
+    }
+});
 }
 
 function show(response) {
@@ -30,6 +50,7 @@ function show(response) {
   let html = acc.reduce((a, l) => a + l);
   container.innerHTML = html;
   initEvents();
+  
 }
 fetch("json/profil.json")
   .then((response) => response.json())
@@ -228,7 +249,8 @@ function generateTotalLikes() {
   document.querySelector(
     ".pp_infos_data"
   ).innerHTML = `<span id="total-likes">${total}  <i class="fas fa-heart" aria-label="likes"></i></span>
-  <span> € / jour</span>`;
+  <span>   € / jour</span>`;
+  
 }
 
 // ============================= TRIER =============================================
