@@ -141,7 +141,7 @@ function generateMedia(usermedia) {
               
                 
                   <article onclick="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
-                    <a  href="#" title="${newNomImage}">
+                    <a class="pp_media_event" href="#" title="${newNomImage}">
                       <video class="pp_media_video" role="button">
                         ""
                         <source class="video" src="Photos/videos/${usermedia.video}" />
@@ -164,7 +164,7 @@ function generateMedia(usermedia) {
               
                 
                   <article onclick="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
-                    <a href="#" title="${newNomImage}">
+                    <a class="pp_media_event" href="#" title="${newNomImage}">
                       <img class="img" src="Photos/images/${usermedia.image}" alt="${newNomImage}" role="button" />
                     </a>
                     <div class="pp_media_infos">
@@ -347,14 +347,12 @@ function generateLightbox(id) {
   );
   lightbox.goToId(id);
   lightbox.refresh();
-  lightbox.text(id)
+  lightbox.text(id);
 
   document.querySelector(".lightbox-close").onclick = () => lightbox.close();
   document.querySelector(".lightbox-left").onclick = () =>
     lightbox.goPrevious();
   document.querySelector(".lightbox-right").onclick = () => lightbox.goNext();
-
-
 }
 
 class Media {
@@ -362,7 +360,6 @@ class Media {
     throw "Not implemented";
   }
 }
-
 
 class Image extends Media {
   constructor(url, id, text) {
@@ -402,36 +399,33 @@ class Lightbox {
     this.element = document.querySelector(".lightbox_modal");
     this.slideIndex = 0;
     this.slides = slides;
-    this.onKeyUp = this.onKeyUp.bind(this)
-    document.addEventListener('keyup', this.onKeyUp)
+    this.onKeyUp = this.onKeyUp.bind(this);
+    document.addEventListener("keyup", this.onKeyUp);
     this.selector = document.querySelector(querySelector);
-    
   }
 
-  close(e) {
-    e.preventDefault()
+  close() {
     this.element.style.display = "none";
-    
   }
 
   onKeyUp(event) {
-    
-    if (event.key === 'Escape') {
+    if (event.key === "Escape") {
       //if esc key was not pressed in combination with ctrl or alt or shift
-         const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
-         if (isNotCombinedKey) {
-          this.close(event)
-             console.log('Escape')
-           
-         }
-     } else if (event.key === 'ArrowLeft') {
-       this.goPrevious(event)
-     }
-     else if (event.key === 'ArrowRight') {
-      this.goNext(event)
+      const isNotCombinedKey = !(
+        event.ctrlKey ||
+        event.altKey ||
+        event.shiftKey
+      );
+      if (isNotCombinedKey) {
+        this.close(event);
+        console.log("Escape");
+      }
+    } else if (event.key === "ArrowLeft") {
+      this.goPrevious(event);
+    } else if (event.key === "ArrowRight") {
+      this.goNext(event);
     }
-   }
-  
+  }
 
   goNext() {
     this.slideIndex += 1;
@@ -444,8 +438,8 @@ class Lightbox {
   goToId(id) {
     for (let i = 0; i < this.slides.length; i++) {
       if (this.slides[i].id == id) {
-       this.slideIndex = i
-       return
+        this.slideIndex = i;
+        return;
       }
     }
   }
@@ -453,11 +447,10 @@ class Lightbox {
   text(id) {
     for (let i = 0; i < this.slides.length; i++) {
       if (this.slides[i].id == id) {
-       this.slideIndex = i
-       return
+        this.slideIndex = i;
+        return;
       }
     }
-
   }
 
   goPrevious() {
