@@ -161,9 +161,9 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article onclick="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
+                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
                     <a class="pp_media_event" href="#" title="${newNomImage}">
-                      <video class="pp_media_video" role="button">
+                      <video onclick="generateLightbox(${usermedia.id})" class="pp_media_video" role="button">
                         ""
                         <source class="video" src="Photos/videos/${usermedia.video}" />
                       </video>
@@ -184,9 +184,9 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article onclick="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
-                    <a class="pp_media_event" href="#" title="${newNomImage}">
-                      <img class="img" src="Photos/images/${usermedia.image}" alt="${newNomImage}" role="button" />
+                  <article data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
+                    <a  class="pp_media_event" href="#" title="${newNomImage}">
+                      <img onclick="generateLightbox(${usermedia.id})" class="img" src="Photos/images/${usermedia.image}" alt="${newNomImage}" role="button" />
                     </a>
                     <div class="pp_media_infos">
                     <h2 class="media_infos-title">${newNomImage}</h2>
@@ -274,7 +274,7 @@ function sortMedias() {
     let likeSort = Array.from(likesSort);
     let i = 0;
     likeSort
-      .sort((a, b) => (a.dataset.likes > b.dataset.likes ? 1 : -1))
+      .sort((a, b) => parseInt((a.dataset.likes) < parseInt(b.dataset.likes) ? 1 : -1))
       .forEach((e) => {
         e.style.order = i;
         i++;
