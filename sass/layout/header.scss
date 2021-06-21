@@ -1,48 +1,121 @@
-
 @import "../utils/variables";
 
-
-
 .banner {
-display: flex;
-flex-direction: row;
-align-items: center;
+  display: flex;
+  flex-direction: row;
+  //align-items: center;
 
+  img {
+    width:350px;
+    height:auto;
+  }
 }
+
+
 
 nav {
-    
-        display: flex;
-    
+  display: flex;
+  align-items: center;
 
-    .tags{
-        display: flex;
-        border: .5px solid #c4c4c4;
-        border-radius: 30px;
-        margin: 3px 6px 3px 0;
-        color: $color-texteSecondaire;
-        padding: 2px 7px;
-        font-weight: 500;
-        font-size: .9em;
-        cursor: pointer;
+  .tags {
+    display: flex;
+    border: 0.5px solid #c4c4c4;
+    border-radius: 30px;
+    margin: 3px 6px 3px 0;
+    color: $color-texteSecondaire;
+    padding: 2px 7px;
+    font-weight: 500;
+    font-size: 0.9em;
+    cursor: pointer;
+  }
 
-       
+  .tags.active {
+    background-color: $color-backgroundPrimaire;
+    color: $color-bacgroundWhite;
+  }
+
+  a {
+    color: $color-texteSecondaire;
+
+    &:hover {
+      color: $color-bacgroundWhite;
     }
-
-    .tags.active {
-        background-color: $color-backgroundPrimaire ;
-        color: $color-bacgroundWhite ;
-     
-    }
-
-    a {
-        color: $color-texteSecondaire;
-
-        &:hover {
-      
-            color: $color-bacgroundWhite ;
-        }
-    }
-
-  
+  }
 }
+
+@media screen and (max-width: 1330px) {
+  .banner {
+    //padding: 40px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+   // align-items: flex-start;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 5px 0;
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-top: 2%;
+margin-bottom: 2%;
+    
+  }
+  
+  }
+
+
+
+@media screen and (max-width: 800px) {
+    .banner {
+      //padding: 40px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+     // align-items: flex-start;
+     img {
+        width:300px;
+        height:auto;
+      }
+
+    }
+  
+ 
+    
+    }
+
+
+@media screen and (max-width: 530px) {
+    .banner {
+      //padding: 40px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+     // align-items: flex-start;
+     img {
+        width:200px;
+        height:auto;
+      }
+
+    }
+  
+ 
+    
+    }
+
+    @media screen and (max-width: 342px) {
+        .banner {
+          //padding: 40px 20px 20px 20px;
+          display: flex;
+          flex-direction: column;
+         // align-items: flex-start;
+         img {
+            width:150px;
+            height:auto;
+          }
+    
+        }
+      
+     
+        
+        }
+

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*Couleurs et score WCAG PRIMAIRE : */
 /*Couleurs et score WCAG SECONDAIRE : */
 .pp_header {
@@ -7,7 +8,8 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 0 100px;
+  margin-left: 5%;
+  margin-right: 5%;
   padding: 63px 35px 48px 65px;
   background: #fafafa;
 }
@@ -57,7 +59,15 @@
   font-size: 0.9em;
 }
 
-.pp_header .pp_contact {
+.pp_header .pp_portrait {
+  width: 10em;
+  height: 10em;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.pp_contact {
   background: #901c1c;
   width: 10em;
   height: 4em;
@@ -69,25 +79,17 @@
   cursor: pointer;
 }
 
-.pp_header .pp_portrait {
-  width: 10em;
-  height: 10em;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 50%;
-}
-
 .pp_galery_medias {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-right: 100px;
-  margin-left: 100px;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-right: 5%;
+  margin-left: 5%;
 }
 
 .pp_galery_medias .pp_media {
@@ -119,13 +121,16 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   margin-bottom: 30px;
   margin-top: 20px;
 }
 
 .pp_galery_medias .pp_media_infos .media_infos-title {
   width: 10em;
-  font-size: 24px;
+  font-size: 1.4em;
   font-weight: 400;
 }
 
@@ -168,10 +173,10 @@
   overflow-x: hidden;
   /* Hide horizontal scrollbar */
   overflow: auto;
-  -webkit-animation: lightbox .5s;
-          animation: lightbox .5s;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  -webkit-animation: lightbox 0.5s;
+          animation: lightbox 0.5s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .lightbox_modal.close {
@@ -230,16 +235,16 @@ button {
 }
 
 .lightbox_modal_container_media img {
-  -webkit-animation: lightbox .5s;
-          animation: lightbox .5s;
+  -webkit-animation: lightbox 0.5s;
+          animation: lightbox 0.5s;
   max-width: 100%;
   max-height: 900px;
   height: auto;
 }
 
 .lightbox_modal_container_media video {
-  -webkit-animation: lightbox .5s;
-          animation: lightbox .5s;
+  -webkit-animation: lightbox 0.5s;
+          animation: lightbox 0.5s;
   max-width: 100%;
   max-height: 900px;
   height: auto;
@@ -463,5 +468,62 @@ ul {
   padding: 20px;
   font-size: 1.2rem;
   font-weight: 500;
+}
+
+@media screen and (max-width: 920px) {
+  .pp_galery_medias .pp_media img {
+    width: 300px;
+    height: 250px;
+  }
+  .pp_galery_medias .pp_media video {
+    width: 300px;
+    height: 250px;
+  }
+  .pp_galery_medias .pp_media_infos {
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+  }
+  .pp_galery_medias .pp_media_infos .media_infos-title {
+    width: 8em;
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .works-sort {
+    display: none;
+  }
+  .pp_infos_data {
+    display: none;
+  }
+  .pp_contact {
+    position: fixed;
+    bottom: 1px;
+    left: 35%;
+    height: 2em;
+  }
+}
+
+@media screen and (max-width: 372px) {
+  /* style.css | http://127.0.0.1:5503/sass/style.css */
+  .pp_header .pp_portrait {
+    /* width: 10em; */
+    /* height: 10em; */
+    width: 14em;
+    height: 6em;
+  }
+  .pp_header .pp_infos .pp_name {
+    /* margin: 15px 0; */
+    margin: 0px 0;
+  }
+  .pp_header .pp_infos .pp_tags {
+    /* margin: 5px 0; */
+    margin: 5px 0px;
+  }
+  /* Feuille de style intégrée #6 | http://127.0.0.1:5503/photographer-page.html?id=243 */
+  li {
+    margin: 14px 6px 3px 0;
+  }
 }
 /*# sourceMappingURL=photographer-page.css.map */

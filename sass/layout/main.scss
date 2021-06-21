@@ -3,7 +3,7 @@
 
 .title_page {
 position: absolute;
-top: 30px;
+top: 24px;
 right: 30px;
 font-size: 2em;
 color: $color-texteSecondaire;
@@ -93,3 +93,61 @@ color: $color-texteSecondaire;
     display: none;
 
 }
+
+
+
+@media screen and (max-width: 1330px) {
+
+  .photographers_card .portrait {
+    /* width: 20em; */
+    /* height: 20em; */
+    width: 15em;
+    height: 15em;
+  }
+  
+}
+
+
+
+
+
+@media screen and (max-width: 800px) {
+
+    .title_page {
+      
+        font-size: 1.5em;
+     
+        }
+    
+  }
+  
+
+  @media screen and (max-width: 530px) {
+
+    .title_page {
+      
+        font-size: 1em;
+        top: 18px;
+     
+        }
+    
+  }
+  
+  @media screen and (max-width: 342px) {
+
+    .title_page {
+      
+        font-size: 0.9em;
+        top: 14px;
+     
+        }
+
+        .photographers_card .portrait {
+            /* width: 20em; */
+            /* height: 20em; */
+            width: 12em;
+            height: 12em;
+          }
+    
+  }
+

@@ -8,28 +8,33 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+}
+
+.banner img {
+  width: 350px;
+  height: auto;
 }
 
 nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 nav .tags {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: .5px solid #c4c4c4;
+  border: 0.5px solid #c4c4c4;
   border-radius: 30px;
   margin: 3px 6px 3px 0;
   color: #901C1C;
   padding: 2px 7px;
   font-weight: 500;
-  font-size: .9em;
+  font-size: 0.9em;
   cursor: pointer;
 }
 
@@ -44,5 +49,80 @@ nav a {
 
 nav a:hover {
   color: #FAFAFA;
+}
+
+@media screen and (max-width: 1330px) {
+  .banner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 5px 0;
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .banner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .banner img {
+    width: 300px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .banner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .banner img {
+    width: 200px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 342px) {
+  .banner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .banner img {
+    width: 150px;
+    height: auto;
+  }
 }
 /*# sourceMappingURL=header.css.map */

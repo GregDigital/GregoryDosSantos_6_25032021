@@ -1,9 +1,10 @@
 @import "../utils/variables";
 
 .pp_header {
-    display: flex;
-    justify-content: space-between;
-  margin: 0 100px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 5%;
   padding: 63px 35px 48px 65px;
   background: #fafafa;
 
@@ -26,7 +27,7 @@
     }
 
     .pp_tagline {
-        display: block;
+      display: block;
       color: #525252;
       margin: 15px 0;
     }
@@ -45,58 +46,48 @@
         font-weight: 500;
         font-size: 0.9em;
       }
-
-   
     }
   }
 
-.pp_contact {
-background: #901c1c;
-width: 10em;
-height: 4em;
-color: #fff;
-font-weight: 500;
-border: none;
-border-radius: 5px;
-font-size: 1em;
-cursor: pointer;
-}
 
-.pp_portrait {
+
+  .pp_portrait {
     width: 10em;
     height: 10em;
     object-fit: cover;
     border-radius: 50%;
+  }
 }
 
-
-
+.pp_contact {
+  background: #901c1c;
+  width: 10em;
+  height: 4em;
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
 }
-
-
-
-
-
-
-
 
 .pp_galery_medias {
   display: flex;
   flex-wrap: wrap;
-    justify-content: space-between;
-    margin-right: 100px;
-margin-left: 100px;
+  justify-content: space-evenly;
+  margin-right: 5%;
+  margin-left: 5%;
 
-    .pp_media {
-      color: #901c1c;
-      font-size: 1.1em;
-      font-weight: 500;
-    
-      & img {
-        width: 350px;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 5px;
+  .pp_media {
+    color: #901c1c;
+    font-size: 1.1em;
+    font-weight: 500;
+
+    & img {
+      width: 350px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 5px;
     }
 
     & video {
@@ -105,50 +96,28 @@ margin-left: 100px;
       object-fit: cover;
       border-radius: 5px;
     }
-      }
+  }
 
-
-   .pp_media_infos {
+  .pp_media_infos {
     display: flex;
     justify-content: space-between;
-  margin-bottom: 30px;
+    align-items: baseline;
+    margin-bottom: 30px;
     margin-top: 20px;
 
     .media_infos-title {
-      width: 10em;
-      font-size: 24px;
+     width: 10em;
+      font-size: 1.4em;
       font-weight: 400;
-     
     }
-    .fas.fa-heart{
+    .fas.fa-heart {
       cursor: pointer;
     }
-   }
   }
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 .pp_infos_data {
- display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
@@ -163,259 +132,225 @@ margin-left: 100px;
   font-size: 1.2em;
 }
 
-
-
-
-
 //================= LIGHTBOX ==========================================
-
 
 .lightbox_modal {
   display: none;
   position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    overflow-y: hidden; /* Hide vertical scrollbar */
-    overflow-x: hidden; /* Hide horizontal scrollbar */
-    overflow: auto;
-    animation: lightbox .5s;
-    transition: opacity .3s
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow: auto;
+  animation: lightbox 0.5s;
+  transition: opacity 0.3s;
+}
 
-
-  }
-
-  .lightbox_modal.close {
+.lightbox_modal.close {
   opacity: 0;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  color: #901c1c;
+  background: none;
+  font-size: 2em;
+}
+.lightbox-close {
+  cursor: pointer;
+  position: absolute;
+  right: -35px;
+  top: 0;
+}
+
+.align {
+  position: absolute;
+  top: 50%;
+}
+
+.lightbox-right {
+  cursor: pointer;
+  position: absolute;
+  right: -35px;
+}
+
+.lightbox-left {
+  cursor: pointer;
+  position: absolute;
+  left: -35px;
+}
+
+.lightbox_modal_container {
+  margin-left: 50px;
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.lightbox_modal_container_media {
+  position: relative;
+
+  & img {
+    animation: lightbox 0.5s;
+    max-width: 100%;
+    max-height: 900px;
+    height: auto;
   }
 
-  button {
-    cursor: pointer;
-    border: none;
+  & video {
+    animation: lightbox 0.5s;
+    max-width: 100%;
+    max-height: 900px;
+    height: auto;
+  }
+  .lightbox-media-title {
     color: #901c1c;
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-top: 0.2em;
+  }
+}
+
+@keyframes lightbox {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.content_media_loader {
+  width: 40px;
+  height: 40px;
+  opacity: 1;
+  background: url(/Photos/loader.svg) center center no-repeat;
+}
+
+//=========================================== MODAL FORM
+
+//=========================================== MODAL FORM
+
+.form_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: #e6e6e691;
+  display: none;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+
+  .form_modal_content {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    max-width: 600px;
+    max-height: 700px;
+    height: 100vh;
+    background-color: #db8876;
+    border-radius: 5px;
+  }
+}
+
+.form_contact {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+
+  .form_close {
+    border: none;
     background: none;
-    font-size: 2em;
-
-  }
-  .lightbox-close{
+    color: white;
+    font-size: 0.8em;
+    position: absolute;
+    top: 60px;
+    right: 50px;
     cursor: pointer;
-    position: absolute;
-right: -35px;
-top:0;
-
   }
 
-  .align {
-    position: absolute;
-    top: 50%;
+  .form_title_photographer {
+    font-size: 2.6em;
+    font-weight: 400;
   }
 
-  .lightbox-right{
-    cursor: pointer;
-    position: absolute;
-    right: -35px;
+  h1 {
+    font-weight: 400;
   }
 
-  .lightbox-left{
-    cursor: pointer;
-    position: absolute;
-    left: -35px;
+  .form_name {
+    margin-bottom: 10px;
+    display: block;
   }
 
-  .lightbox_modal_container {
-
-margin-left: 50px;
-margin-right: 50px;
-display: flex;
-align-items: center;
-justify-content: center;
-min-height: 100vh;
-
+  label {
+    font-size: 1.8em;
+    margin: 6px 0 6px 0;
   }
 
-  .lightbox_modal_container_media {
-    position: relative;
-
-    & img {
-      animation: lightbox .5s;
-      max-width: 100%;
-      max-height: 900px;
-      height: auto;
-    }
-
-    & video {
-      animation: lightbox .5s;
-      max-width: 100%;
-      max-height: 900px;
-      height: auto;
-    }
-    .lightbox-media-title {
-      color: #901c1c;
-font-size: 1.2em;
-font-weight: 400;
-margin-top: 0.2em;
-     
-    }
-
+  input {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.7em;
   }
 
-  @keyframes lightbox{
-    from {opacity: 0;}
-    to {opacity: 1;}
+  textarea {
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 6px;
   }
 
-
-
-
-   
-
-    .content_media_loader{
-
-      width: 40px;
-      height: 40px;
-      opacity: 1;
-      background: url(/Photos/loader.svg) center center no-repeat;
-    }
-
-
-  
-  
-  
-
-
-
-
-  //=========================================== MODAL FORM
-
-    //=========================================== MODAL FORM
-
-    .form_modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      background: #e6e6e691;
-      display: none;
-      overflow-y: hidden; /* Hide vertical scrollbar */
-      overflow-x: hidden; /* Hide horizontal scrollbar */
-  
-  
-  
-    .form_modal_content {
-      position: absolute;
-      top: 15%;
-        left: 50%;
-        right: 50%;
-        transform: translateX(-50%);
-        width: 100vw;
-        max-width: 600px;
-        max-height: 700px;
-       height: 100vh;
-        background-color: #db8876;
-        border-radius: 5px;
-    }
-  
-  }
-  
-  
-    .form_contact {
-      padding: 50px;
-      display: flex;
-      flex-direction: column;
-  
-      .form_close {
-        border: none;
-        background: none;
-        color: white;
-        font-size: 0.8em;
-        position: absolute;
-        top: 60px;
-        right: 50px;
-        cursor: pointer;
-  
-      }
-  
-      .form_title_photographer {
-        font-size: 2.6em;
-        font-weight: 400;
-  
-      }
-  
-      h1 {
-       
-        font-weight: 400;
-      }
-  
-   .form_name {
-     margin-bottom: 10px;
-     display: block;
-   }
-  
-       label {
-         font-size: 1.8em;
-        margin: 6px 0 6px 0;
-       }
-  
-       input {
-        border: none;
-        border-radius: 5px;
-        padding: 5px;
-        font-size: 1.7em;
-       }
-  
-       textarea {
-         border: none;
-         border-radius: 5px;
-         margin-bottom: 6px;
-       }
-  
-    .form_submit_btn {
-        width: 10em;
-        font-size: 1em;
-        padding: 25px;
-        margin-top: 1em;
-        background: #901c1c;
-        color: #fff;
-       }
-  
-  }
-  
-
-  .works-sort {
-    position: relative;
-    margin: 20px 0 0 20px;
-    margin-left: 100px;
-    margin-bottom: 30px;
-    }
-
- 
-  
-
-.sort-label {
-      font-weight: 700;
-      margin-right: 25px;
-      font-size: 1.2rem;
-  }
-
-.sort-btn {
-    position: absolute;
-    top: -7px;
-    left: 120px;
-    width: 165px;
+  .form_submit_btn {
+    width: 10em;
+    font-size: 1em;
+    padding: 25px;
+    margin-top: 1em;
     background: #901c1c;
     color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: 500;
-    font-size: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  }
+}
+
+.works-sort {
+ // display: block;
+  position: relative;
+  margin: 20px 0 0 20px;
+  margin-left: 100px;
+  margin-bottom: 30px;
+}
+
+.sort-label {
+  font-weight: 700;
+  margin-right: 25px;
+  font-size: 1.2rem;
+}
+
+.sort-btn {
+  position: absolute;
+  top: -7px;
+  left: 120px;
+  width: 165px;
+  background: #901c1c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .sort-btn:hover {
@@ -432,7 +367,6 @@ margin-top: 0.2em;
   border-radius: 5px;
   color: #fff;
   background: #901c1c;
- 
 }
 
 ul {
@@ -457,8 +391,6 @@ ul {
   font-weight: 500;
 }
 
-
-
 .sort-list li:hover {
   background-color: #651414;
   cursor: pointer;
@@ -473,3 +405,98 @@ ul {
   font-size: 1.2rem;
   font-weight: 500;
 }
+
+@media screen and (max-width: 920px) {
+  .pp_galery_medias {
+    .pp_media {
+      & img {
+        width: 300px;
+        height: 250px;
+      }
+
+      & video {
+    
+          width: 300px;
+          height: 250px;
+        
+      }
+
+
+    }
+
+
+  .pp_media_infos {
+    align-items: baseline;
+  
+      .media_infos-title {
+      width: 8em;
+      font-size: 1.2em;
+        
+      }
+      
+    }
+
+
+  }
+
+
+
+
+
+}
+
+
+@media screen and (max-width: 800px) {
+
+
+.works-sort {
+  display: none;
+}
+
+.pp_infos_data {
+  display: none;
+}
+
+.pp_contact {
+  position: fixed;
+  bottom: 1px;
+  left: 35%;
+  height: 2em;
+}
+
+}
+
+
+@media screen and (max-width: 372px) {
+
+
+
+/* style.css | http://127.0.0.1:5503/sass/style.css */
+
+.pp_header .pp_portrait {
+  /* width: 10em; */
+  /* height: 10em; */
+  width: 14em;
+  height: 6em;
+  
+}
+
+.pp_header .pp_infos .pp_name {
+  /* margin: 15px 0; */
+  margin: 0px 0;
+}
+
+.pp_header .pp_infos .pp_tags {
+  /* margin: 5px 0; */
+  margin: 5px 0px;
+}
+
+/* Feuille de style intégrée #6 | http://127.0.0.1:5503/photographer-page.html?id=243 */
+
+li {
+  margin: 14px 6px 3px 0;
+}
+
+  
+  }
+  
