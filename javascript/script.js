@@ -31,6 +31,7 @@ function initFilters() {
 }
 
 function generatePhotographerTags(tags) {
+  
   let acc = [];
   for (let tag of tags) {
     acc.push(`<li class="filter">#${tag}</li>`);
@@ -60,6 +61,9 @@ function generatePhotographer(user) {
             </article>`;
 }
 
+
+
+
 function show(response) {
   let acc = [];
   for (let photographer of response.photographers) {
@@ -68,6 +72,7 @@ function show(response) {
   let html = acc.reduce((a, l) => a + l);
   container.innerHTML = html;
   initFilters(response.photographers);
+ 
 }
 fetch("json/profil.json")
   .then((response) => response.json())

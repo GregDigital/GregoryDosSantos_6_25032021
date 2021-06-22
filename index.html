@@ -11,26 +11,14 @@
 <body>
     <header class="banner" aria-hidden="false">
         
-        <a href="index.html"><img src="./Photos/logo/logo.png" alt="logo du site FishEye"></a>
-        <!--
-        <nav class="navTagg" aria-label="catégories des photographes">
-        
-         <ul class="" id="tags">
-            <li class="tags"><a href="" class="filter" title="portrait" data-filter="portrait">#Portrait</a></li>
-            <li class="tags"><a href="" class="filter" title="art" data-filter="art">#Art</a></li>
-            <li class="tags"><a href="" class="filter" title="fashion" data-filter="fashion">#Fashion</a></li>
-            <li class="tags"><a href="" class="filter" title="architecture" data-filter="architecture">#Architecture</a></li>
-            <li class="tags"><a href="" class="filter" title="travel" data-filter="travel">#Travel</a></li>
-            <li class="tags"><a href="" class="filter" title="sport" data-filter="sport">#Sport</a></li>
-            <li class="tags"><a href="" class="filter" title="animals" data-filter="animals">#Animals</a></li>
-            <li class="tags"><a href="" class="filter" title="events" data-filter="events">#Events</a></li>
-         -->
+        <a href="index.html" title="Page d'accueil"><img src="./Photos/logo/logo.png" alt="logo du site FishEye"></a>
+       
             
          <nav class="navTagg" aria-label="catégories des photographes">
             <!--<a href="">Passer au contenu</a>-->
             
-               <span  class="tags" title="portrait" data-target="portrait">#Portrait</span>
-               <span class="tags" title="art" data-target="art">#Art</span>
+               <span  tabindex="0"  class="tags" title="portrait" data-target="portrait" onclick="handleCommand(event)" onKeyDown="handleCommand(event)">#Portrait</span>
+               <span  class="tags" title="art" data-target="art">#Art</span>
                <span class="tags" title="fashion" data-target="fashion">#Fashion</span>
                <span class="tags" title="architecture" data-target="architecture">#Architecture</span>
                <span class="tags" title="travel" data-target="travel">#Travel</span>

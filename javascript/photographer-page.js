@@ -161,9 +161,9 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
-                    <a class="pp_media_event" href="#" title="${newNomImage}">
-                      <video onclick="generateLightbox(${usermedia.id})" class="pp_media_video" role="button">
+                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media" tabindex="0">
+                    <a class="pp_media_event" href="#" title="${newNomImage}" >
+                      <video onclick="generateLightbox(${usermedia.id})" class="pp_media_video" tabindex="0" role="button" >
                         ""
                         <source class="video" src="Photos/videos/${usermedia.video}" />
                       </video>
@@ -172,7 +172,7 @@ function generateMedia(usermedia) {
                     <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
                       <span class="media_infos-like media_like_count" id="">${usermedia.likes}</span>
-                      <span class="fas fa-heart like" role="button"></span>
+                      <span class="fas fa-heart like" role="button" tabindex="0"></span>
                     </div>
                   </article>
                 
@@ -184,15 +184,15 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
-                    <a  class="pp_media_event" href="#" title="${newNomImage}">
+                  <article data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media" tabindex="0">
+                    <a  class="pp_media_event" href="#" title="${newNomImage}" >
                       <img onclick="generateLightbox(${usermedia.id})" class="img" src="Photos/images/${usermedia.image}" alt="${newNomImage}" role="button" />
                     </a>
                     <div class="pp_media_infos">
                     <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
                       <span class="media_infos-like media_like_count">${usermedia.likes}</span>
-                      <span  class="fas fa-heart like" role="button"></span>
+                      <span  class="fas fa-heart like" role="button" tabindex="0"></span>
                     </div>
                   </article>
 
@@ -330,6 +330,7 @@ function factory(raw_media) {
 }
 
 function generateLightbox(id) {
+ 
   console.log("generateLightbox", id);
 
   let galleryMedia = Array.from(document.querySelectorAll(".pp_media"))
@@ -371,6 +372,7 @@ function generateLightbox(id) {
   lightbox.refresh();
   lightbox.text(id);
 
+ 
   document.querySelector(".lightbox-close").onclick = () => lightbox.close();
   document.querySelector(".lightbox-left").onclick = () =>
     lightbox.goPrevious();
@@ -438,6 +440,7 @@ class Lightbox {
         event.altKey ||
         event.shiftKey
       );
+
       if (isNotCombinedKey) {
         this.close(event);
         console.log("Escape");
@@ -492,6 +495,8 @@ class Lightbox {
     return this.slides.length;
   }
 }
+
+
 
 fetch("json/profil.json")
   .then((response) => response.json())
