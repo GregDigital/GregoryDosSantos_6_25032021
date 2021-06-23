@@ -3,31 +3,45 @@
 let container = document.querySelector("#photographers");
 
 function initFilters() {
+ 
   const containerTaggs = document.querySelector(".navTagg");
 
   containerTaggs.addEventListener("click", (e) => {
     let tagData = e.target.dataset.target;
-    console.log(tagData);
-
+   // console.log(tagData);
+   //
+   console.log(photographers.tags)
     if (e.target.classList.toggle("active")) {
       const containerCards = document.querySelectorAll(".photographers_card");
       containerCards.forEach(function (item) {
         let dataFilters = item.dataset.filters;
         let arrayDataFilters = dataFilters.split(",");
+        console.log(arrayDataFilters)
+        console.log(item)
         
         for (let index = 0; index < arrayDataFilters.length; index++) {
          
           let element = arrayDataFilters[index];
+          
          console.log(element)
           if (tagData === element) {
+    
+           console.log("ok")
             item.style.display = "block";
-          } else {
+
+          } else  {
             item.style.display = "none";
+            console.log("non")
           }
+         
         }
       });
-    }
+      
+    } else {document.location.reload();}
+
+    
   });
+
 }
 
 function generatePhotographerTags(tags) {
@@ -37,8 +51,13 @@ function generatePhotographerTags(tags) {
     acc.push(`<li class="filter">#${tag}</li>`);
   }
   let html = acc.reduce((a, l) => a + l);
+  console.log(html)
   return html;
+ 
 }
+
+
+
 
 function generatePhotographer(user) {
   console.log(user.id);
@@ -74,6 +93,8 @@ function show(response) {
   initFilters(response.photographers);
  
 }
+
+
 fetch("json/profil.json")
   .then((response) => response.json())
   .then((json) => show(json));
