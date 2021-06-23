@@ -10,7 +10,7 @@ function initEvents() {
   const ppContact = document.querySelector(".pp_contact");
   const formModal = document.querySelector(".form_modal");
   const closeContact = document.querySelector(".form_close");
-  const send = document.querySelector("#form_submit_btn")
+  const send = document.querySelector("#form_submit_btn");
 
   ppContact.addEventListener("click", contactModal);
 
@@ -22,24 +22,25 @@ function initEvents() {
     formModal.style.display = "none";
   }
 
-  send.addEventListener('click', (e) => {
-    e.preventDefault()
+  send.addEventListener("click", (e) => {
+    e.preventDefault();
     formModal.style.display = "none";
+  });
 
-  })
-
-  document.addEventListener('keydown', (event) => {
-        
-    if (event.key === 'Escape') {
-     //if esc key was not pressed in combination with ctrl or alt or shift
-        const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
-        if (isNotCombinedKey) {
-          closeContactModal(event)
-            console.log('Escape')
-          
-        }
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      //if esc key was not pressed in combination with ctrl or alt or shift
+      const isNotCombinedKey = !(
+        event.ctrlKey ||
+        event.altKey ||
+        event.shiftKey
+      );
+      if (isNotCombinedKey) {
+        closeContactModal(event);
+        console.log("Escape");
+      }
     }
-});
+  });
 }
 
 function show(response) {
@@ -50,7 +51,6 @@ function show(response) {
   let html = acc.reduce((a, l) => a + l);
   container.innerHTML = html;
   initEvents();
-  
 }
 fetch("json/profil.json")
   .then((response) => response.json())
@@ -250,7 +250,6 @@ function generateTotalLikes() {
     ".pp_infos_data"
   ).innerHTML = `<span id="total-likes">${total}  <i class="fas fa-heart" aria-label="likes"></i></span>
   <span>   € / jour</span>`;
-  
 }
 
 // ============================= TRIER =============================================
@@ -274,7 +273,9 @@ function sortMedias() {
     let likeSort = Array.from(likesSort);
     let i = 0;
     likeSort
-      .sort((a, b) => parseInt((a.dataset.likes) < parseInt(b.dataset.likes) ? 1 : -1))
+      .sort((a, b) =>
+        parseInt(a.dataset.likes < parseInt(b.dataset.likes) ? 1 : -1)
+      )
       .forEach((e) => {
         e.style.order = i;
         i++;
@@ -330,7 +331,6 @@ function factory(raw_media) {
 }
 
 function generateLightbox(id) {
- 
   console.log("generateLightbox", id);
 
   let galleryMedia = Array.from(document.querySelectorAll(".pp_media"))
@@ -372,7 +372,6 @@ function generateLightbox(id) {
   lightbox.refresh();
   lightbox.text(id);
 
- 
   document.querySelector(".lightbox-close").onclick = () => lightbox.close();
   document.querySelector(".lightbox-left").onclick = () =>
     lightbox.goPrevious();
@@ -495,8 +494,6 @@ class Lightbox {
     return this.slides.length;
   }
 }
-
-
 
 fetch("json/profil.json")
   .then((response) => response.json())
