@@ -10,7 +10,7 @@ function initFilters() {
     // console.log(tagData);
     //
     console.log(photographers.tags);
-    if (e.target.classList.toggle("active")) {
+    if (tagData) {
       const containerCards = document.querySelectorAll(".photographers_card");
       containerCards.forEach(function (item) {
         let dataFilters = item.dataset.filters;
@@ -23,16 +23,16 @@ function initFilters() {
 
           console.log(element);
           if (tagData === element) {
-            console.log("ok");
             item.style.display = "block";
+            return;
           } else {
             item.style.display = "none";
             console.log("non");
           }
         }
       });
-    } else {
-      document.location.reload();
+    } else if (target.dataset.target) {
+      item.style.display = "block";
     }
   });
 }
