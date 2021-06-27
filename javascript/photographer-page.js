@@ -161,9 +161,9 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media" tabindex="0">
-                    <a class="pp_media_event" href="#" title="${newNomImage}" >
-                      <video onclick="generateLightbox(${usermedia.id})" class="pp_media_video" tabindex="0" role="button" >
+                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}"  data-id="${usermedia.id}" class="pp_media" tabindex="0">
+                    <a data-title = "${newNomImage}" data-id="${usermedia.id}" onclick="generateLightbox(${usermedia.id})" class="pp_media_event" href="#" title="${newNomImage}" >
+                      <video  class="pp_media_video" tabindex="0" role="button" >
                         ""
                         <source class="video" src="Photos/videos/${usermedia.video}" />
                       </video>
@@ -184,9 +184,9 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media" tabindex="0">
-                    <a  class="pp_media_event" href="#" title="${newNomImage}" >
-                      <img onclick="generateLightbox(${usermedia.id})" class="img" src="Photos/images/${usermedia.image}" alt="${newNomImage}" role="button" />
+                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media" tabindex="0">
+                    <a onclick="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-id="${usermedia.id}" class="pp_media_event" href="#" title="${newNomImage}" >
+                      <img  class="img" src="Photos/images/${usermedia.image}" alt="${newNomImage}" role="button" />
                     </a>
                     <div class="pp_media_infos">
                     <h2 class="media_infos-title">${newNomImage}</h2>
@@ -235,6 +235,7 @@ function bindLikeButton(medias) {
     });
   });
 }
+
 
 function generateTotalLikes() {
   let spanLikes = document.querySelectorAll(".media_like_count");
@@ -333,7 +334,7 @@ function factory(raw_media) {
 function generateLightbox(id) {
   console.log("generateLightbox", id);
 
-  let galleryMedia = Array.from(document.querySelectorAll(".pp_media"))
+  let galleryMedia = Array.from(document.querySelectorAll(".pp_media_event"))
     .map((article) => {
       let img = article.querySelector(".img[src$='.jpg']");
       let video = article.querySelector(".video[src$='.mp4']");
