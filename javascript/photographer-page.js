@@ -250,7 +250,7 @@ function generateTotalLikes() {
   document.querySelector(
     ".pp_infos_data"
   ).innerHTML = `<span id="total-likes">${total}  <i class="fas fa-heart" aria-label="likes"></i></span>
-  <span>   € / jour</span>`;
+  <span>  275 € / jour</span>`;
 }
 
 // ============================= TRIER =============================================
