@@ -34,12 +34,16 @@ nav {
     color: $color-bacgroundWhite;
   }
 
-  a {
+  span {
     color: $color-texteSecondaire;
 
-    &:hover {
+    &:hover
+    ,&:focus
+    ,&:active {
       color: $color-bacgroundWhite;
+      background-color: #901C1C;
     }
+
   }
 }
 

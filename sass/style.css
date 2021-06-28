@@ -110,12 +110,13 @@ nav .tags.active {
   color: #FAFAFA;
 }
 
-nav a {
+nav span {
   color: #901C1C;
 }
 
-nav a:hover {
+nav span:hover, nav span:focus, nav span:active {
   color: #FAFAFA;
+  background-color: #901C1C;
 }
 
 @media screen and (max-width: 1330px) {
@@ -276,10 +277,9 @@ nav a:hover {
   padding: 2px 7px;
   font-weight: 500;
   font-size: .9em;
-  cursor: pointer;
 }
 
-.photographers_card .infos_photographer_tags .filter:active .photographers_card .infos_photographer_tags .filter:hover {
+.photographers_card .infos_photographer_tags .filter:active {
   background-color: #901C1C;
   color: #FAFAFA;
 }

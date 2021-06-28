@@ -7,40 +7,59 @@ function initFilters() {
 
   containerTaggs.addEventListener("click", (e) => {
     let tagData = e.target.dataset.target;
+
     // console.log(tagData);
     //
-    console.log(photographers.tags);
-    if (tagData) {
+    //console.log(photographers.tags);
+    if (e.target.classList.toggle("active")) {
       const containerCards = document.querySelectorAll(".photographers_card");
       containerCards.forEach(function (item) {
         let dataFilters = item.dataset.filters;
         let arrayDataFilters = dataFilters.split(",");
-        console.log(arrayDataFilters);
-        console.log(item);
+        // console.log(arrayDataFilters);
+        //console.log(item);
 
         for (let index = 0; index < arrayDataFilters.length; index++) {
           let element = arrayDataFilters[index];
+          //console.log(element)
 
-          console.log(element);
-          if (tagData === element) {
+          // console.log(element);
+          if (tagData == element) {
             item.style.display = "block";
+
+            let filters = document.querySelectorAll(".filter");
+              filters.forEach( a => {
+                let z = a.textContent
+                
+                //console.log(z)
+                console.log("1" + z)
+              console.log("2" + tagData)
+              if (tagData === z) {
+                
+              a.style.color = "white";
+              a.style.backgroundColor = "#901c1c";
+
+              return;}
+                
+              });
+
+           
             return;
           } else {
             item.style.display = "none";
-            console.log("non");
+            //console.log("non");
           }
         }
       });
-    } else if (target.dataset.target) {
-      item.style.display = "block";
     }
+    else {document.location.reload();}
   });
 }
 
 function generatePhotographerTags(tags) {
   let acc = [];
   for (let tag of tags) {
-    acc.push(`<li class="filter">#${tag}</li>`);
+    acc.push(`<li class="filter">${tag}</li>`);
   }
   let html = acc.reduce((a, l) => a + l);
   console.log(html);

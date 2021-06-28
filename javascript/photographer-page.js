@@ -60,7 +60,7 @@ function generateTags(tags) {
   let acc = [];
   for (let tag of tags) {
     acc.push(`<li>
-          <a class="filter-tag" href="index.html?tag=portrait" title="portrait">#${tag}</a>
+          <a class="filter-tag" href="index.html?tag=${tag}" title="${tag}">#${tag}</a>
         </li>`);
   }
   let html = acc.reduce((a, l) => a + l);
