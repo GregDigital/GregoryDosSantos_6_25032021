@@ -72,7 +72,7 @@ function generateTags(tags) {
   let acc = [];
   for (let tag of tags) {
     acc.push(`<li>
-          <a class="filter-tag" href="index.html?tag=${tag}" title="${tag}">#${tag}</a>
+          <a tabindex="-1" class="filter-tag" href="index.html?tag=${tag}" title="${tag}">#${tag}</a>
         </li>`);
   }
   let html = acc.reduce((a, l) => a + l);
@@ -174,7 +174,7 @@ function generateMedia(usermedia) {
               
                 
                   <article tabindex="-1" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
-                    <a  tabindex="1" role="button" onclick="generateLightbox(${usermedia.id})" onkeypress="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-id="${usermedia.id}" data-likes="${usermedia.likes}" class="pp_media_event" href="#" title="${newNomImage}">
+                    <a  tabindex="0" role="button" onclick="generateLightbox(${usermedia.id})" onkeypress="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-id="${usermedia.id}" data-likes="${usermedia.likes}" class="pp_media_event" href="#" title="${newNomImage}">
                       <video  class="pp_media_video"  >
                         ""
                         <source class="video" src="Photos/videos/${usermedia.video}" alt="${usermedia.alt}"/>
@@ -197,7 +197,7 @@ function generateMedia(usermedia) {
               
                 
                   <article tabindex="-1" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
-                    <a tabindex="1" role="button" onclick="generateLightbox(${usermedia.id})" onkeypress="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-id="${usermedia.id}" class="pp_media_event" href="#" title="${newNomImage}" >
+                    <a tabindex="0" role="button" onclick="generateLightbox(${usermedia.id})" onkeypress="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-id="${usermedia.id}" class="pp_media_event" href="#" title="${newNomImage}" >
                       <img  class="img" src="Photos/images/${usermedia.image}" alt="${usermedia.alt}"/>
                     </a>
                     <div class="pp_media_infos">
@@ -302,6 +302,7 @@ function sortMedias() {
       document.querySelector("body").style.overflow = "hidden";
       document.querySelector("body").setAttribute("aria-hidden", "true");
       document.querySelector(".sort-list").setAttribute("aria-hidden", "false");
+      document.querySelector(".sort-btn").setAttribute("tabindex", -1);
       openSort.style.display = "block";
       document.addEventListener("keydown", (event) => {
         document.querySelector("body").style.overflow = "auto";
@@ -493,9 +494,9 @@ class Lightbox {
     this.slideIndex = 0;
     this.slides = slides;
     this.onKeyUp = this.onKeyUp.bind(this);
-    this.keyEnter = this.keyEnter.bind(this);
+    //this.keyEnter = this.keyEnter.bind(this);
     document.addEventListener("keyup", this.onKeyUp);
-    document.addEventListener("keypress", this.keyEnter);
+    //document.addEventListener("keypress", this.keyEnter);
     this.selector = document.querySelector(querySelector);
   }
 
@@ -529,13 +530,13 @@ class Lightbox {
       this.goNext(event);
     }
   }
-
+/*
   keyEnter(event) {
     if (event.key === "Enter") {
       document.querySelector(".lightbox_modal").style.display = "block";
     }
   }
-
+*/
   goNext() {
     this.slideIndex += 1;
     if (this.slideIndex >= this.size()) this.slideIndex = 0;
