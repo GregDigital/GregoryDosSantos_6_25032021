@@ -174,7 +174,7 @@ function generateMedia(usermedia) {
               
                 
                   <article tabindex="-1" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
-                    <a  tabindex="0" role="button" onclick="generateLightbox(${usermedia.id})" onkeypress="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-id="${usermedia.id}" data-likes="${usermedia.likes}" class="pp_media_event" href="#" title="${newNomImage}">
+                    <a  aria-label="lien vers une video"  tabindex="0" role="button" onclick="generateLightbox(${usermedia.id})" onkeypress="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-id="${usermedia.id}" data-likes="${usermedia.likes}" class="pp_media_event" href="#" title="${newNomImage}">
                       <video  class="pp_media_video"  >
                         ""
                         <source class="video" src="Photos/videos/${usermedia.video}" alt="${usermedia.alt}"/>
@@ -184,7 +184,7 @@ function generateMedia(usermedia) {
                     <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
                       <span class="media_infos-like media_like_count" id="">${usermedia.likes}</span>
-                      <span class="fas fa-heart like" tabindex="0" role="button"></span>
+                      <span class="fas fa-heart like" tabindex="0" role="button" aria-label="Cliquez pour mettre un like"></span>
                     </div>
                   </article>
                 
@@ -197,14 +197,14 @@ function generateMedia(usermedia) {
               
                 
                   <article tabindex="-1" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
-                    <a tabindex="0" role="button" onclick="generateLightbox(${usermedia.id})" onkeypress="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-id="${usermedia.id}" class="pp_media_event" href="#" title="${newNomImage}" >
+                    <a tabindex="0" aria-label="lien vers une image" role="button" onclick="generateLightbox(${usermedia.id})" onkeypress="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-id="${usermedia.id}" class="pp_media_event" href="#" title="${newNomImage}" >
                       <img  class="img" src="Photos/images/${usermedia.image}" alt="${usermedia.alt}"/>
                     </a>
                     <div class="pp_media_infos">
                     <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
                       <span class="media_infos-like media_like_count">${usermedia.likes}</span>
-                      <span data-id="${usermedia.id}" class="fas fa-heart like" role="button" tabindex="0"></span>
+                      <span data-id="${usermedia.id}" aria-label="Cliquez pour mettre un like" class="fas fa-heart like" role="button" tabindex="0"></span>
                     </div>
                   </article>
 
