@@ -73,7 +73,7 @@ function generatePhotographer(user) {
                 <a class="test" href="photographer-page.html?id=${user.id}">
                     <img class="portrait" src="./Photos/Photographers/${
                       user.portrait
-                    }" alt="Photo du photographe MimiKeel">
+                    }" alt="${user.alt}">
                     <h2 class="name">${user.name}</h2>
                 </a>
                 <p class="infos_photographer">

@@ -161,18 +161,18 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}"  data-id="${usermedia.id}" class="pp_media" tabindex="0">
-                    <a data-title = "${newNomImage}" data-id="${usermedia.id}" onclick="generateLightbox(${usermedia.id})" class="pp_media_event" href="#" title="${newNomImage}" >
-                      <video  class="pp_media_video" tabindex="0" role="button" >
+                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}"  data-id="${usermedia.id}" class="pp_media">
+                    <a  data-title = "${newNomImage}" data-id="${usermedia.id}" onclick="generateLightbox(${usermedia.id})" class="pp_media_event" href="#" title="${newNomImage}" tabindex="0" role="button">
+                      <video  class="pp_media_video"  >
                         ""
-                        <source class="video" src="Photos/videos/${usermedia.video}" />
+                        <source class="video" src="Photos/videos/${usermedia.video}" alt="${usermedia.alt}"/>
                       </video>
                     </a>
                     <div class="pp_media_infos">
                     <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
                       <span class="media_infos-like media_like_count" id="">${usermedia.likes}</span>
-                      <span class="fas fa-heart like" role="button" tabindex="0"></span>
+                      <span class="fas fa-heart like" role="button" tabindex="1"></span>
                     </div>
                   </article>
                 
@@ -184,15 +184,15 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media" tabindex="0">
-                    <a onclick="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-id="${usermedia.id}" class="pp_media_event" href="#" title="${newNomImage}" >
-                      <img  class="img" src="Photos/images/${usermedia.image}" alt="${newNomImage}" role="button" />
+                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
+                    <a role="button" tabindex="1" onclick="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-id="${usermedia.id}" class="pp_media_event" href="#" title="${newNomImage}" >
+                      <img  class="img" src="Photos/images/${usermedia.image}" alt="${usermedia.alt}"/>
                     </a>
                     <div class="pp_media_infos">
                     <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
                       <span class="media_infos-like media_like_count">${usermedia.likes}</span>
-                      <span  class="fas fa-heart like" role="button" tabindex="0"></span>
+                      <span  class="fas fa-heart like" role="button" tabindex="1"></span>
                     </div>
                   </article>
 
