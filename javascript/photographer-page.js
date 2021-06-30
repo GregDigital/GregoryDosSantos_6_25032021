@@ -16,10 +16,16 @@ function initEvents() {
 
   function contactModal() {
     formModal.style.display = "block";
+    document.querySelector(".form_modal").setAttribute("aria-hidden", "false");
+    document.querySelector("body").setAttribute("aria-hidden", "true");
+    document.querySelector("body").style.overflow = "hidden";
   }
   closeContact.addEventListener("click", closeContactModal);
   function closeContactModal() {
     formModal.style.display = "none";
+    document.querySelector("body").setAttribute("aria-hidden", "false");
+    document.querySelector(".form_modal").setAttribute("aria-hidden", "true");
+    document.querySelector("body").style.overflow = "auto";
   }
 
   send.addEventListener("click", (e) => {
@@ -37,6 +43,12 @@ function initEvents() {
       );
       if (isNotCombinedKey) {
         closeContactModal(event);
+        document.querySelector("body").style.overflow = "auto";
+        document.querySelector("body").setAttribute("aria-hidden", "false");
+        document
+          .querySelector(".form_modal")
+          .setAttribute("aria-hidden", "true");
+
         console.log("Escape");
       }
     }
@@ -89,7 +101,7 @@ function generatePhotographer(user) {
         user.portrait
       }" alt="" class="pp_portrait" />
 
-      <div class="form_modal">
+      <div class="form_modal" aria-hidden="false">
 
 
       <div class="form_modal_content">
@@ -161,8 +173,8 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}"  data-id="${usermedia.id}" class="pp_media">
-                    <a  data-title = "${newNomImage}" data-id="${usermedia.id}" onclick="generateLightbox(${usermedia.id})" class="pp_media_event" href="#" title="${newNomImage}" tabindex="0" role="button">
+                  <article tabindex="-1" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
+                    <a  tabindex="1" role="button" onclick="generateLightbox(${usermedia.id})" onkeypress="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-id="${usermedia.id}" data-likes="${usermedia.likes}" class="pp_media_event" href="#" title="${newNomImage}">
                       <video  class="pp_media_video"  >
                         ""
                         <source class="video" src="Photos/videos/${usermedia.video}" alt="${usermedia.alt}"/>
@@ -172,7 +184,7 @@ function generateMedia(usermedia) {
                     <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
                       <span class="media_infos-like media_like_count" id="">${usermedia.likes}</span>
-                      <span class="fas fa-heart like" role="button" tabindex="1"></span>
+                      <span class="fas fa-heart like" tabindex="0" role="button"></span>
                     </div>
                   </article>
                 
@@ -184,15 +196,15 @@ function generateMedia(usermedia) {
       return `
               
                 
-                  <article  data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
-                    <a role="button" tabindex="1" onclick="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-id="${usermedia.id}" class="pp_media_event" href="#" title="${newNomImage}" >
+                  <article tabindex="-1" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-date="${usermedia.date}" data-id="${usermedia.id}" class="pp_media">
+                    <a tabindex="1" role="button" onclick="generateLightbox(${usermedia.id})" onkeypress="generateLightbox(${usermedia.id})" data-title = "${newNomImage}" data-likes="${usermedia.likes}" data-id="${usermedia.id}" class="pp_media_event" href="#" title="${newNomImage}" >
                       <img  class="img" src="Photos/images/${usermedia.image}" alt="${usermedia.alt}"/>
                     </a>
                     <div class="pp_media_infos">
                     <h2 class="media_infos-title">${newNomImage}</h2>
                       <span class="media_infos-price">${usermedia.price} €</span>
                       <span class="media_infos-like media_like_count">${usermedia.likes}</span>
-                      <span  class="fas fa-heart like" role="button" tabindex="1"></span>
+                      <span data-id="${usermedia.id}" class="fas fa-heart like" role="button" tabindex="0"></span>
                     </div>
                   </article>
 
@@ -233,9 +245,32 @@ function bindLikeButton(medias) {
       generateTotalLikes();
       //sortPopularite();
     });
+
+    heart.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        let parent = e.srcElement.parentNode.parentNode;
+        //console.log(parent.dataset);
+
+        let media = medias.filter(
+          (element) => element.id == parent.dataset.id
+        )[0];
+
+        // console.log(media);
+        if (liked == true) {
+          media.likes -= 1;
+          liked = false;
+        } else {
+          media.likes += 1;
+          liked = true;
+        }
+
+        parent.querySelector(".media_like_count").innerHTML = media.likes;
+        generateTotalLikes();
+        //sortPopularite();
+      }
+    });
   });
 }
-
 
 function generateTotalLikes() {
   let spanLikes = document.querySelectorAll(".media_like_count");
@@ -264,11 +299,31 @@ function sortMedias() {
 
   theme.forEach((item) =>
     item.addEventListener("click", (e) => {
+      document.querySelector("body").style.overflow = "hidden";
+      document.querySelector("body").setAttribute("aria-hidden", "true");
+      document.querySelector(".sort-list").setAttribute("aria-hidden", "false");
       openSort.style.display = "block";
+      document.addEventListener("keydown", (event) => {
+        document.querySelector("body").style.overflow = "auto";
+
+        if (event.key === "Escape") {
+          //if esc key was not pressed in combination with ctrl or alt or shift
+          const isNotCombinedKey = !(
+            event.ctrlKey ||
+            event.altKey ||
+            event.shiftKey
+          );
+          if (isNotCombinedKey) {
+            openSort.style.display = "none";
+            document.querySelector(".sort-list").setAttribute("aria-hidden", "true");
+            console.log("Escape");
+          }
+        }
+      });
     })
   );
 
-  popularite.addEventListener("click", () => {
+  popularite.addEventListener("click", (e) => {
     let likesSort = document.querySelectorAll(".pp_media");
 
     let likeSort = Array.from(likesSort);
@@ -284,6 +339,9 @@ function sortMedias() {
     if (popularite) {
       document.querySelector(".sort-texte").innerText = "Popularité";
       openSort.style.display = "none";
+      document.querySelector("body").style.overflow = "auto";
+      document.querySelector("body").setAttribute("aria-hidden", "false");
+      document.querySelector(".sort-list").setAttribute("aria-hidden", "true");
     }
   });
 
@@ -300,6 +358,9 @@ function sortMedias() {
     if (date) {
       document.querySelector(".sort-texte").innerText = "Date";
       openSort.style.display = "none";
+      document.querySelector("body").style.overflow = "auto";
+      document.querySelector("body").setAttribute("aria-hidden", "false");
+      document.querySelector(".sort-list").setAttribute("aria-hidden", "true");
     }
   });
 
@@ -316,6 +377,9 @@ function sortMedias() {
     if (titre) {
       document.querySelector(".sort-texte").innerText = "Titre";
       openSort.style.display = "none";
+      document.querySelector("body").style.overflow = "auto";
+      document.querySelector("body").setAttribute("aria-hidden", "false");
+      document.querySelector(".sort-list").setAttribute("aria-hidden", "true");
     }
   });
 }
@@ -341,6 +405,11 @@ function generateLightbox(id) {
 
       article.addEventListener("click", () => {
         document.querySelector(".lightbox_modal").style.display = "block";
+        document
+          .querySelector(".lightbox_modal")
+          .setAttribute("aria-hidden", "false");
+        document.querySelector("body").style.overflow = "hidden";
+        document.querySelector("body").setAttribute("aria-hidden", "true");
       });
 
       if (img !== null) {
@@ -424,12 +493,21 @@ class Lightbox {
     this.slideIndex = 0;
     this.slides = slides;
     this.onKeyUp = this.onKeyUp.bind(this);
+    this.keyEnter = this.keyEnter.bind(this);
     document.addEventListener("keyup", this.onKeyUp);
+    document.addEventListener("keypress", this.keyEnter);
     this.selector = document.querySelector(querySelector);
   }
 
   close() {
     this.element.style.display = "none";
+    document.querySelector("body").style.overflow = "auto";
+    document
+      .querySelector(".lightbox_modal")
+      .setAttribute("aria-hidden", "true");
+    document.querySelector("body").setAttribute("aria-hidden", "false");
+
+    document.removeEventListener("keyup", this.onKeyUp);
   }
 
   onKeyUp(event) {
@@ -449,6 +527,12 @@ class Lightbox {
       this.goPrevious(event);
     } else if (event.key === "ArrowRight") {
       this.goNext(event);
+    }
+  }
+
+  keyEnter(event) {
+    if (event.key === "Enter") {
+      document.querySelector(".lightbox_modal").style.display = "block";
     }
   }
 

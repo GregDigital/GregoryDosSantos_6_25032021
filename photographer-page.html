@@ -13,9 +13,9 @@
   <title>FishEye - Photographer</title>
 </head>
 
-<body>
+<body aria-hidden="false">
   <header class="banner" id="header-banner" aria-hidden="false">
-    <a href="index.html" title="Homepage"><img src="./Photos/logo/logo.png" alt="Fisheye Home page" width="350"
+    <a tabindex="0" href="index.html" title="Homepage"><img src="./Photos/logo/logo.png" alt="Fisheye Home page" width="350"
         height="80" /></a>
   </header>
 
@@ -32,7 +32,7 @@
         <button tabindex="0" value="1"aria-haspopup="listbox" aria-labelledby="sort-label sort-btn" id="sort-btn"
           class="sort-btn test"><span class="sort-texte">Popularité</span><span class="fas fa-chevron-down sort-arrow"></span>
         </button>
-        <ul id="sort-list" tabindex="-1" role="listbox" aria-labelledby="sort-label" class="sort-list hidden">
+        <ul aria-hidden="false" id="sort-list" tabindex="-1" role="listbox" aria-labelledby="sort-label" class="sort-list hidden">
 
           <li value="2" id="sort-1" class="test" role="option" tabindex="-1">Popularité<span
               class="fas fa-chevron-up sort-arrow"></span></li>
@@ -67,7 +67,7 @@
 
 
 
-    <div class="lightbox_modal">
+    <div class="lightbox_modal" aria-hidden="false">
 
 
         <div class="lightbox_modal_container">

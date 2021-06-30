@@ -32,8 +32,7 @@ function initFilters() {
                 let z = a.textContent
                 
                 //console.log(z)
-                console.log("1" + z)
-              console.log("2" + tagData)
+                
               if (tagData === z) {
                 
               a.style.color = "white";
