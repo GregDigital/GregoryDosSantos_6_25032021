@@ -6,13 +6,27 @@ let btnLike = document.querySelectorAll(".fas.fa-heart");
 
 // ============ HEADER PHOTOGRAPHER INFOS =========================
 
+function afficher() {
+  let first = document.getElementById("firstname").value;
+  let last = document.getElementById("last").value;
+  let mail = document.getElementById("mail").value;
+
+  console.log(first +last + mail)
+  }
+
+
 function initEvents() {
   const ppContact = document.querySelector(".pp_contact");
   const formModal = document.querySelector(".form_modal");
   const closeContact = document.querySelector(".form_close");
   const send = document.querySelector("#form_submit_btn");
 
+
+
   ppContact.addEventListener("click", contactModal);
+  
+
+
 
   function contactModal() {
     formModal.style.display = "block";
@@ -20,6 +34,8 @@ function initEvents() {
     document.querySelector("body").setAttribute("aria-hidden", "true");
     document.querySelector("body").style.overflow = "hidden";
   }
+
+
   closeContact.addEventListener("click", closeContactModal);
   function closeContactModal() {
     formModal.style.display = "none";
@@ -27,6 +43,8 @@ function initEvents() {
     document.querySelector(".form_modal").setAttribute("aria-hidden", "true");
     document.querySelector("body").style.overflow = "auto";
   }
+
+  
 
   send.addEventListener("click", (e) => {
     e.preventDefault();
@@ -49,10 +67,11 @@ function initEvents() {
           .querySelector(".form_modal")
           .setAttribute("aria-hidden", "true");
 
-        console.log("Escape");
+   
       }
     }
   });
+
 }
 
 function show(response) {
@@ -63,6 +82,7 @@ function show(response) {
   let html = acc.reduce((a, l) => a + l);
   container.innerHTML = html;
   initEvents();
+  afficher();
 }
 fetch("json/profil.json")
   .then((response) => response.json())
@@ -119,7 +139,7 @@ function generatePhotographer(user) {
           </div>
 
           <label for="firstname">Prénom :</label>
-          <input type="text" id="firstname" name="user_firstname">
+          <input  type="text" id="firstname" name="user_firstname">
 
 
 
@@ -135,7 +155,7 @@ function generatePhotographer(user) {
           <label for="subject">Message :</label>
           <textarea cols="20" rows="5" id="subject" name="user_message"></textarea>
 
-          <input type="submit" value="Envoyer" class="form_submit_btn" title="Send" id="form_submit_btn">
+          <input onclick="afficher()" type="submit" value="Envoyer" class="form_submit_btn" title="Send" id="form_submit_btn" >
 
         </form>
 
